@@ -7,11 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111DF64898DED0FBF39D7E41 /* libPods-Chat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2273D5353626A4BB868503B /* libPods-Chat.a */; };
+		D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1472290757B300F762CE /* AssemblyLayer.swift */; };
+		D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147529075A8D00F762CE /* AuthorizationModels.swift */; };
+		D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */; };
+		D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */; };
+		D22E147E29075AC500F762CE /* AuthorizationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147D29075AC500F762CE /* AuthorizationWorker.swift */; };
+		D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147F29075AD500F762CE /* AuthorizationRouter.swift */; };
+		D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148129075B0500F762CE /* AuthorizationViewController.swift */; };
+		D22E148529075BC400F762CE /* AuthorizationInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148429075BC400F762CE /* AuthorizationInteractorTest.swift */; };
+		D22E148729075C0500F762CE /* AuthorizationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148629075C0500F762CE /* AuthorizationPresenterTest.swift */; };
+		D22E148929075C1600F762CE /* AuthorizationViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148829075C1600F762CE /* AuthorizationViewControllerTest.swift */; };
+		D22E148B29075C2A00F762CE /* AuthorizationRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148A29075C2A00F762CE /* AuthorizationRouterTest.swift */; };
+		D22E148D29075C4700F762CE /* AuthorizationWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
 		D2B125332905DCE900D7CC7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B125312905DCE900D7CC7F /* LaunchScreen.storyboard */; };
-		D2B1253E2905DCEA00D7CC7F /* ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1253D2905DCEA00D7CC7F /* ChatTests.swift */; };
 		D2B125482905DCEA00D7CC7F /* ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125472905DCEA00D7CC7F /* ChatUITests.swift */; };
 		D2B1254A2905DCEA00D7CC7F /* ChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125492905DCEA00D7CC7F /* ChatUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +46,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D8D4BD1675EA86743B9F6AE /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		D2273D5353626A4BB868503B /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D22E1472290757B300F762CE /* AssemblyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyLayer.swift; sourceTree = "<group>"; };
+		D22E147529075A8D00F762CE /* AuthorizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModels.swift; sourceTree = "<group>"; };
+		D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
+		D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
+		D22E147D29075AC500F762CE /* AuthorizationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorker.swift; sourceTree = "<group>"; };
+		D22E147F29075AD500F762CE /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		D22E148129075B0500F762CE /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		D22E148429075BC400F762CE /* AuthorizationInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractorTest.swift; sourceTree = "<group>"; };
+		D22E148629075C0500F762CE /* AuthorizationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenterTest.swift; sourceTree = "<group>"; };
+		D22E148829075C1600F762CE /* AuthorizationViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerTest.swift; sourceTree = "<group>"; };
+		D22E148A29075C2A00F762CE /* AuthorizationRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouterTest.swift; sourceTree = "<group>"; };
+		D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorkerTest.swift; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,10 +67,10 @@
 		D2B125322905DCE900D7CC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2B125342905DCE900D7CC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B125392905DCEA00D7CC7F /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2B1253D2905DCEA00D7CC7F /* ChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTests.swift; sourceTree = "<group>"; };
 		D2B125432905DCEA00D7CC7F /* ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125472905DCEA00D7CC7F /* ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITests.swift; sourceTree = "<group>"; };
 		D2B125492905DCEA00D7CC7F /* ChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FC062E51FBF0A2296EBC99AD /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111DF64898DED0FBF39D7E41 /* libPods-Chat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +99,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40D942757ED521B69D6281E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2273D5353626A4BB868503B /* libPods-Chat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		772B143386B599D8F39E8E57 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC062E51FBF0A2296EBC99AD /* Pods-Chat.debug.xcconfig */,
+				3D8D4BD1675EA86743B9F6AE /* Pods-Chat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D22E14712907579200F762CE /* AssemblyLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D22E1472290757B300F762CE /* AssemblyLayer.swift */,
+			);
+			path = AssemblyLayer;
+			sourceTree = "<group>";
+		};
+		D22E1474290757FA00F762CE /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				D22E147529075A8D00F762CE /* AuthorizationModels.swift */,
+				D22E147D29075AC500F762CE /* AuthorizationWorker.swift */,
+				D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */,
+				D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */,
+				D22E148129075B0500F762CE /* AuthorizationViewController.swift */,
+				D22E147F29075AD500F762CE /* AuthorizationRouter.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		D22E148329075B4D00F762CE /* AuthorizationTests */ = {
+			isa = PBXGroup;
+			children = (
+				D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */,
+				D22E148429075BC400F762CE /* AuthorizationInteractorTest.swift */,
+				D22E148629075C0500F762CE /* AuthorizationPresenterTest.swift */,
+				D22E148829075C1600F762CE /* AuthorizationViewControllerTest.swift */,
+				D22E148A29075C2A00F762CE /* AuthorizationRouterTest.swift */,
+			);
+			path = AuthorizationTests;
+			sourceTree = "<group>";
+		};
 		D2B1251A2905DCE800D7CC7F = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +156,8 @@
 				D2B1253C2905DCEA00D7CC7F /* ChatTests */,
 				D2B125462905DCEA00D7CC7F /* ChatUITests */,
 				D2B125242905DCE800D7CC7F /* Products */,
+				772B143386B599D8F39E8E57 /* Pods */,
+				40D942757ED521B69D6281E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +176,8 @@
 			children = (
 				D2B125562905DD2600D7CC7F /* Application */,
 				D2B125572905DD3700D7CC7F /* SupportingFiles */,
+				D22E14712907579200F762CE /* AssemblyLayer */,
+				D22E1474290757FA00F762CE /* Authorization */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -104,7 +185,7 @@
 		D2B1253C2905DCEA00D7CC7F /* ChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1253D2905DCEA00D7CC7F /* ChatTests.swift */,
+				D22E148329075B4D00F762CE /* AuthorizationTests */,
 			);
 			path = ChatTests;
 			sourceTree = "<group>";
@@ -144,6 +225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2B1254D2905DCEA00D7CC7F /* Build configuration list for PBXNativeTarget "Chat" */;
 			buildPhases = (
+				89A468843676D7D72E75033D /* [CP] Check Pods Manifest.lock */,
 				D2B1251F2905DCE800D7CC7F /* Sources */,
 				D2B125202905DCE800D7CC7F /* Frameworks */,
 				D2B125212905DCE800D7CC7F /* Resources */,
@@ -208,6 +290,7 @@
 					};
 					D2B125382905DCEA00D7CC7F = {
 						CreatedOnToolsVersion = 14.0.1;
+						LastSwiftMigration = 1400;
 						TestTargetID = D2B125222905DCE800D7CC7F;
 					};
 					D2B125422905DCEA00D7CC7F = {
@@ -262,13 +345,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		89A468843676D7D72E75033D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D2B1251F2905DCE800D7CC7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */,
 				D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */,
+				D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */,
+				D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */,
+				D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */,
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
+				D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */,
+				D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */,
+				D22E147E29075AC500F762CE /* AuthorizationWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B1253E2905DCEA00D7CC7F /* ChatTests.swift in Sources */,
+				D22E148729075C0500F762CE /* AuthorizationPresenterTest.swift in Sources */,
+				D22E148529075BC400F762CE /* AuthorizationInteractorTest.swift in Sources */,
+				D22E148B29075C2A00F762CE /* AuthorizationRouterTest.swift in Sources */,
+				D22E148929075C1600F762CE /* AuthorizationViewControllerTest.swift in Sources */,
+				D22E148D29075C4700F762CE /* AuthorizationWorkerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +551,7 @@
 		};
 		D2B1254E2905DCEA00D7CC7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC062E51FBF0A2296EBC99AD /* Pods-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -458,6 +578,7 @@
 		};
 		D2B1254F2905DCEA00D7CC7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D8D4BD1675EA86743B9F6AE /* Pods-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -487,14 +608,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "i-am.ChatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chat";
@@ -506,10 +634,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "i-am.ChatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
