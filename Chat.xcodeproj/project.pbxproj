@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		111DF64898DED0FBF39D7E41 /* libPods-Chat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2273D5353626A4BB868503B /* libPods-Chat.a */; };
+		D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491C2909CBEF00E42BFD /* UIView + Extension .swift */; };
 		D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1472290757B300F762CE /* AssemblyLayer.swift */; };
 		D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147529075A8D00F762CE /* AuthorizationModels.swift */; };
 		D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */; };
@@ -20,6 +21,8 @@
 		D22E148929075C1600F762CE /* AuthorizationViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148829075C1600F762CE /* AuthorizationViewControllerTest.swift */; };
 		D22E148B29075C2A00F762CE /* AuthorizationRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148A29075C2A00F762CE /* AuthorizationRouterTest.swift */; };
 		D22E148D29075C4700F762CE /* AuthorizationWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */; };
+		D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1490290993EB00F762CE /* UIButton + Extension.swift */; };
+		D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E14922909A0F600F762CE /* UILabel + Extension.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
@@ -47,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		3D8D4BD1675EA86743B9F6AE /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		D225491C2909CBEF00E42BFD /* UIView + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension .swift"; sourceTree = "<group>"; };
 		D2273D5353626A4BB868503B /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22E1472290757B300F762CE /* AssemblyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyLayer.swift; sourceTree = "<group>"; };
 		D22E147529075A8D00F762CE /* AuthorizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModels.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		D22E148829075C1600F762CE /* AuthorizationViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerTest.swift; sourceTree = "<group>"; };
 		D22E148A29075C2A00F762CE /* AuthorizationRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouterTest.swift; sourceTree = "<group>"; };
 		D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorkerTest.swift; sourceTree = "<group>"; };
+		D22E1490290993EB00F762CE /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		D22E14922909A0F600F762CE /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +155,24 @@
 			path = AuthorizationTests;
 			sourceTree = "<group>";
 		};
+		D22E148E2909939E00F762CE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D22E148F290993B300F762CE /* Authorization */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D22E148F290993B300F762CE /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				D22E1490290993EB00F762CE /* UIButton + Extension.swift */,
+				D22E14922909A0F600F762CE /* UILabel + Extension.swift */,
+				D225491C2909CBEF00E42BFD /* UIView + Extension .swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		D2B1251A2905DCE800D7CC7F = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +200,7 @@
 			children = (
 				D2B125562905DD2600D7CC7F /* Application */,
 				D2B125572905DD3700D7CC7F /* SupportingFiles */,
+				D22E148E2909939E00F762CE /* Extensions */,
 				D22E14712907579200F762CE /* AssemblyLayer */,
 				D22E1474290757FA00F762CE /* Authorization */,
 			);
@@ -380,6 +405,9 @@
 				D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */,
 				D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */,
 				D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */,
+				D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */,
+				D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */,
+				D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */,
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
 				D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */,
 				D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */,
