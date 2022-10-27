@@ -32,4 +32,13 @@ extension UIButton {
             self.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
     }
+    
+    convenience init(title: String, color: UIColor) {
+        self.init()
+        
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(color, for: .normal)
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }

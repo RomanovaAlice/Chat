@@ -23,13 +23,36 @@ extension UIView {
         self.addSubview(button)
         
         button.snp.makeConstraints { make in
-            make.top.equalTo(label).inset(40)
+            make.top.equalTo(label.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
             make.height.equalTo(60)
         }
         
         self.snp.makeConstraints { make in
             make.bottom.equalTo(button)
+        }
+    }
+    
+    convenience init(label: UILabel, textField: UITextField) {
+        self.init()
+        
+        self.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+        }
+        
+        self.addSubview(textField)
+        
+        textField.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(35)
+        }
+        
+        self.snp.makeConstraints { make in
+            make.bottom.equalTo(textField)
         }
     }
 }

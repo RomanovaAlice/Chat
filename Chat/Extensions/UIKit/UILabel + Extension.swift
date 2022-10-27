@@ -10,12 +10,12 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(title: String, font: UIFont? = nil ) {
+    convenience init(title: String, font: UIFont? = nil, textAlignment: NSTextAlignment = .center) {
         self.init()
         
         self.text = title
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.textAlignment = .center
+        self.textAlignment = textAlignment
         
         if font != nil {
             self.font = font

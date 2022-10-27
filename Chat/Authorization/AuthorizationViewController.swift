@@ -19,19 +19,20 @@ class AuthorizationViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 30))
+    private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50))
     private let getStartedWithLabel = UILabel(title: "Get started with")
     private let orSignUpWithLabel = UILabel(title: "Or sign up with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     
-    
-    private let emailButton = UIButton(title: "Email", color: .black, titleColor: .white)
+    private let emailButton = UIButton(title: "Email", color: .darkGray, titleColor: .white)
     private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: .red)
     private let googleButton = UIButton(title: "Google", color: .white, isShadow: true, titleColor: .black)
 
-    private var stackView = UIStackView()
+    private lazy var googleView = UIView(label: getStartedWithLabel, button: googleButton)
+    private lazy var emailView = UIView(label: orSignUpWithLabel, button: emailButton)
+    private lazy var loginView = UIView(label: aleradyOnboardLabel, button: loginButton)
     
-
+    private lazy var stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], spacing: 40)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -52,18 +53,12 @@ class AuthorizationViewController: UIViewController {
 extension AuthorizationViewController {
     private func setupConstraints() {
         
-        //Views
-        
-        let googleView = UIView(label: getStartedWithLabel, button: googleButton)
-        let emailView = UIView(label: orSignUpWithLabel, button: emailButton)
-        let loginView = UIView(label: aleradyOnboardLabel, button: loginButton)
-        
         //titleLabel
         
         view.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(160)
+            make.top.equalToSuperview().offset(160)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
             make.width.equalTo(158)
@@ -71,20 +66,12 @@ extension AuthorizationViewController {
         
         //stackView
         
-        stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView])
-        
-        stackView.spacing = 40
-        stackView.axis = .vertical
-        
         view.addSubview(stackView)
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         stackView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).inset(160)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(40)
-
         }
     }
 }

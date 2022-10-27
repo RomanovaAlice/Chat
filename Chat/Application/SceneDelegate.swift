@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        window?.rootViewController = AuthorizationViewController()
+        window?.rootViewController = SignUpViewController()
         window?.makeKeyAndVisible()
     }
 
