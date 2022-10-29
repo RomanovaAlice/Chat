@@ -2,9 +2,7 @@
 //  AuthorizationWorker.swift
 //  Chat
 //
-//  Created by Алиса Романова on 25.10.2022.
+//  Created by Алиса Романова on 29.10.2022.
 //
 
 import Foundation
-
-

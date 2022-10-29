@@ -14,11 +14,14 @@
 		D2254926290A59E100E42BFD /* UITextField + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254925290A59E100E42BFD /* UITextField + Extension .swift */; };
 		D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254928290B1DB400E42BFD /* LoginViewController.swift */; };
 		D225492C290B2B7500E42BFD /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */; };
+		D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225492E290C9D1500E42BFD /* ChatViewController.swift */; };
+		D2254932290CA7BD00E42BFD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254931290CA7BC00E42BFD /* ChatCell.swift */; };
+		D2254934290CB06500E42BFD /* AuthorizationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254933290CB06500E42BFD /* AuthorizationWorker.swift */; };
+		D2272ABF290CEF2000CAC710 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2272ABE290CEF2000CAC710 /* SectionHeader.swift */; };
 		D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1472290757B300F762CE /* AssemblyLayer.swift */; };
 		D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147529075A8D00F762CE /* AuthorizationModels.swift */; };
 		D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */; };
 		D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */; };
-		D22E147E29075AC500F762CE /* AuthorizationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147D29075AC500F762CE /* AuthorizationWorker.swift */; };
 		D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147F29075AD500F762CE /* AuthorizationRouter.swift */; };
 		D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148129075B0500F762CE /* AuthorizationViewController.swift */; };
 		D22E148529075BC400F762CE /* AuthorizationInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148429075BC400F762CE /* AuthorizationInteractorTest.swift */; };
@@ -28,6 +31,7 @@
 		D22E148D29075C4700F762CE /* AuthorizationWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */; };
 		D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1490290993EB00F762CE /* UIButton + Extension.swift */; };
 		D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E14922909A0F600F762CE /* UILabel + Extension.swift */; };
+		D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8D9D290CF4EA00527B36 /* TabBarController.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
@@ -61,12 +65,15 @@
 		D2254925290A59E100E42BFD /* UITextField + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension .swift"; sourceTree = "<group>"; };
 		D2254928290B1DB400E42BFD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
+		D225492E290C9D1500E42BFD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D2254931290CA7BC00E42BFD /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		D2254933290CB06500E42BFD /* AuthorizationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorker.swift; sourceTree = "<group>"; };
+		D2272ABE290CEF2000CAC710 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		D2273D5353626A4BB868503B /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22E1472290757B300F762CE /* AssemblyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyLayer.swift; sourceTree = "<group>"; };
 		D22E147529075A8D00F762CE /* AuthorizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModels.swift; sourceTree = "<group>"; };
 		D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
 		D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
-		D22E147D29075AC500F762CE /* AuthorizationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorker.swift; sourceTree = "<group>"; };
 		D22E147F29075AD500F762CE /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		D22E148129075B0500F762CE /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		D22E148429075BC400F762CE /* AuthorizationInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractorTest.swift; sourceTree = "<group>"; };
@@ -76,6 +83,7 @@
 		D22E148C29075C4700F762CE /* AuthorizationWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorkerTest.swift; sourceTree = "<group>"; };
 		D22E1490290993EB00F762CE /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		D22E14922909A0F600F762CE /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		D22F8D9D290CF4EA00527B36 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +164,36 @@
 			path = SetupProfile;
 			sourceTree = "<group>";
 		};
+		D225492D290C9D0600E42BFD /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D225492E290C9D1500E42BFD /* ChatViewController.swift */,
+				D2254931290CA7BC00E42BFD /* ChatCell.swift */,
+				D2272ABE290CEF2000CAC710 /* SectionHeader.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		D2254930290C9D4600E42BFD /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D22E1474290757FA00F762CE /* Authorization */,
+				D2254920290A4AA100E42BFD /* SignUp */,
+				D2254927290B1D9900E42BFD /* Login */,
+				D225492A290B2B1C00E42BFD /* SetupProfile */,
+				D225492D290C9D0600E42BFD /* Chat */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D2272AC0290CF3A200CAC710 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D22F8D9D290CF4EA00527B36 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
 		D22E14712907579200F762CE /* AssemblyLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				D22E147529075A8D00F762CE /* AuthorizationModels.swift */,
-				D22E147D29075AC500F762CE /* AuthorizationWorker.swift */,
+				D2254933290CB06500E42BFD /* AuthorizationWorker.swift */,
 				D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */,
 				D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */,
 				D22E148129075B0500F762CE /* AuthorizationViewController.swift */,
@@ -238,10 +276,8 @@
 				D2B125572905DD3700D7CC7F /* SupportingFiles */,
 				D22E148E2909939E00F762CE /* Extensions */,
 				D22E14712907579200F762CE /* AssemblyLayer */,
-				D22E1474290757FA00F762CE /* Authorization */,
-				D2254920290A4AA100E42BFD /* SignUp */,
-				D2254927290B1D9900E42BFD /* Login */,
-				D225492A290B2B1C00E42BFD /* SetupProfile */,
+				D2272AC0290CF3A200CAC710 /* TabBarController */,
+				D2254930290C9D4600E42BFD /* Modules */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -442,20 +478,24 @@
 				D2254926290A59E100E42BFD /* UITextField + Extension .swift in Sources */,
 				D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */,
 				D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */,
+				D2254932290CA7BD00E42BFD /* ChatCell.swift in Sources */,
 				D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */,
 				D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */,
+				D2254934290CB06500E42BFD /* AuthorizationWorker.swift in Sources */,
 				D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */,
 				D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */,
 				D225492C290B2B7500E42BFD /* SetupProfileViewController.swift in Sources */,
 				D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */,
 				D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */,
+				D2272ABF290CEF2000CAC710 /* SectionHeader.swift in Sources */,
 				D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */,
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
 				D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */,
 				D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */,
 				D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */,
+				D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */,
 				D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */,
-				D22E147E29075AC500F762CE /* AuthorizationWorker.swift in Sources */,
+				D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
