@@ -13,13 +13,16 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let chatViewController = ChatViewController()
+        let usersViewController = UsersViewController()
         
         tabBar.tintColor = UIColor(named: "purple")
 
         let messageImage = UIImage(systemName: "bubble.left.and.bubble.right")
+        let usersImage = UIImage(systemName: "person.2")
         
         viewControllers = [
-            generateNavigationController(rootViewController: chatViewController, title: "Messages", image: messageImage!),
+            generateNavigationController(rootViewController: usersViewController, title: "People", image: usersImage!),
+            generateNavigationController(rootViewController: chatViewController, title: "Messages", image: messageImage!)
         ]
     }
     

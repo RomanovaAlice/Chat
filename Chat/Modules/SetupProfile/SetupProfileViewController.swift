@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class SetupProfileViewController: UIViewController {
+final class SetupProfileViewController: UIViewController {
     
     //MARK: - Properties
     

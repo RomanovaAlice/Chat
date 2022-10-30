@@ -16,9 +16,9 @@ struct Chat: Hashable, Decodable {
 }
 
 
-class ChatViewController: UIViewController {
+final class ChatViewController: UIViewController {
     
-    enum Section: Int, CaseIterable {
+    private enum Section: Int, CaseIterable {
         
         case favoritesChats
         case chats
@@ -33,13 +33,13 @@ class ChatViewController: UIViewController {
         }
     }
     
-    let chat = [Chat(username: "", userImage: "", lastMessage: ""), Chat(username: "", userImage: "", lastMessage: "d"), Chat(username: "s", userImage: "f", lastMessage: "")]
-    let chatss = [Chat(username: "v", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "c", lastMessage: ""), Chat(username: "b", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "", lastMessage: ";")]
+    private let chat = [Chat(username: "", userImage: "", lastMessage: ""), Chat(username: "", userImage: "", lastMessage: "d"), Chat(username: "s", userImage: "f", lastMessage: "")]
+    private let chatss = [Chat(username: "v", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "c", lastMessage: ""), Chat(username: "b", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "", lastMessage: ";")]
     
 
     //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
-    
+
     private var chatCollectionView: UICollectionView!
     
     
@@ -54,6 +54,8 @@ class ChatViewController: UIViewController {
         setupSnapshot()
     }
     
+     //MARK: - setupCollectionView
+    
     private func setupCollectionView() {
         chatCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         chatCollectionView.backgroundColor = .white
@@ -67,6 +69,8 @@ class ChatViewController: UIViewController {
         view.addSubview(chatCollectionView)
     }
     
+    //MARK: - setupSnapshot
+    
     private func setupSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Chat>()
         
@@ -77,6 +81,8 @@ class ChatViewController: UIViewController {
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
+    
+    //MARK: - setupDataSource
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Chat>(collectionView: chatCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -98,11 +104,15 @@ class ChatViewController: UIViewController {
         }
     }
     
+    //MARK: - createCompositionalLayout
+    
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout(section: createSection())
         
         return layout
     }
+    
+    //MARK: - createSection
 
     private func createSection() -> NSCollectionLayoutSection {
 
@@ -122,6 +132,8 @@ class ChatViewController: UIViewController {
 
         return section
     }
+    
+    //MARK: - createSectionHeader
     
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         

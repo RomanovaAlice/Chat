@@ -12,7 +12,7 @@ protocol AuthorizationDisplayLogic: AnyObject {
 }
 
 
-class AuthorizationViewController: UIViewController {
+final class AuthorizationViewController: UIViewController {
     
     var interactor: AuthorizationBuisnessLogic?
     var router: AuthorizationRoutingLogic?

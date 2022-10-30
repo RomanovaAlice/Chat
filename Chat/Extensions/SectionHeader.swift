@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class SectionHeader: UICollectionReusableView {
+final class SectionHeader: UICollectionReusableView {
     static let identifier = "SectionHeader"
     
     let title = UILabel()

@@ -32,6 +32,8 @@
 		D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1490290993EB00F762CE /* UIButton + Extension.swift */; };
 		D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E14922909A0F600F762CE /* UILabel + Extension.swift */; };
 		D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8D9D290CF4EA00527B36 /* TabBarController.swift */; };
+		D22F8DA0290CF8FE00527B36 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */; };
+		D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8DA2290CF95100527B36 /* UsersCell.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		D22E1490290993EB00F762CE /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		D22E14922909A0F600F762CE /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		D22F8D9D290CF4EA00527B36 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		D22F8DA2290CF95100527B36 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +173,6 @@
 			children = (
 				D225492E290C9D1500E42BFD /* ChatViewController.swift */,
 				D2254931290CA7BC00E42BFD /* ChatCell.swift */,
-				D2272ABE290CEF2000CAC710 /* SectionHeader.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				D2254927290B1D9900E42BFD /* Login */,
 				D225492A290B2B1C00E42BFD /* SetupProfile */,
 				D225492D290C9D0600E42BFD /* Chat */,
+				D22F8DA1290CF90400527B36 /* Users */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -230,6 +234,7 @@
 		D22E148E2909939E00F762CE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D2272ABE290CEF2000CAC710 /* SectionHeader.swift */,
 				D22E148F290993B300F762CE /* UIKit */,
 			);
 			path = Extensions;
@@ -245,6 +250,15 @@
 				D2254925290A59E100E42BFD /* UITextField + Extension .swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		D22F8DA1290CF90400527B36 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */,
+				D22F8DA2290CF95100527B36 /* UsersCell.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		D2B1251A2905DCE800D7CC7F = {
@@ -478,6 +492,7 @@
 				D2254926290A59E100E42BFD /* UITextField + Extension .swift in Sources */,
 				D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */,
 				D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */,
+				D22F8DA0290CF8FE00527B36 /* UsersViewController.swift in Sources */,
 				D2254932290CA7BD00E42BFD /* ChatCell.swift in Sources */,
 				D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */,
 				D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */,
@@ -490,6 +505,7 @@
 				D2272ABF290CEF2000CAC710 /* SectionHeader.swift in Sources */,
 				D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */,
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
+				D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */,
 				D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */,
 				D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */,
 				D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */,

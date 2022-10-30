@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class ChatCell: UICollectionViewCell {
+final class ChatCell: UICollectionViewCell {
     static let identifier = "ChatCell"
     
     //MARK: - Properties
