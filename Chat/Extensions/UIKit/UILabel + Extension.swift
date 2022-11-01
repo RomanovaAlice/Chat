@@ -10,7 +10,10 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(title: String, font: UIFont? = nil, textAlignment: NSTextAlignment = .center) {
+    convenience init(title: String,
+                     font: UIFont? = nil,
+                     textAlignment: NSTextAlignment = .center,
+                     textColor: UIColor? = nil) {
         self.init()
         
         self.text = title
@@ -19,6 +22,9 @@ extension UILabel {
         
         if font != nil {
             self.font = font
+        }
+        if textColor != nil {
+            self.textColor = textColor
         }
     }
 }
