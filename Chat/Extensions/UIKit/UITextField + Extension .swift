@@ -10,13 +10,12 @@ import SnapKit
 
 extension UITextField {
     
-    convenience init(placeholder: String? = nil) {
+    convenience init(placeholder: String, textColor: UIColor = .black) {
         self.init()
         
-        if placeholder != nil {
-            self.placeholder = placeholder
-        }
+        self.placeholder = placeholder
         self.backgroundColor = .white
+        self.textColor = textColor
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let lineView = UIView()

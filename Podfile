@@ -2,9 +2,14 @@
 # platform :ios, '9.0'
 
 target 'Chat' do
+  use_frameworks!
 
   # Pods for Chat
 
     pod 'SnapKit', '~> 5.0.0'
+
+    pod 'Firebase/Analytics'
+    pod 'Firebase/Auth'
+ 
 
 end
