@@ -7,9 +7,14 @@
 
 import SnapKit
 
+protocol SetupProfileDisplayLogic: AnyObject {
+    
+}
+
 final class SetupProfileViewController: UIViewController {
     
     var router: SetupProfileRoutingLogic?
+    var interactor: SetupProfileBuisnessLogic?
     
     //MARK: - Properties
     
@@ -25,12 +30,12 @@ final class SetupProfileViewController: UIViewController {
     private let sexLabel = UILabel(title: "Sex", textAlignment: .left)
     
     //buttons
-    private let goToChatsButton = UIButton(title: "Go to chats!", color: .black, titleColor: .white)
+    private let goToChatsButton = UIButton(title: "Go to chats!", color: UIColor(named: "purple")!, titleColor: .white)
     private let addingButton = UIButton()
     
     //testFields
-    private let fullNameTextField = UITextField(placeholder: "Bob Robinson")
-    private let aboutMeTextField = UITextField(placeholder: "i can tell you a very funny joke")
+    private let fullNameTextField = UITextField(placeholder: "Bob Robinson", textColor: .gray)
+    private let aboutMeTextField = UITextField(placeholder: "i can tell you a very funny joke", textColor: .gray)
     
     //imageView
     private let photoImageView = UIImageView()
@@ -43,9 +48,7 @@ final class SetupProfileViewController: UIViewController {
     private lazy var aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], spacing: 10)
     private lazy var sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl], spacing: 20)
     
-    private lazy var centerStackView = UIStackView(
-        arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatsButton],
-        spacing: 35)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatsButton], spacing: 35)
 
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -56,6 +59,7 @@ final class SetupProfileViewController: UIViewController {
         setupAddingButton()
         setupSexSegmentedControl()
         setupPhotoImageVeiw()
+        setupGoToChatsButton()
         
         setuContsraints()
     }
@@ -63,6 +67,7 @@ final class SetupProfileViewController: UIViewController {
     private func setupAddingButton() {
         addingButton.setImage(UIImage(named: "add"), for: .normal)
         addingButton.clipsToBounds = true
+        addingButton.addTarget(self, action: #selector(addingButtonTapped), for: .touchUpInside)
     }
     
     private func setupSexSegmentedControl() {
@@ -70,11 +75,23 @@ final class SetupProfileViewController: UIViewController {
     }
 
     private func setupPhotoImageVeiw() {
-        photoImageView.layer.cornerRadius = 50
+        photoImageView.layer.cornerRadius = 65
         photoImageView.layer.borderWidth = 1
-        photoImageView.layer.borderColor = UIColor.black.cgColor
-        photoImageView.image = UIImage(named: "user")
+        photoImageView.layer.borderColor = UIColor(named: "purple")!.cgColor
+        photoImageView.image = UIImage(named: "userMessage")
         photoImageView.clipsToBounds = true
+    }
+    
+    private func setupGoToChatsButton() {
+        goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func goToChatsButtonTapped() {
+        present((router?.pushToTabBarController())!, animated: true)
+    }
+    
+    @objc private func addingButtonTapped() {
+        
     }
 }
 
@@ -92,7 +109,7 @@ extension SetupProfileViewController {
         view.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(160)
+            make.top.equalToSuperview().inset(120)
             make.centerX.equalToSuperview()
         }
         
@@ -103,7 +120,7 @@ extension SetupProfileViewController {
         photoImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(120)
             make.top.equalTo(titleLabel.snp.bottom).offset(50)
-            make.height.width.equalTo(100)
+            make.height.width.equalTo(130)
         }
         
         //addingButton
@@ -111,8 +128,8 @@ extension SetupProfileViewController {
         view.addSubview(addingButton)
         
         addingButton.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView).inset(40)
-            make.left.equalTo(photoImageView.snp.right).offset(15)
+            make.top.equalTo(photoImageView).inset(100)
+            make.left.equalTo(photoImageView.snp.right).offset(-10)
             make.height.width.equalTo(30)
         }
         
@@ -132,4 +149,14 @@ extension SetupProfileViewController {
             make.centerX.equalToSuperview()
         }
     }
+}
+
+
+
+
+
+//MARK: - SetupProfileDisplayLogic
+
+extension SetupProfileViewController: SetupProfileDisplayLogic {
+    
 }

@@ -7,6 +7,11 @@
 
 import SnapKit
 
+protocol UsersDisplayLogic: AnyObject {
+    
+}
+
+
 struct Human: Hashable, Decodable {
     let userImage: String
     let userName: String
@@ -14,6 +19,9 @@ struct Human: Hashable, Decodable {
 
 
 final class UsersViewController: UIViewController {
+    
+    var router: UsersRoutingLogic?
+    var interactor: UsersBuisnessLogic?
     
     private enum Section: Int, CaseIterable {
         case users
@@ -123,5 +131,15 @@ final class UsersViewController: UIViewController {
         
         return sectionHeader
     }
+}
+
+
+
+
+
+//MARK: - UsersDisplayLogic
+
+extension UsersViewController: UsersDisplayLogic {
+    
 }
 

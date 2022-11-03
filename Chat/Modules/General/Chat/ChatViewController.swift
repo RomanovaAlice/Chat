@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChatDisplayLogic: AnyObject {
+    
+}
+
 
 struct Chat: Hashable, Decodable {
     
@@ -17,6 +21,9 @@ struct Chat: Hashable, Decodable {
 
 
 final class ChatViewController: UIViewController {
+    
+    var router: ChatRoutingLogic?
+    var interactor: ChatBuisnessLogic?
     
     private enum Section: Int, CaseIterable {
         case chats
@@ -127,4 +134,14 @@ final class ChatViewController: UIViewController {
         
         return sectionHeader
     }
+}
+
+
+
+
+
+//MARK: - ChatDisplayLogic
+
+extension ChatViewController: ChatDisplayLogic {
+    
 }

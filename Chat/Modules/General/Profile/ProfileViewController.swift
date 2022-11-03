@@ -7,7 +7,15 @@
 
 import SnapKit
 
+protocol ProfileDisplayLogic: AnyObject {
+    
+}
+
+
 class ProfileViewController: UIViewController {
+    
+    var router: ProfileRoutingLogic?
+    var interactor: ProfileBuisnessLogic?
     
     //MARK: - Properties
     
@@ -141,4 +149,10 @@ extension ProfileViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return false
     }
+}
+
+//MARK: - ProfileDisplayLogic
+
+extension ProfileViewController: ProfileDisplayLogic {
+    
 }

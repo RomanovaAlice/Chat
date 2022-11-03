@@ -8,10 +8,14 @@
 import UIKit
 
 protocol SetupProfileRoutingLogic: AnyObject {
-    
+    func pushToTabBarController() -> UITabBarController 
 }
 
 
 final class SetupProfileRouter: SetupProfileRoutingLogic {
     
+    
+    func pushToTabBarController() -> UITabBarController {
+        return AssemblyLayer.shared.createTabBarController()
+    }
 }

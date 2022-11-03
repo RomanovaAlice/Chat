@@ -12,9 +12,9 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let chatViewController = ChatViewController()
-        let usersViewController = UsersViewController()
-        let profileViewController = ProfileViewController()
+        let chatViewController = AssemblyLayer.shared.createChatModule()
+        let usersViewController = AssemblyLayer.shared.createUsersModule()
+        let profileViewController = AssemblyLayer.shared.createProfileModule()
         
         tabBar.tintColor = UIColor(named: "purple")
 

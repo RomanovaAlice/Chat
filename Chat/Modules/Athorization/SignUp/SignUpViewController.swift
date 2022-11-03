@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SignUpDisplayLogic: AnyObject {
+    
+}
+
+
 final class SignUpViewController: UIViewController {
     
     var router: SignUpRoutingLogic?
+    var interactor: SignUpBuisnessLogic?
     
     //MARK: - Properties
     
@@ -20,7 +26,6 @@ final class SignUpViewController: UIViewController {
     private let emailLabel = UILabel(title: "Email")
     private let passwordLabel = UILabel(title: "Password")
     private let confirmPasswordLabel = UILabel(title: "Confirm password")
-    private let alreadyOnboardLabel = UILabel(title: "Already onboard?", textAlignment: .left)
     
     //TextFields
     private let emailTextField = UITextField(placeholder: "yourmail@mail.ru", textColor: .gray)
@@ -28,8 +33,7 @@ final class SignUpViewController: UIViewController {
     private let confirmPasswordTextField = UITextField(placeholder: "1223445", textColor: .gray)
 
     //Buttons
-    private let signUpButton = UIButton(title: "Sign Up", color: .black, titleColor: .white)
-    private let loginButton = UIButton(title: "Login", color: .red)
+    private let signUpButton = UIButton(title: "Sign Up", color: UIColor(named: "purple")!, titleColor: .white)
     
     //Views
     private lazy var emailView = UIView(label: emailLabel, textField: emailTextField)
@@ -37,11 +41,7 @@ final class SignUpViewController: UIViewController {
     private lazy var confirmPasswordView = UIView(label: confirmPasswordLabel, textField: confirmPasswordTextField)
     
     //StackViews
-    private lazy var stackView = UIStackView(arrangedSubviews: [emailView, passwordView, confirmPasswordView, signUpButton],
-                                             spacing: 45)
-    private lazy var bottomStrackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton],
-                                                    spacing: 10,
-                                                    axis: .horizontal)
+    private lazy var stackView = UIStackView(arrangedSubviews: [emailView, passwordView, confirmPasswordView, signUpButton], spacing: 45)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -49,7 +49,18 @@ final class SignUpViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        setupSignUpButton()
+        
         setupConstraints()
+    }
+    
+    
+    private func setupSignUpButton() {
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func signUpButtonTapped() {
+        present((router?.pushToSetupProfileViewController())!, animated: true)
     }
 }
 
@@ -87,16 +98,15 @@ extension SignUpViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(130)
          
         }
-        
-        //bottomStackView
-        
-        view.addSubview(bottomStrackView)
-        
-        bottomStrackView.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(40)
-            make.right.equalToSuperview().inset(150)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(50)
-        }
     }
+}
+
+
+
+
+
+//MARK: - SignUpDisplayLogic
+
+extension SignUpViewController: SignUpDisplayLogic {
+    
 }

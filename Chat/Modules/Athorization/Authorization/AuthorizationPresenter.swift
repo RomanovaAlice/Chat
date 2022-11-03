@@ -12,7 +12,7 @@ protocol AuthorizationPresentationlogic: AnyObject {
 }
 
 
-final class AuthorizationPrsenter: AuthorizationPresentationlogic {
+final class AuthorizationPresenter: AuthorizationPresentationlogic {
     
     weak var view: AuthorizationDisplayLogic?
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LoginRoutingLogic: AnyObject {
+protocol LoginRoutingLogic {
     func pushToSignUpViewController() -> UIViewController
     func pushToTabBarController() -> UITabBarController 
 }

@@ -24,8 +24,8 @@ final class AuthorizationViewController: UIViewController {
     private let orSignUpWithLabel = UILabel(title: "Or sign up with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     
-    private let emailButton = UIButton(title: "Email", color: .darkGray, titleColor: .white)
-    private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: .red)
+    private let emailButton = UIButton(title: "Email", color: UIColor(named: "purple")!, titleColor: .white)
+    private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: UIColor(named: "purple")!)
     private let googleButton = UIButton(title: "Google", color: .white, isShadow: true, titleColor: .black)
 
     private lazy var googleView = UIView(label: getStartedWithLabel, button: googleButton)
@@ -60,7 +60,7 @@ final class AuthorizationViewController: UIViewController {
     }
     
     @objc private func googleButtonTapped() {
-        present((router?.pushToSignUpViewController())!, animated: true)
+        
     }
 }
 
