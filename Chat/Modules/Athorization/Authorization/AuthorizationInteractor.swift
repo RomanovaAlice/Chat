@@ -7,13 +7,18 @@
 
 import Foundation
 
-protocol AuthorizationBuisnessLogic: AnyObject {
-    
+protocol AuthorizationBuisnessLogic {
+    func makeRequest(request: AuthorizationModels.ModelType.Request.RequestType)
 }
 
 
 final class AuthorizationInteractor: AuthorizationBuisnessLogic {
     
     var presenter: AuthorizationPresentationlogic?
-    var worker: AuthorizationStorageLogic?
+    
+    func makeRequest(request: AuthorizationModels.ModelType.Request.RequestType) {
+        switch request {
+            
+        }
+    }
 }

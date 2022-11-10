@@ -13,19 +13,21 @@ enum SignUpModels {
         
         struct Request {
             enum RequestType {
-                
+                case requestRegistration(email: String, password: String)
             }
         }
         
         struct Response {
             enum ResponseType {
-                
+                case registerationSucssesful
+                case registerationFalure
             }
         }
         
         struct ViewModel {
-            enum viewModelType {
-                
+            enum ViewModelType {
+                case registerationSucssesful
+                case registerationFalure
             }
         }
     }

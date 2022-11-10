@@ -12,7 +12,6 @@
 		D205B9832912851D00D62543 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9822912851D00D62543 /* LoginRouter.swift */; };
 		D205B9862912CEAC00D62543 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9852912CEAC00D62543 /* SignUpRouter.swift */; };
 		D205B9882912CEF800D62543 /* SetupProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9872912CEF800D62543 /* SetupProfileRouter.swift */; };
-		D205B9AA29130D2100D62543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D205B9A929130D2100D62543 /* GoogleService-Info.plist */; };
 		D205B9EB2913A96E00D62543 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E72913A96E00D62543 /* LoginPresenter.swift */; };
 		D205B9EC2913A96E00D62543 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E82913A96E00D62543 /* LoginWorker.swift */; };
 		D205B9ED2913A96E00D62543 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E92913A96E00D62543 /* LoginModels.swift */; };
@@ -40,6 +39,8 @@
 		D205BA262913ABAC00D62543 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA212913ABAC00D62543 /* ProfileRouter.swift */; };
 		D205BA272913ABAC00D62543 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA222913ABAC00D62543 /* ProfileModels.swift */; };
 		D205BA282913ABAC00D62543 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA232913ABAC00D62543 /* ProfileInteractor.swift */; };
+		D205BA2C2913CA9B00D62543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D205BA2B2913CA9B00D62543 /* GoogleService-Info.plist */; };
+		D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */; };
 		D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491C2909CBEF00E42BFD /* UIView + Extension .swift */; };
 		D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491E290A474100E42BFD /* UIStackView + Extension.swift */; };
 		D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254921290A55CF00E42BFD /* SignUpViewController.swift */; };
@@ -94,7 +95,6 @@
 		D205B9822912851D00D62543 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		D205B9852912CEAC00D62543 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		D205B9872912CEF800D62543 /* SetupProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileRouter.swift; sourceTree = "<group>"; };
-		D205B9A929130D2100D62543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D205B9E72913A96E00D62543 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		D205B9E82913A96E00D62543 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		D205B9E92913A96E00D62543 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
@@ -122,6 +122,8 @@
 		D205BA212913ABAC00D62543 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		D205BA222913ABAC00D62543 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
 		D205BA232913ABAC00D62543 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		D205BA2B2913CA9B00D62543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		D225491C2909CBEF00E42BFD /* UIView + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension .swift"; sourceTree = "<group>"; };
 		D225491E290A474100E42BFD /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		D2254921290A55CF00E42BFD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				D225491C2909CBEF00E42BFD /* UIView + Extension .swift */,
 				D225491E290A474100E42BFD /* UIStackView + Extension.swift */,
 				D2254925290A59E100E42BFD /* UITextField + Extension .swift */,
+				D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -431,7 +434,7 @@
 			children = (
 				D2B1252F2905DCE900D7CC7F /* Assets.xcassets */,
 				D2B125312905DCE900D7CC7F /* LaunchScreen.storyboard */,
-				D205B9A929130D2100D62543 /* GoogleService-Info.plist */,
+				D205BA2B2913CA9B00D62543 /* GoogleService-Info.plist */,
 				D2B125342905DCE900D7CC7F /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -545,8 +548,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B125332905DCE900D7CC7F /* LaunchScreen.storyboard in Resources */,
+				D205BA2C2913CA9B00D62543 /* GoogleService-Info.plist in Resources */,
 				D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */,
-				D205B9AA29130D2100D62543 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +667,7 @@
 				D205B9882912CEF800D62543 /* SetupProfileRouter.swift in Sources */,
 				D205B9F32913AA5300D62543 /* SignUpPresenter.swift in Sources */,
 				D205B9F62913AA5300D62543 /* SignUpInteractor.swift in Sources */,
+				D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */,
 				D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */,
 				D205BA282913ABAC00D62543 /* ProfileInteractor.swift in Sources */,
 				D205BA1E2913AB9F00D62543 /* ChatInteractor.swift in Sources */,

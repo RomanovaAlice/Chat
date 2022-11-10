@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AuthorizationRoutingLogic: AnyObject {
+protocol AuthorizationRoutingLogic {
     func pushToLoginViewController() -> UIViewController
     func pushToSignUpViewController() -> UIViewController
 }

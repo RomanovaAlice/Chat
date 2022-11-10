@@ -8,13 +8,17 @@
 import Foundation
 
 protocol UsersPresentationLogic {
-    
+    func presentData(response: UsersModels.ModelType.Response.ResponseType)
 }
 
 
 final class UsersPresenter: UsersPresentationLogic {
 
-  weak var view: UsersDisplayLogic?
+    weak var view: UsersDisplayLogic?
     
-    
+    func presentData(response: UsersModels.ModelType.Response.ResponseType) {
+        switch response {
+            
+        }
+    }
 }

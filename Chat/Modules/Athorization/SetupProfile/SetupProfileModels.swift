@@ -24,7 +24,7 @@ enum SetupProfileModels {
         }
         
         struct ViewModel {
-            enum viewModelType {
+            enum ViewModelType {
                 
             }
         }

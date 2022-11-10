@@ -19,11 +19,11 @@ final class AssemblyLayer {
         let presenter = AuthorizationPresenter()
         let view = AuthorizationViewController()
         let router = AuthorizationRouter()
-        let worker = AuthorizationWorker()
+
         
         //connections
         interactor.presenter = presenter
-        interactor.worker = worker
+
         
         presenter.view = view
         
@@ -41,9 +41,12 @@ final class AssemblyLayer {
         let presenter = LoginPresenter()
         let view = LoginViewController()
         let router = LoginRouter()
+        let worker = LoginWorker()
         
         //connections
         interactor.presenter = presenter
+        
+        interactor.worker = worker
         
         presenter.view = view
         
@@ -61,9 +64,12 @@ final class AssemblyLayer {
         let presenter = SignUpPresenter()
         let view = SignUpViewController()
         let router = SignUpRouter()
+        let worker = SignUpWorker()
         
         //connections
         interactor.presenter = presenter
+        
+        interactor.worker = worker
         
         presenter.view = view
         

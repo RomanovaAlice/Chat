@@ -24,7 +24,7 @@ enum UsersModels {
         }
         
         struct ViewModel {
-            enum viewModelType {
+            enum ViewModelType {
                 
             }
         }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SignUpDisplayLogic: AnyObject {
-    
+    func displayData(data: SignUpModels.ModelType.ViewModel.ViewModelType)
 }
 
 
@@ -18,6 +18,9 @@ final class SignUpViewController: UIViewController {
     var interactor: SignUpBuisnessLogic?
     
     //MARK: - Properties
+    
+    //flags
+    private var isRegisterationSucssesful: Bool!
     
     //Title
     private let titleLabel = UILabel(title: "Good to see you!", font: .systemFont(ofSize: 30))
@@ -60,7 +63,35 @@ final class SignUpViewController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
-        present((router?.pushToSetupProfileViewController())!, animated: true)
+        
+        let email = emailTextField.text
+        let password = passwordTestField.text
+        let confirmPassword = confirmPasswordTextField.text
+        
+        if (email?.count != 0 && password?.count != 0 && confirmPassword?.count != 0) && (password == confirmPassword) {
+            let mainQueue = DispatchQueue.main
+            
+            let workItem = DispatchWorkItem {
+                self.interactor?.makeRequest(request: SignUpModels.ModelType.Request.RequestType.requestRegistration(email: email!, password: password!))
+                sleep(1)
+            }
+            
+            workItem.notify(queue: .main) {
+                if self.isRegisterationSucssesful {
+                    self.present((self.router?.pushToSetupProfileViewController())!, animated: true)
+                } else {
+                    self.showAlertServerError()
+                }
+            }
+            
+            mainQueue.async(execute: workItem)
+            
+        } else if email?.count == 0 || password?.count == 0 || confirmPassword?.count == 0 {
+            self.showAlertFillAllTextFields()
+            
+        } else if password != confirmPassword {
+            self.showAlertPasswordsDoNotMatch()
+        }  
     }
 }
 
@@ -108,5 +139,14 @@ extension SignUpViewController {
 //MARK: - SignUpDisplayLogic
 
 extension SignUpViewController: SignUpDisplayLogic {
-    
+    func displayData(data: SignUpModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        case .registerationSucssesful:
+            isRegisterationSucssesful = true
+            
+        case .registerationFalure:
+            isRegisterationSucssesful = false
+        }
+    }
 }

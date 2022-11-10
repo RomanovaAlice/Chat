@@ -8,7 +8,7 @@
 import SnapKit
 
 protocol UsersDisplayLogic: AnyObject {
-    
+    func displayData(data: UsersModels.ModelType.ViewModel.ViewModelType)
 }
 
 
@@ -140,6 +140,10 @@ final class UsersViewController: UIViewController {
 //MARK: - UsersDisplayLogic
 
 extension UsersViewController: UsersDisplayLogic {
-    
+    func displayData(data: UsersModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        }
+    }
 }
 

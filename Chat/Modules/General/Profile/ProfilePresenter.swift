@@ -8,13 +8,17 @@
 import Foundation
 
 protocol ProfilePresentationLogic {
-    
+    func presentData(response: ProfileModels.ModelType.Response.ResponseType)
 }
 
 
 final class ProfilePresenter: ProfilePresentationLogic {
 
-  weak var view: ProfileDisplayLogic?
+    weak var view: ProfileDisplayLogic?
     
-    
+    func presentData(response: ProfileModels.ModelType.Response.ResponseType) {
+        switch response {
+            
+        }
+    }
 }

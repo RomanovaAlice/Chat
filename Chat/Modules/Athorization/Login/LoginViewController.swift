@@ -8,16 +8,19 @@
 import SnapKit
 
 protocol LoginDisplayLogic: AnyObject {
-    
+    func displayData(data: LoginModels.ModelType.ViewModel.ViewModelType)
 }
 
 
 final class LoginViewController: UIViewController {
     
     var router: LoginRoutingLogic?
-    var interactor: LoginBuisnessLogic?
+    var interactor: LoginBuisnessLogic!
     
     //MARK: - Properties
+    
+    //flags
+    private var isLoginSucssesful: Bool!
     
     //title
     private let titleLabel = UILabel(title: "Welcome back!", font: .systemFont(ofSize: 30))
@@ -54,17 +57,49 @@ final class LoginViewController: UIViewController {
         setupConstraints()
     }
     
+    //MARK: - setupButtons
+    
     private func setupButtons() {
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
+    //MARK: - @objc method "googleButtonTapped"
+    
     @objc private func googleButtonTapped() {
 
     }
     
+    //MARK: - @objc method "loginButtonTapped"
+    
     @objc private func loginButtonTapped() {
-        present((router?.pushToTabBarController())!, animated: true)
+        
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        if email?.count != 0 && password?.count != 0 {
+            
+            let mainQueue = DispatchQueue.main
+            
+            let workItem = DispatchWorkItem {
+                self.interactor?.makeRequest(request: LoginModels.ModelType.Request.RequestType.requestLogin(email: email!, password: password!))
+                sleep(1)
+            }
+            
+            workItem.notify(queue: .main) {
+                
+                if self.isLoginSucssesful {
+                    self.present((self.router?.pushToTabBarController())!, animated: true)
+                    
+                } else {
+                    self.showAlertUserDoesNotExist()
+                }
+            }
+            mainQueue.async(execute: workItem)
+            
+        } else {
+            self.showAlertFillAllTextFields()
+        }
     }
 }
 
@@ -117,5 +152,14 @@ extension LoginViewController {
 //MARK: - LoginDisplayLogic
 
 extension LoginViewController: LoginDisplayLogic {
-    
+    func displayData(data: LoginModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        case .loginSucssesful:
+            isLoginSucssesful = true
+            
+        case .loginFalure:
+            isLoginSucssesful = false
+        }
+    }
 }

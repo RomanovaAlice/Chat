@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ChatDisplayLogic: AnyObject {
-    
+    func displayData(data: ChatModels.ModelType.ViewModel.ViewModelType)
 }
 
 
@@ -143,5 +143,9 @@ final class ChatViewController: UIViewController {
 //MARK: - ChatDisplayLogic
 
 extension ChatViewController: ChatDisplayLogic {
-    
+    func displayData(data: ChatModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        }
+    }
 }

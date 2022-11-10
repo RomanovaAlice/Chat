@@ -8,7 +8,7 @@
 import SnapKit
 
 protocol SetupProfileDisplayLogic: AnyObject {
-    
+    func displayData(data: SetupProfileModels.ModelType.ViewModel.ViewModelType)
 }
 
 final class SetupProfileViewController: UIViewController {
@@ -158,5 +158,9 @@ extension SetupProfileViewController {
 //MARK: - SetupProfileDisplayLogic
 
 extension SetupProfileViewController: SetupProfileDisplayLogic {
-    
+    func displayData(data: SetupProfileModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        }
+    }
 }

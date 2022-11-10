@@ -8,13 +8,17 @@
 import Foundation
 
 protocol ProfileBuisnessLogic {
-    
+    func makeRequest(request: ProfileModels.ModelType.Request.RequestType)
 }
 
 
 final class ProfileInteractor: ProfileBuisnessLogic {
   
-  var presenter: ProfilePresentationLogic?
+    var presenter: ProfilePresentationLogic?
     
-    
+    func makeRequest(request: ProfileModels.ModelType.Request.RequestType) {
+        switch request {
+            
+        }
+    }
 }

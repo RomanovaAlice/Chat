@@ -8,13 +8,30 @@
 import Foundation
 
 protocol SignUpBuisnessLogic {
-    
+    func makeRequest(request: SignUpModels.ModelType.Request.RequestType)
 }
 
 
 final class SignUpInteractor: SignUpBuisnessLogic {
   
-  var presenter: SignUpPresentationLogic?
+    var presenter: SignUpPresentationLogic?
+    var worker: SignUpStorageLogic?
     
-    
+    func makeRequest(request: SignUpModels.ModelType.Request.RequestType) {
+        switch request {
+            
+        case .requestRegistration(email: let email, password: let password):
+            worker?.registerUser(email: email, password: password, completion: { result in
+                switch result {
+                    
+                case .success(_):
+                    self.presenter?.presentData(response: SignUpModels.ModelType.Response.ResponseType.registerationSucssesful)
+                    
+                case .failure(let error):
+                    self.presenter?.presentData(response: SignUpModels.ModelType.Response.ResponseType.registerationFalure)
+                    print("Error in SignUpInteractor:", error)
+                }
+            })
+        }
+    }
 }

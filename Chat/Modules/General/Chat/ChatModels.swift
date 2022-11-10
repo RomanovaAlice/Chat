@@ -24,7 +24,7 @@ enum ChatModels {
         }
         
         struct ViewModel {
-            enum viewModelType {
+            enum ViewModelType {
                 
             }
         }

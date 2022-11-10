@@ -13,7 +13,7 @@ enum AuthorizationModels {
         
         struct Request {
             enum RequestType {
-                
+
             }
         }
         
@@ -24,7 +24,7 @@ enum AuthorizationModels {
         }
         
         struct ViewModel {
-            enum viewModelType {
+            enum ViewModelType {
                 
             }
         }

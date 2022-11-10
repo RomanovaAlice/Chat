@@ -7,12 +7,19 @@
 
 import Foundation
 
-protocol AuthorizationPresentationlogic: AnyObject {
-    
+protocol AuthorizationPresentationlogic {
+    func presentData(response: AuthorizationModels.ModelType.Response.ResponseType)
 }
 
 
 final class AuthorizationPresenter: AuthorizationPresentationlogic {
     
     weak var view: AuthorizationDisplayLogic?
+    
+    func presentData(response: AuthorizationModels.ModelType.Response.ResponseType) {
+        switch response {
+            
+        }
+    }
 }
+

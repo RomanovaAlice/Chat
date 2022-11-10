@@ -13,19 +13,21 @@ enum LoginModels {
         
         struct Request {
             enum RequestType {
-                
+                case requestLogin(email: String, password: String)
             }
         }
         
         struct Response {
             enum ResponseType {
-                
+                case loginSucssesful
+                case loginFalure
             }
         }
         
         struct ViewModel {
-            enum viewModelType {
-                
+            enum ViewModelType {
+                case loginSucssesful
+                case loginFalure
             }
         }
     }

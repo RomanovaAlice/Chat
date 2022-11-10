@@ -8,7 +8,7 @@
 import SnapKit
 
 protocol ProfileDisplayLogic: AnyObject {
-    
+    func displayData(data: ProfileModels.ModelType.ViewModel.ViewModelType)
 }
 
 
@@ -154,5 +154,9 @@ extension ProfileViewController: UITextFieldDelegate {
 //MARK: - ProfileDisplayLogic
 
 extension ProfileViewController: ProfileDisplayLogic {
-    
+    func displayData(data: ProfileModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        }
+    }
 }

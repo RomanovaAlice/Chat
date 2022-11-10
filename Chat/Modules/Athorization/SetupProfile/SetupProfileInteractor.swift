@@ -8,13 +8,17 @@
 import Foundation
 
 protocol SetupProfileBuisnessLogic {
-    
+    func makeRequest(request: SetupProfileModels.ModelType.Request.RequestType)
 }
 
 
 final class SetupProfileInteractor: SetupProfileBuisnessLogic {
   
-  var presenter: SetupProfilePresentationLogic?
+    var presenter: SetupProfilePresentationLogic?
     
-    
+    func makeRequest(request: SetupProfileModels.ModelType.Request.RequestType) {
+        switch request {
+            
+        }
+    }
 }

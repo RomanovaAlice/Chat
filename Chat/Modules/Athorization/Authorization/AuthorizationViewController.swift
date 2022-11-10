@@ -8,7 +8,7 @@
 import SnapKit
 
 protocol AuthorizationDisplayLogic: AnyObject {
-    
+    func displayData(data: AuthorizationModels.ModelType.ViewModel.ViewModelType)
 }
 
 
@@ -99,5 +99,9 @@ extension AuthorizationViewController {
 //MARK: - AuthorizationDisplayLogic
 
 extension AuthorizationViewController: AuthorizationDisplayLogic {
-    
+    func displayData(data: AuthorizationModels.ModelType.ViewModel.ViewModelType) {
+        switch data {
+            
+        }
+    }
 }
