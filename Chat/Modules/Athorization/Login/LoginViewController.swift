@@ -77,7 +77,7 @@ final class LoginViewController: UIViewController {
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        if email?.count != 0 && password?.count != 0 {
+        if Validators.isAllFieldsFilled(email: email, password: password, confirmPassword: nil) {
             
             let mainQueue = DispatchQueue.main
             

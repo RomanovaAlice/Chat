@@ -12,12 +12,7 @@ protocol ChatDisplayLogic: AnyObject {
 }
 
 
-struct Chat: Hashable, Decodable {
-    
-    var username: String
-    var userImage: String
-    var lastMessage: String
-}
+
 
 
 final class ChatViewController: UIViewController {

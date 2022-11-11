@@ -11,6 +11,10 @@ final class AssemblyLayer {
     
     static let shared = AssemblyLayer()
     
+    
+    private let setupProfileInteractor = SetupProfileInteractor()
+    
+    
     //MARK: - Authorization Module
     
     func createAuthorizationModule() -> UIViewController {
@@ -68,7 +72,7 @@ final class AssemblyLayer {
         
         //connections
         interactor.presenter = presenter
-        
+        interactor.setupProfileInteractor = setupProfileInteractor
         interactor.worker = worker
         
         presenter.view = view
@@ -83,19 +87,20 @@ final class AssemblyLayer {
     
     func createSetupProfileModule() -> UIViewController {
         
-        let interactor = SetupProfileInteractor()
         let presenter = SetupProfilePresenter()
         let view = SetupProfileViewController()
         let router = SetupProfileRouter()
+        let worker = SetupProfileWorker()
         
         view.modalPresentationStyle = .fullScreen
         
         //connections
-        interactor.presenter = presenter
+        setupProfileInteractor.presenter = presenter
+        setupProfileInteractor.worker = worker
         
         presenter.view = view
         
-        view.interactor = interactor
+        view.interactor = setupProfileInteractor
         view.router = router
         
         return view

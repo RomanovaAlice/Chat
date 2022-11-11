@@ -16,6 +16,7 @@ final class SignUpInteractor: SignUpBuisnessLogic {
   
     var presenter: SignUpPresentationLogic?
     var worker: SignUpStorageLogic?
+    var setupProfileInteractor: SetupProfileBuisnessLogic?
     
     func makeRequest(request: SignUpModels.ModelType.Request.RequestType) {
         switch request {
@@ -24,9 +25,11 @@ final class SignUpInteractor: SignUpBuisnessLogic {
             worker?.registerUser(email: email, password: password, completion: { result in
                 switch result {
                     
-                case .success(_):
-                    self.presenter?.presentData(response: SignUpModels.ModelType.Response.ResponseType.registerationSucssesful)
+                case .success(let user):
                     
+                    self.presenter?.presentData(response: SignUpModels.ModelType.Response.ResponseType.registerationSucssesful)
+                    self.setupProfileInteractor?.makeRequest(request: SetupProfileModels.ModelType.Request.RequestType.getUserData(id: user.uid, email: user.email!))
+
                 case .failure(let error):
                     self.presenter?.presentData(response: SignUpModels.ModelType.Response.ResponseType.registerationFalure)
                     print("Error in SignUpInteractor:", error)

@@ -14,7 +14,7 @@ protocol SignUpPresentationLogic {
 
 final class SignUpPresenter: SignUpPresentationLogic {
 
-  weak var view: SignUpDisplayLogic?
+    weak var view: SignUpDisplayLogic?
     
     func presentData(response: SignUpModels.ModelType.Response.ResponseType) {
         switch response {

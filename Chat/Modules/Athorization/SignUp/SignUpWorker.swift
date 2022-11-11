@@ -5,7 +5,6 @@
 //  Created by Алиса Романова on 03.11.2022.
 //
 
-import Firebase
 import FirebaseAuth
 
 protocol SignUpStorageLogic {

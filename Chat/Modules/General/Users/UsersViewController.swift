@@ -12,10 +12,6 @@ protocol UsersDisplayLogic: AnyObject {
 }
 
 
-struct Human: Hashable, Decodable {
-    let userImage: String
-    let userName: String
-}
 
 
 final class UsersViewController: UIViewController {
@@ -31,7 +27,7 @@ final class UsersViewController: UIViewController {
     private var usersCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Human>?
     
-    private let chat = [Human(userImage: "", userName: ""), Human(userImage: "1", userName: ""), Human(userImage: "2", userName: ""), Human(userImage: "3", userName: ""), Human(userImage: "4", userName: ""), Human(userImage: "5", userName: "")]
+    private let chat = [Human(email: "", username: "", description: "", sex: "", avatar: "", id: "")]
      
     //MARK: - viewDidLoad
     override func viewDidLoad() {

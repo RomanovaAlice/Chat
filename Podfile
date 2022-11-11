@@ -8,8 +8,8 @@ target 'Chat' do
 
     pod 'SnapKit', '~> 5.0.0'
 
-    pod 'Firebase/Analytics'
-    pod 'Firebase/Auth'
- 
+    pod 'FirebaseAnalytics'
+    pod 'FirebaseAuth'
+    pod 'FirebaseFirestore'
 
 end

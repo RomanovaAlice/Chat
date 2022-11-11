@@ -21,6 +21,7 @@ enum SignUpModels {
             enum ResponseType {
                 case registerationSucssesful
                 case registerationFalure
+      
             }
         }
         

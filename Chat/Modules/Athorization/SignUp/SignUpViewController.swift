@@ -68,7 +68,13 @@ final class SignUpViewController: UIViewController {
         let password = passwordTestField.text
         let confirmPassword = confirmPasswordTextField.text
         
-        if (email?.count != 0 && password?.count != 0 && confirmPassword?.count != 0) && (password == confirmPassword) {
+        if Validators.isAllFieldsFilled(email: email, password: password, confirmPassword: confirmPassword) == false {
+            self.showAlertFillAllTextFields()
+            
+        } else if Validators.isPasswordsMatch(password: password, confirmPassword: confirmPassword) == false {
+            self.showAlertPasswordsDoNotMatch()
+            
+        } else {
             let mainQueue = DispatchQueue.main
             
             let workItem = DispatchWorkItem {
@@ -77,21 +83,15 @@ final class SignUpViewController: UIViewController {
             }
             
             workItem.notify(queue: .main) {
-                if self.isRegisterationSucssesful {
+                
+//                if self.isRegisterationSucssesful {
                     self.present((self.router?.pushToSetupProfileViewController())!, animated: true)
-                } else {
-                    self.showAlertServerError()
-                }
+//                } else {
+//                    self.showAlertServerError()
+//                }
             }
-            
             mainQueue.async(execute: workItem)
-            
-        } else if email?.count == 0 || password?.count == 0 || confirmPassword?.count == 0 {
-            self.showAlertFillAllTextFields()
-            
-        } else if password != confirmPassword {
-            self.showAlertPasswordsDoNotMatch()
-        }  
+        }
     }
 }
 

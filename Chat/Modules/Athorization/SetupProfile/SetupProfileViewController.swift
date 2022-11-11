@@ -87,7 +87,17 @@ final class SetupProfileViewController: UIViewController {
     }
     
     @objc private func goToChatsButtonTapped() {
-        present((router?.pushToTabBarController())!, animated: true)
+        
+        let username = fullNameTextField.text
+        let description = aboutMeTextField.text
+        let sex = sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)
+        
+        if Validators.isAllFieldsFilled(username: username, description: description) {
+            
+            interactor?.makeRequest(request: SetupProfileModels.ModelType.Request.RequestType.createUser(username: username!, description: description!, sex: sex!, avatar: ""))
+            
+            present((router?.pushToTabBarController())!, animated: true)
+        }
     }
     
     @objc private func addingButtonTapped() {

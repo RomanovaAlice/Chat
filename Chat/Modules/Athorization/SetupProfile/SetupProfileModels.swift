@@ -13,19 +13,20 @@ enum SetupProfileModels {
         
         struct Request {
             enum RequestType {
-                
+                case getUserData(id: String, email: String)
+                case createUser(username: String, description: String, sex: String, avatar: String)
             }
         }
         
         struct Response {
             enum ResponseType {
-                
+
             }
         }
         
         struct ViewModel {
             enum ViewModelType {
-                
+
             }
         }
     }
