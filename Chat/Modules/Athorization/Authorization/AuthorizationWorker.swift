@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+protocol AuthorizationStorageLogic {
+
+}
+
+
+final class AuthorizationWorker {
+    
+    
+}
+

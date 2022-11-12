@@ -10,7 +10,7 @@ import UIKit
 extension UIButton {
     
     convenience init(title: String,
-                     color: UIColor,
+                     color: UIColor? = .clear,
                      isShadow: Bool = false,
                      cornerRadius: CGFloat = 5,
                      titleColor: UIColor) {

@@ -7,6 +7,7 @@
 
 import SnapKit
 
+
 protocol AuthorizationDisplayLogic: AnyObject {
     func displayData(data: AuthorizationModels.ModelType.ViewModel.ViewModelType)
 }
@@ -21,25 +22,23 @@ final class AuthorizationViewController: UIViewController {
     
     private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50))
     private let getStartedWithLabel = UILabel(title: "Get started with")
-    private let orSignUpWithLabel = UILabel(title: "Or sign up with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     
     private let emailButton = UIButton(title: "Email", color: UIColor(named: "purple")!, titleColor: .white)
     private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: UIColor(named: "purple")!)
-    private let googleButton = UIButton(title: "Google", color: .white, isShadow: true, titleColor: .black)
 
-    private lazy var googleView = UIView(label: getStartedWithLabel, button: googleButton)
-    private lazy var emailView = UIView(label: orSignUpWithLabel, button: emailButton)
+
+    private lazy var emailView = UIView(label: getStartedWithLabel, button: emailButton)
     private lazy var loginView = UIView(label: aleradyOnboardLabel, button: loginButton)
     
-    private lazy var stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], spacing: 40)
+    private lazy var stackView = UIStackView(arrangedSubviews: [emailView, loginView], spacing: 60)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+
         setupButtons()
 
         setupConstraints()
@@ -48,7 +47,6 @@ final class AuthorizationViewController: UIViewController {
     private func setupButtons() {
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
     
     @objc private func emailButtonTapped() {
@@ -58,10 +56,7 @@ final class AuthorizationViewController: UIViewController {
     @objc private func loginButtonTapped() {
         present((router?.pushToLoginViewController())!, animated: true)
     }
-    
-    @objc private func googleButtonTapped() {
-        
-    }
+
 }
 
 
@@ -89,7 +84,7 @@ extension AuthorizationViewController {
         view.addSubview(stackView)
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).inset(160)
+            make.top.equalTo(titleLabel).inset(200)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(40)
         }

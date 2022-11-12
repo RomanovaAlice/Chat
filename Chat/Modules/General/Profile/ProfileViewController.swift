@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
     //button
     private let editButton = UIButton(title: "Edit", color: UIColor(named: "purple")!, titleColor: .white)
     private let addNewPhotoButton = UIButton()
+    private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: UIColor(named: "purple")!)
     
     //stackViews
     private lazy var usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField], spacing: 5)
@@ -49,9 +50,9 @@ class ProfileViewController: UIViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
         
+        setupNavigationBar()
+
         setupPhotoImageView()
         setupAddNewPhotoButton()
         
@@ -59,8 +60,14 @@ class ProfileViewController: UIViewController {
         setupEmailTextField()
         setupGenderTextField()
         setupAboutMeTextField()
+        setupExitButton()
         
         setupConstraints()
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
+        view.backgroundColor = .white
     }
     
     private func setupPhotoImageView() {
@@ -94,6 +101,14 @@ class ProfileViewController: UIViewController {
     private func setupAboutMeTextField() {
         aboutMeTextField.delegate = self
         aboutMeTextField.text = "i can tell you a very funny joke"
+    }
+    
+    private func setupExitButton() {
+        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func exitButtonTapped() {
+        present((router?.pushToAuthorizationViewController())!, animated: true)
     }
 }
 

@@ -5,7 +5,7 @@
 //  Created by Алиса Романова on 25.10.2022.
 //
 
-import Foundation
+ import Foundation
 
 protocol AuthorizationBuisnessLogic {
     func makeRequest(request: AuthorizationModels.ModelType.Request.RequestType)
@@ -18,6 +18,8 @@ final class AuthorizationInteractor: AuthorizationBuisnessLogic {
     
     func makeRequest(request: AuthorizationModels.ModelType.Request.RequestType) {
         switch request {
+            
+   
             
         }
     }

@@ -23,11 +23,11 @@ final class AssemblyLayer {
         let presenter = AuthorizationPresenter()
         let view = AuthorizationViewController()
         let router = AuthorizationRouter()
-
+        
+        view.modalPresentationStyle = .fullScreen
         
         //connections
         interactor.presenter = presenter
-
         
         presenter.view = view
         

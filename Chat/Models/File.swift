@@ -24,7 +24,7 @@ struct Human: Hashable, Decodable {
     let username: String
     let description: String
     let sex: String
-    let avatar: String
+    var avatar: String
     let id: String
     
     var representation: [String: Any] {

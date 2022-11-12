@@ -26,13 +26,10 @@ final class LoginViewController: UIViewController {
     private let titleLabel = UILabel(title: "Welcome back!", font: .systemFont(ofSize: 30))
     
     //labels
-    private let loginWithLabel = UILabel(title: "Login with", textAlignment: .left)
-    private let orLabel = UILabel(title: "or", textAlignment: .left)
     private let emailLabel = UILabel(title: "Email", textAlignment: .left)
     private let paddwordLabel = UILabel(title: "Password", textAlignment: .left)
     
     //button
-    private let googleButton = UIButton(title: "Google", color: .white, isShadow: true, titleColor: .black)
     private let loginButton = UIButton(title: "Login", color: UIColor(named: "purple")!, titleColor: .white)
     
     //textFields
@@ -40,11 +37,10 @@ final class LoginViewController: UIViewController {
     private let passwordTextField = UITextField(placeholder: "1223445", textColor: .gray)
     
     //stackViews
-    private lazy var loginStackView = UIStackView(arrangedSubviews: [loginWithLabel, googleButton], spacing: 10)
-    private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], spacing: 10)
-    private lazy var passwordStackView = UIStackView(arrangedSubviews: [paddwordLabel, passwordTextField], spacing: 10)
+    private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], spacing: 20)
+    private lazy var passwordStackView = UIStackView(arrangedSubviews: [paddwordLabel, passwordTextField], spacing: 20)
     
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [loginStackView, orLabel, emailStackView,  passwordStackView, loginButton], spacing: 40)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailStackView,  passwordStackView, loginButton], spacing: 70)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -60,14 +56,7 @@ final class LoginViewController: UIViewController {
     //MARK: - setupButtons
     
     private func setupButtons() {
-        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-    }
-    
-    //MARK: - @objc method "googleButtonTapped"
-    
-    @objc private func googleButtonTapped() {
-
     }
     
     //MARK: - @objc method "loginButtonTapped"
@@ -118,13 +107,7 @@ extension LoginViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(100)
-        }
-        
-        //googleButton
-        
-        googleButton.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.top.equalToSuperview().inset(160)
         }
         
         //loginButton

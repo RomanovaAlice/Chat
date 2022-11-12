@@ -40,7 +40,7 @@ final class SetupProfileInteractor: SetupProfileBuisnessLogic {
                 case .success(_):
                     print("success")
                 case .failure(let error):
-                    print(error)
+                    print("error")
                 }
             })
         }

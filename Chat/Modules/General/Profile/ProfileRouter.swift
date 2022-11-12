@@ -8,11 +8,13 @@
 import UIKit
 
 protocol ProfileRoutingLogic {
-    
+    func pushToAuthorizationViewController() -> UIViewController
 }
 
 
 final class ProfileRouter: ProfileRoutingLogic {
     
-    
+    func pushToAuthorizationViewController() -> UIViewController {
+        return AssemblyLayer.shared.createAuthorizationModule()
+    }
 }

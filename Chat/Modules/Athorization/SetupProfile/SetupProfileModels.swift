@@ -5,7 +5,7 @@
 //  Created by Алиса Романова on 03.11.2022.
 //
 
-import Foundation
+import UIKit
 
 enum SetupProfileModels {
    
@@ -14,7 +14,7 @@ enum SetupProfileModels {
         struct Request {
             enum RequestType {
                 case getUserData(id: String, email: String)
-                case createUser(username: String, description: String, sex: String, avatar: String)
+                case createUser(username: String, description: String, sex: String, avatar: UIImage)
             }
         }
         
