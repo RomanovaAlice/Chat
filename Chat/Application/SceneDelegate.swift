@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        window?.rootViewController = AssemblyLayer.shared.createAuthorizationModule()
+        window?.rootViewController = AuthorizationViewController()
         window?.makeKeyAndVisible()
     }
 

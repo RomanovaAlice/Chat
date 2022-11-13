@@ -7,6 +7,8 @@ target 'Chat' do
   # Pods for Chat
 
     pod 'SnapKit', '~> 5.0.0'
+    
+    pod 'SwiftLint'
 
     pod 'FirebaseAnalytics'
     pod 'FirebaseAuth'

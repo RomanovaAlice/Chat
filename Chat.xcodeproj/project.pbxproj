@@ -9,40 +9,10 @@
 /* Begin PBXBuildFile section */
 		69D65B5D17DBFEF6FF77436D /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D28EDA59A2E168EE55E13A /* Pods_Chat.framework */; };
 		D205B9792911531000D62543 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9782911531000D62543 /* ProfileViewController.swift */; };
-		D205B9832912851D00D62543 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9822912851D00D62543 /* LoginRouter.swift */; };
-		D205B9862912CEAC00D62543 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9852912CEAC00D62543 /* SignUpRouter.swift */; };
-		D205B9882912CEF800D62543 /* SetupProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9872912CEF800D62543 /* SetupProfileRouter.swift */; };
-		D205B9EB2913A96E00D62543 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E72913A96E00D62543 /* LoginPresenter.swift */; };
-		D205B9EC2913A96E00D62543 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E82913A96E00D62543 /* LoginWorker.swift */; };
-		D205B9ED2913A96E00D62543 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9E92913A96E00D62543 /* LoginModels.swift */; };
-		D205B9EE2913A96E00D62543 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9EA2913A96E00D62543 /* LoginInteractor.swift */; };
-		D205B9F32913AA5300D62543 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9EF2913AA5300D62543 /* SignUpPresenter.swift */; };
-		D205B9F42913AA5300D62543 /* SignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9F02913AA5300D62543 /* SignUpWorker.swift */; };
-		D205B9F52913AA5300D62543 /* SignUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9F12913AA5300D62543 /* SignUpModels.swift */; };
-		D205B9F62913AA5300D62543 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B9F22913AA5300D62543 /* SignUpInteractor.swift */; };
-		D205BA072913AB0500D62543 /* SetupProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA032913AB0500D62543 /* SetupProfilePresenter.swift */; };
-		D205BA082913AB0500D62543 /* SetupProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA042913AB0500D62543 /* SetupProfileWorker.swift */; };
-		D205BA092913AB0500D62543 /* SetupProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA052913AB0500D62543 /* SetupProfileModels.swift */; };
-		D205BA0A2913AB0500D62543 /* SetupProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA062913AB0500D62543 /* SetupProfileInteractor.swift */; };
-		D205BA102913AB9400D62543 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA0B2913AB9400D62543 /* UsersPresenter.swift */; };
-		D205BA112913AB9400D62543 /* UsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA0C2913AB9400D62543 /* UsersWorker.swift */; };
-		D205BA122913AB9400D62543 /* UsersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA0D2913AB9400D62543 /* UsersRouter.swift */; };
-		D205BA132913AB9400D62543 /* UsersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA0E2913AB9400D62543 /* UsersModels.swift */; };
-		D205BA142913AB9400D62543 /* UsersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA0F2913AB9400D62543 /* UsersInteractor.swift */; };
-		D205BA1A2913AB9F00D62543 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA152913AB9F00D62543 /* ChatPresenter.swift */; };
-		D205BA1B2913AB9F00D62543 /* ChatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA162913AB9F00D62543 /* ChatWorker.swift */; };
-		D205BA1C2913AB9F00D62543 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA172913AB9F00D62543 /* ChatRouter.swift */; };
-		D205BA1D2913AB9F00D62543 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA182913AB9F00D62543 /* ChatModels.swift */; };
-		D205BA1E2913AB9F00D62543 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA192913AB9F00D62543 /* ChatInteractor.swift */; };
-		D205BA242913ABAC00D62543 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA1F2913ABAC00D62543 /* ProfilePresenter.swift */; };
-		D205BA252913ABAC00D62543 /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA202913ABAC00D62543 /* ProfileWorker.swift */; };
-		D205BA262913ABAC00D62543 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA212913ABAC00D62543 /* ProfileRouter.swift */; };
-		D205BA272913ABAC00D62543 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA222913ABAC00D62543 /* ProfileModels.swift */; };
-		D205BA282913ABAC00D62543 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205BA232913ABAC00D62543 /* ProfileInteractor.swift */; };
 		D205BA2C2913CA9B00D62543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D205BA2B2913CA9B00D62543 /* GoogleService-Info.plist */; };
 		D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */; };
 		D2169FAB291CBF7E009F9442 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2169FAA291CBF7E009F9442 /* Validators.swift */; };
-		D21B2612291E12940035FBEA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21B2611291E12940035FBEA /* File.swift */; };
+		D21B2612291E12940035FBEA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21B2611291E12940035FBEA /* Chat.swift */; };
 		D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491C2909CBEF00E42BFD /* UIView + Extension .swift */; };
 		D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491E290A474100E42BFD /* UIStackView + Extension.swift */; };
 		D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254921290A55CF00E42BFD /* SignUpViewController.swift */; };
@@ -51,19 +21,15 @@
 		D225492C290B2B7500E42BFD /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */; };
 		D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225492E290C9D1500E42BFD /* ChatViewController.swift */; };
 		D2254932290CA7BD00E42BFD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254931290CA7BC00E42BFD /* ChatCell.swift */; };
-		D2254934290CB06500E42BFD /* AuthorizationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254933290CB06500E42BFD /* AuthorizationWorker.swift */; };
 		D2272ABF290CEF2000CAC710 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2272ABE290CEF2000CAC710 /* SectionHeader.swift */; };
-		D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1472290757B300F762CE /* AssemblyLayer.swift */; };
-		D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147529075A8D00F762CE /* AuthorizationModels.swift */; };
-		D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */; };
-		D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */; };
-		D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E147F29075AD500F762CE /* AuthorizationRouter.swift */; };
 		D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E148129075B0500F762CE /* AuthorizationViewController.swift */; };
 		D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E1490290993EB00F762CE /* UIButton + Extension.swift */; };
 		D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E14922909A0F600F762CE /* UILabel + Extension.swift */; };
 		D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8D9D290CF4EA00527B36 /* TabBarController.swift */; };
 		D22F8DA0290CF8FE00527B36 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */; };
 		D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8DA2290CF95100527B36 /* UsersCell.swift */; };
+		D27DDA7329212A0600226DA9 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7229212A0600226DA9 /* Human.swift */; };
+		D27DDA7A29212BE400226DA9 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7929212BE400226DA9 /* AuthorizationService.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
@@ -75,40 +41,10 @@
 		BC7221B426043128DE1BA106 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		D1D28EDA59A2E168EE55E13A /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D205B9782911531000D62543 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D205B9822912851D00D62543 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		D205B9852912CEAC00D62543 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
-		D205B9872912CEF800D62543 /* SetupProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileRouter.swift; sourceTree = "<group>"; };
-		D205B9E72913A96E00D62543 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		D205B9E82913A96E00D62543 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
-		D205B9E92913A96E00D62543 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
-		D205B9EA2913A96E00D62543 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		D205B9EF2913AA5300D62543 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
-		D205B9F02913AA5300D62543 /* SignUpWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWorker.swift; sourceTree = "<group>"; };
-		D205B9F12913AA5300D62543 /* SignUpModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModels.swift; sourceTree = "<group>"; };
-		D205B9F22913AA5300D62543 /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
-		D205BA032913AB0500D62543 /* SetupProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfilePresenter.swift; sourceTree = "<group>"; };
-		D205BA042913AB0500D62543 /* SetupProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileWorker.swift; sourceTree = "<group>"; };
-		D205BA052913AB0500D62543 /* SetupProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileModels.swift; sourceTree = "<group>"; };
-		D205BA062913AB0500D62543 /* SetupProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileInteractor.swift; sourceTree = "<group>"; };
-		D205BA0B2913AB9400D62543 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
-		D205BA0C2913AB9400D62543 /* UsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersWorker.swift; sourceTree = "<group>"; };
-		D205BA0D2913AB9400D62543 /* UsersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRouter.swift; sourceTree = "<group>"; };
-		D205BA0E2913AB9400D62543 /* UsersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModels.swift; sourceTree = "<group>"; };
-		D205BA0F2913AB9400D62543 /* UsersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersInteractor.swift; sourceTree = "<group>"; };
-		D205BA152913AB9F00D62543 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
-		D205BA162913AB9F00D62543 /* ChatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWorker.swift; sourceTree = "<group>"; };
-		D205BA172913AB9F00D62543 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
-		D205BA182913AB9F00D62543 /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
-		D205BA192913AB9F00D62543 /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
-		D205BA1F2913ABAC00D62543 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
-		D205BA202913ABAC00D62543 /* ProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
-		D205BA212913ABAC00D62543 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
-		D205BA222913ABAC00D62543 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
-		D205BA232913ABAC00D62543 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		D205BA2B2913CA9B00D62543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		D2169FAA291CBF7E009F9442 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
-		D21B2611291E12940035FBEA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D21B2611291E12940035FBEA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		D225491C2909CBEF00E42BFD /* UIView + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension .swift"; sourceTree = "<group>"; };
 		D225491E290A474100E42BFD /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		D2254921290A55CF00E42BFD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -117,19 +53,15 @@
 		D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		D225492E290C9D1500E42BFD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2254931290CA7BC00E42BFD /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
-		D2254933290CB06500E42BFD /* AuthorizationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWorker.swift; sourceTree = "<group>"; };
 		D2272ABE290CEF2000CAC710 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		D22E1472290757B300F762CE /* AssemblyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyLayer.swift; sourceTree = "<group>"; };
-		D22E147529075A8D00F762CE /* AuthorizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModels.swift; sourceTree = "<group>"; };
-		D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
-		D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
-		D22E147F29075AD500F762CE /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		D22E148129075B0500F762CE /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		D22E1490290993EB00F762CE /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		D22E14922909A0F600F762CE /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		D22F8D9D290CF4EA00527B36 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		D22F8DA2290CF95100527B36 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
+		D27DDA7229212A0600226DA9 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		D27DDA7929212BE400226DA9 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,40 +99,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D205B977291152E200D62543 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				D205BA222913ABAC00D62543 /* ProfileModels.swift */,
-				D205BA202913ABAC00D62543 /* ProfileWorker.swift */,
-				D205BA232913ABAC00D62543 /* ProfileInteractor.swift */,
-				D205BA1F2913ABAC00D62543 /* ProfilePresenter.swift */,
-				D205B9782911531000D62543 /* ProfileViewController.swift */,
-				D205BA212913ABAC00D62543 /* ProfileRouter.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		D205B97A29124FE100D62543 /* Athorization */ = {
-			isa = PBXGroup;
-			children = (
-				D22E1474290757FA00F762CE /* Authorization */,
-				D2254927290B1D9900E42BFD /* Login */,
-				D2254920290A4AA100E42BFD /* SignUp */,
-				D225492A290B2B1C00E42BFD /* SetupProfile */,
-			);
-			path = Athorization;
-			sourceTree = "<group>";
-		};
-		D205B97B2912500F00D62543 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				D22F8DA1290CF90400527B36 /* Users */,
-				D225492D290C9D0600E42BFD /* Chat */,
-				D205B977291152E200D62543 /* Profile */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
 		D205B9842912CB8900D62543 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,100 +110,10 @@
 		D21B2610291E127F0035FBEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D21B2611291E12940035FBEA /* File.swift */,
+				D27DDA7229212A0600226DA9 /* Human.swift */,
+				D21B2611291E12940035FBEA /* Chat.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D2254920290A4AA100E42BFD /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				D205B9F12913AA5300D62543 /* SignUpModels.swift */,
-				D205B9F02913AA5300D62543 /* SignUpWorker.swift */,
-				D205B9F22913AA5300D62543 /* SignUpInteractor.swift */,
-				D205B9EF2913AA5300D62543 /* SignUpPresenter.swift */,
-				D2254921290A55CF00E42BFD /* SignUpViewController.swift */,
-				D205B9852912CEAC00D62543 /* SignUpRouter.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		D2254927290B1D9900E42BFD /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				D205B9E92913A96E00D62543 /* LoginModels.swift */,
-				D205B9E82913A96E00D62543 /* LoginWorker.swift */,
-				D205B9EA2913A96E00D62543 /* LoginInteractor.swift */,
-				D205B9E72913A96E00D62543 /* LoginPresenter.swift */,
-				D2254928290B1DB400E42BFD /* LoginViewController.swift */,
-				D205B9822912851D00D62543 /* LoginRouter.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		D225492A290B2B1C00E42BFD /* SetupProfile */ = {
-			isa = PBXGroup;
-			children = (
-				D205BA052913AB0500D62543 /* SetupProfileModels.swift */,
-				D205BA042913AB0500D62543 /* SetupProfileWorker.swift */,
-				D205BA062913AB0500D62543 /* SetupProfileInteractor.swift */,
-				D205BA032913AB0500D62543 /* SetupProfilePresenter.swift */,
-				D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */,
-				D205B9872912CEF800D62543 /* SetupProfileRouter.swift */,
-			);
-			path = SetupProfile;
-			sourceTree = "<group>";
-		};
-		D225492D290C9D0600E42BFD /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				D205BA182913AB9F00D62543 /* ChatModels.swift */,
-				D205BA162913AB9F00D62543 /* ChatWorker.swift */,
-				D205BA192913AB9F00D62543 /* ChatInteractor.swift */,
-				D205BA152913AB9F00D62543 /* ChatPresenter.swift */,
-				D225492E290C9D1500E42BFD /* ChatViewController.swift */,
-				D2254931290CA7BC00E42BFD /* ChatCell.swift */,
-				D205BA172913AB9F00D62543 /* ChatRouter.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		D2254930290C9D4600E42BFD /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				D205B97A29124FE100D62543 /* Athorization */,
-				D205B97B2912500F00D62543 /* General */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		D2272AC0290CF3A200CAC710 /* TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				D22F8D9D290CF4EA00527B36 /* TabBarController.swift */,
-			);
-			path = TabBarController;
-			sourceTree = "<group>";
-		};
-		D22E14712907579200F762CE /* AssemblyLayer */ = {
-			isa = PBXGroup;
-			children = (
-				D22E1472290757B300F762CE /* AssemblyLayer.swift */,
-			);
-			path = AssemblyLayer;
-			sourceTree = "<group>";
-		};
-		D22E1474290757FA00F762CE /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				D22E147529075A8D00F762CE /* AuthorizationModels.swift */,
-				D2254933290CB06500E42BFD /* AuthorizationWorker.swift */,
-				D22E147929075AAD00F762CE /* AuthorizationInteractor.swift */,
-				D22E147B29075AB600F762CE /* AuthorizationPresenter.swift */,
-				D22E148129075B0500F762CE /* AuthorizationViewController.swift */,
-				D22E147F29075AD500F762CE /* AuthorizationRouter.swift */,
-			);
-			path = Authorization;
 			sourceTree = "<group>";
 		};
 		D22E148E2909939E00F762CE /* Extensions */ = {
@@ -330,18 +138,69 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		D22F8DA1290CF90400527B36 /* Users */ = {
+		D27DDA702921261E00226DA9 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				D205BA0E2913AB9400D62543 /* UsersModels.swift */,
-				D205BA0C2913AB9400D62543 /* UsersWorker.swift */,
-				D205BA0F2913AB9400D62543 /* UsersInteractor.swift */,
-				D205BA0B2913AB9400D62543 /* UsersPresenter.swift */,
-				D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */,
-				D22F8DA2290CF95100527B36 /* UsersCell.swift */,
-				D205BA0D2913AB9400D62543 /* UsersRouter.swift */,
+				D27DDA7929212BE400226DA9 /* AuthorizationService.swift */,
 			);
-			path = Users;
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		D27DDA71292128A300226DA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D27DDA7429212AC200226DA9 /* TabBarController */,
+				D27DDA7529212AD200226DA9 /* ViewControllers */,
+				D27DDA7629212AF600226DA9 /* Cells */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D27DDA7429212AC200226DA9 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D22F8D9D290CF4EA00527B36 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		D27DDA7529212AD200226DA9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D27DDA7729212B6800226DA9 /* Authorization */,
+				D27DDA7829212B8600226DA9 /* General */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D27DDA7629212AF600226DA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D2254931290CA7BC00E42BFD /* ChatCell.swift */,
+				D22F8DA2290CF95100527B36 /* UsersCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D27DDA7729212B6800226DA9 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				D22E148129075B0500F762CE /* AuthorizationViewController.swift */,
+				D2254928290B1DB400E42BFD /* LoginViewController.swift */,
+				D2254921290A55CF00E42BFD /* SignUpViewController.swift */,
+				D225492B290B2B7500E42BFD /* SetupProfileViewController.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		D27DDA7829212B8600226DA9 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				D22F8D9F290CF8FE00527B36 /* UsersViewController.swift */,
+				D225492E290C9D1500E42BFD /* ChatViewController.swift */,
+				D205B9782911531000D62543 /* ProfileViewController.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		D2B1251A2905DCE800D7CC7F = {
@@ -370,9 +229,8 @@
 				D205B9842912CB8900D62543 /* Helpers */,
 				D22E148E2909939E00F762CE /* Extensions */,
 				D21B2610291E127F0035FBEA /* Models */,
-				D22E14712907579200F762CE /* AssemblyLayer */,
-				D2272AC0290CF3A200CAC710 /* TabBarController */,
-				D2254930290C9D4600E42BFD /* Modules */,
+				D27DDA702921261E00226DA9 /* ServiceLayer */,
+				D27DDA71292128A300226DA9 /* Controllers */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -513,62 +371,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2254926290A59E100E42BFD /* UITextField + Extension .swift in Sources */,
-				D205BA0A2913AB0500D62543 /* SetupProfileInteractor.swift in Sources */,
-				D205B9F52913AA5300D62543 /* SignUpModels.swift in Sources */,
-				D205BA1A2913AB9F00D62543 /* ChatPresenter.swift in Sources */,
-				D205BA082913AB0500D62543 /* SetupProfileWorker.swift in Sources */,
 				D22E148229075B0500F762CE /* AuthorizationViewController.swift in Sources */,
 				D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */,
-				D205B9832912851D00D62543 /* LoginRouter.swift in Sources */,
 				D22F8DA0290CF8FE00527B36 /* UsersViewController.swift in Sources */,
+				D27DDA7329212A0600226DA9 /* Human.swift in Sources */,
 				D2254932290CA7BD00E42BFD /* ChatCell.swift in Sources */,
-				D205BA252913ABAC00D62543 /* ProfileWorker.swift in Sources */,
-				D22E147C29075AB600F762CE /* AuthorizationPresenter.swift in Sources */,
 				D205B9792911531000D62543 /* ProfileViewController.swift in Sources */,
-				D205B9862912CEAC00D62543 /* SignUpRouter.swift in Sources */,
-				D22E147629075A8D00F762CE /* AuthorizationModels.swift in Sources */,
-				D2254934290CB06500E42BFD /* AuthorizationWorker.swift in Sources */,
-				D205BA1D2913AB9F00D62543 /* ChatModels.swift in Sources */,
-				D205BA272913ABAC00D62543 /* ProfileModels.swift in Sources */,
-				D205BA072913AB0500D62543 /* SetupProfilePresenter.swift in Sources */,
-				D22E147A29075AAD00F762CE /* AuthorizationInteractor.swift in Sources */,
-				D205BA242913ABAC00D62543 /* ProfilePresenter.swift in Sources */,
 				D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */,
 				D225492C290B2B7500E42BFD /* SetupProfileViewController.swift in Sources */,
 				D22E1491290993EB00F762CE /* UIButton + Extension.swift in Sources */,
 				D22E14932909A0F600F762CE /* UILabel + Extension.swift in Sources */,
+				D27DDA7A29212BE400226DA9 /* AuthorizationService.swift in Sources */,
 				D2272ABF290CEF2000CAC710 /* SectionHeader.swift in Sources */,
-				D205BA1C2913AB9F00D62543 /* ChatRouter.swift in Sources */,
 				D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */,
-				D205BA092913AB0500D62543 /* SetupProfileModels.swift in Sources */,
-				D205BA112913AB9400D62543 /* UsersWorker.swift in Sources */,
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
-				D205BA142913AB9400D62543 /* UsersInteractor.swift in Sources */,
 				D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */,
-				D205BA102913AB9400D62543 /* UsersPresenter.swift in Sources */,
-				D205B9EB2913A96E00D62543 /* LoginPresenter.swift in Sources */,
-				D22E148029075AD500F762CE /* AuthorizationRouter.swift in Sources */,
 				D2169FAB291CBF7E009F9442 /* Validators.swift in Sources */,
 				D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */,
-				D205B9EE2913A96E00D62543 /* LoginInteractor.swift in Sources */,
 				D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */,
-				D205B9EC2913A96E00D62543 /* LoginWorker.swift in Sources */,
-				D205BA1B2913AB9F00D62543 /* ChatWorker.swift in Sources */,
-				D205BA262913ABAC00D62543 /* ProfileRouter.swift in Sources */,
 				D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */,
-				D22E1473290757B300F762CE /* AssemblyLayer.swift in Sources */,
-				D205BA132913AB9400D62543 /* UsersModels.swift in Sources */,
-				D205B9F42913AA5300D62543 /* SignUpWorker.swift in Sources */,
-				D205B9ED2913A96E00D62543 /* LoginModels.swift in Sources */,
-				D205BA122913AB9400D62543 /* UsersRouter.swift in Sources */,
-				D205B9882912CEF800D62543 /* SetupProfileRouter.swift in Sources */,
-				D205B9F32913AA5300D62543 /* SignUpPresenter.swift in Sources */,
-				D205B9F62913AA5300D62543 /* SignUpInteractor.swift in Sources */,
 				D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */,
 				D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */,
-				D205BA282913ABAC00D62543 /* ProfileInteractor.swift in Sources */,
-				D21B2612291E12940035FBEA /* File.swift in Sources */,
-				D205BA1E2913AB9F00D62543 /* ChatInteractor.swift in Sources */,
+				D21B2612291E12940035FBEA /* Chat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
