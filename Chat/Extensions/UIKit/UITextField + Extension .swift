@@ -7,7 +7,6 @@
 
 import SnapKit
 
-
 extension UITextField {
     
     convenience init(placeholder: String, textColor: UIColor = .black) {

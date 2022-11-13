@@ -12,15 +12,13 @@ final class ChatViewController: UIViewController {
     private enum Section: Int, CaseIterable {
         case chats
     }
- 
-    private let chatss = [Chat(username: "v", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "c", lastMessage: ""), Chat(username: "b", userImage: "", lastMessage: "d"), Chat(username: "", userImage: "", lastMessage: ";")]
     
-
+    private let chatss = [Chat(username: "v", userImage: "", lastMessage: "d")]
+    
     //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
 
     private var chatCollectionView: UICollectionView!
-    
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -62,7 +60,7 @@ final class ChatViewController: UIViewController {
     //MARK: - setupDataSource
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Chat>(collectionView: chatCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Section, Chat>(collectionView: chatCollectionView, cellProvider: { collectionView, indexPath, _ in
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.identifier, for: indexPath)
    
@@ -71,7 +69,8 @@ final class ChatViewController: UIViewController {
         
         dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
             
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
+                fatalError("Can not create new section header") }
             
             sectionHeader.configure(text: "Chats", font: .systemFont(ofSize: 25), textColor: .black)
             

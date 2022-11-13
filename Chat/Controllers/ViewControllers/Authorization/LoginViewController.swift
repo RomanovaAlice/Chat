@@ -31,7 +31,7 @@ final class LoginViewController: UIViewController {
     private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], spacing: 20)
     private lazy var passwordStackView = UIStackView(arrangedSubviews: [paddwordLabel, passwordTextField], spacing: 20)
     
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailStackView,  passwordStackView, loginButton], spacing: 70)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, loginButton], spacing: 70)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {

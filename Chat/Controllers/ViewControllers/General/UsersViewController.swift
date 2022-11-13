@@ -59,7 +59,7 @@ final class UsersViewController: UIViewController {
    //MARK: - setupDataSource
    
    private func setupDataSource() {
-       dataSource = UICollectionViewDiffableDataSource<Section, Human>(collectionView: usersCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+       dataSource = UICollectionViewDiffableDataSource<Section, Human>(collectionView: usersCollectionView, cellProvider: { collectionView, indexPath, _ in
            
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UsersCell.identifier, for: indexPath)
 
@@ -68,7 +68,8 @@ final class UsersViewController: UIViewController {
        
        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
            
-           guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
+           guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
+               fatalError("Can not create new section header") }
 
            sectionHeader.configure(text: "\(self.chat.count) peeope nearly", font: .systemFont(ofSize: 45, weight: .light), textColor: .black)
            

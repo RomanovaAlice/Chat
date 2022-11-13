@@ -22,7 +22,6 @@ extension UIButton {
         self.layer.cornerRadius = cornerRadius
         self.setTitleColor(titleColor, for: .normal)
     
-        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         if isShadow {

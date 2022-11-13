@@ -9,7 +9,6 @@ import Foundation
 
 final class Validators {
     
-    
     static func isAllFieldsFilled(email: String?, password: String?, confirmPassword: String?) -> Bool {
         
         if confirmPassword != nil {

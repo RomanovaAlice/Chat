@@ -8,10 +8,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.315557366324-0kpvkbgit28748quq4ns6itn3tmdi0l0</string>
-			</array>
+			<array/>
 		</dict>
+		<dict/>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

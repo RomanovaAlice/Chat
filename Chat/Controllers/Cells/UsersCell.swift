@@ -14,7 +14,6 @@ final class UsersCell: UICollectionViewCell {
     private let photoImageView = UIImageView()
     private let nameLabel = UILabel()
     
-    
     //MARK: - Inits
     
     override init(frame: CGRect) {

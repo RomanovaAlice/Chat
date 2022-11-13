@@ -51,7 +51,6 @@ final class SignUpViewController: UIViewController {
         setupConstraints()
     }
     
-    
     private func setupSignUpButton() {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
@@ -76,7 +75,7 @@ final class SignUpViewController: UIViewController {
                     let view = SetupProfileViewController(email: user.email!, id: user.uid)
                     view.modalPresentationStyle = .fullScreen
                     
-                    self?.present(view , animated: true)
+                    self?.present(view, animated: true)
                 case .failure(let error):
                     print("Registration error", error)
                 }

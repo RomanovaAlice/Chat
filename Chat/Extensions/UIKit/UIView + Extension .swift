@@ -7,7 +7,6 @@
 
 import SnapKit
 
-
 extension UIView {
     
     convenience init(label: UILabel, button: UIButton) {

@@ -104,10 +104,6 @@ class ProfileViewController: UIViewController {
     }
 }
 
-
-
-
-
 //MARK: - Setup constraints
 
 extension ProfileViewController {

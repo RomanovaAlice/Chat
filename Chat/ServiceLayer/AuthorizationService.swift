@@ -23,7 +23,6 @@ final class AuthorizationService {
         return Auth.auth().currentUser!.uid
     }
     
-    
     func loginUser(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
 
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -48,9 +47,14 @@ final class AuthorizationService {
         }
     }
     
-    func saveProfile(email: String, username: String, avatar: UIImage, description: String, sex: String, id: String, completion: @escaping (Result<Human, Error>) -> Void) {
+    func saveProfile(userData: Human, avatar: UIImage, completion: @escaping (Result<Human, Error>) -> Void) {
         
-        var user = Human(email: email, username: username, description: description, sex: sex, avatar: "not exist", id: id)
+        var user = Human(email: userData.email,
+                         username: userData.username,
+                         description: userData.description,
+                         sex: userData.sex,
+                         avatar: "not exist",
+                         id: userData.id)
         
         loadUserPhoto(photo: avatar) { result in
             switch result {
@@ -81,10 +85,11 @@ final class AuthorizationService {
             metadata.contentType = "image/jpeg"
             
             avatarsReference.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
-                guard let _ = metadata else {
+                
+                if metadata == nil {
                     completion(.failure(error!))
-                    return
                 }
+                
                 self.avatarsReference.child(self.currentUserId).downloadURL { (url, error) in
                     guard let downloadURL = url else {
                         completion(.failure(error!))

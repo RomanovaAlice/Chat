@@ -105,14 +105,16 @@ final class SetupProfileViewController: UIViewController {
         let avatar = photoImageView.image
         
         if Validators.isAllFieldsFilled(username: username, description: description) {
-
-            service.saveProfile(email: email,
-                                username: username!,
-                                avatar: avatar!,
-                                description: description!,
-                                sex: sex!,
-                                id: id) { [weak self] result in
-
+            
+            let userData = Human(email: email,
+                                 username: username!,
+                                 description: description!,
+                                 sex: sex!,
+                                 avatar: "not exist",
+                                 id: id)
+            
+            service.saveProfile(userData: userData, avatar: avatar!) { [weak self] result in
+                
                 switch result {
 
                 case .success(_):
@@ -136,10 +138,6 @@ final class SetupProfileViewController: UIViewController {
     }
 }
 
-
-
-
-
 //MARK: - Setup constraints
 
 extension SetupProfileViewController {
@@ -150,7 +148,7 @@ extension SetupProfileViewController {
         view.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(90)
+            make.top.equalToSuperview().inset(100)
             make.centerX.equalToSuperview()
         }
         
@@ -195,7 +193,7 @@ extension SetupProfileViewController {
 //MARK: - UIImagePickerControllerDelegate
 
 extension SetupProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         picker.dismiss(animated: true, completion: nil)
         
