@@ -11,8 +11,8 @@ final class UsersCell: UICollectionViewCell {
     static let identifier = "UsersCell"
     
     //MARK: - Properties
-    private let photoImageView = UIImageView()
-    private let nameLabel = UILabel()
+    var photoImageView = UIImageView()
+    var nameLabel = UILabel()
     
     //MARK: - Inits
     
@@ -34,6 +34,7 @@ final class UsersCell: UICollectionViewCell {
     //MARK: - Setup cell elements
     
     private func setupSelfAppearance() {
+        self.clipsToBounds = true
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
@@ -51,7 +52,7 @@ final class UsersCell: UICollectionViewCell {
     
     private func setupNameLabel() {
         nameLabel.text = "Alex Smith"
-        nameLabel.font = .systemFont(ofSize: 20)
+        nameLabel.font = .systemFont(ofSize: 19)
     }
 }
 
@@ -66,7 +67,7 @@ extension UsersCell {
         
         photoImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(40)
         }
         
         //nameLabel
@@ -74,8 +75,8 @@ extension UsersCell {
         self.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(10)
-            make.left.equalToSuperview().inset(15)
+            make.top.equalTo(photoImageView.snp.bottom).offset(7)
+            make.left.equalToSuperview().inset(8)
         }
     }
 }

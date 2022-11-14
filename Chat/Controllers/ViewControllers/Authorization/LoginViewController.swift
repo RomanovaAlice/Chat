@@ -62,12 +62,19 @@ final class LoginViewController: UIViewController {
             service.loginUser(email: email!, password: password!) { [weak self] result in
                 switch result {
                     
-                case .success(_):
-                    let tabBar = TabBarController()
-                    tabBar.modalPresentationStyle = .fullScreen
-                    
-                    self?.present(tabBar, animated: true)
-                    
+                case .success(let user):
+                    self?.service.getUserData(user: user) { result in
+                        switch result {
+                            
+                        case .success(let user):
+                            let tabBar = TabBarController(currentUser: user)
+                            tabBar.modalPresentationStyle = .fullScreen
+                            
+                            self?.present(tabBar, animated: true)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 case .failure(let error):
                     print("Login error ", error)
                 }

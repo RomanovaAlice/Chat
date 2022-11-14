@@ -47,13 +47,29 @@ final class AuthorizationService {
         }
     }
     
+    func getUserData(user: User, completion: @escaping (Result<Human, Error>) -> Void) {
+        
+        let docRef = usersReference.document(user.uid)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let user = Human(document: document)
+                completion(.success(user!))
+
+            } else {
+                completion(.failure(error!))
+            }
+        }
+    }
+    
     func saveProfile(userData: Human, avatar: UIImage, completion: @escaping (Result<Human, Error>) -> Void) {
         
-        var user = Human(email: userData.email,
-                         username: userData.username,
+        var user = Human(username: userData.username,
+                         email: userData.email,
+                         avatar: "not exist",
                          description: userData.description,
                          sex: userData.sex,
-                         avatar: "not exist",
                          id: userData.id)
         
         loadUserPhoto(photo: avatar) { result in
@@ -77,26 +93,24 @@ final class AuthorizationService {
     }
 
     private func loadUserPhoto(photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
-        if photo != UIImage(named: "userMessage") {
+        
+        guard let imageData = photo.jpegData(compressionQuality: 0.4) else { return }
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        avatarsReference.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
             
-            guard let imageData = photo.jpegData(compressionQuality: 0.4) else { return }
+            if metadata == nil {
+                completion(.failure(error!))
+            }
             
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            
-            avatarsReference.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
-                
-                if metadata == nil {
+            self.avatarsReference.child(self.currentUserId).downloadURL { (url, error) in
+                guard let downloadURL = url else {
                     completion(.failure(error!))
+                    return
                 }
-                
-                self.avatarsReference.child(self.currentUserId).downloadURL { (url, error) in
-                    guard let downloadURL = url else {
-                        completion(.failure(error!))
-                        return
-                    }
-                    completion(.success(downloadURL))
-                }
+                completion(.success(downloadURL))
             }
         }
     }

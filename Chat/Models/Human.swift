@@ -5,7 +5,7 @@
 //  Created by Алиса Романова on 13.11.2022.
 //
 
-import Foundation
+import FirebaseFirestore
 
 struct Human: Hashable, Decodable {
     
@@ -28,5 +28,48 @@ struct Human: Hashable, Decodable {
         dictionary["id"] = id
         
         return dictionary
+    }
+    
+    init(username: String, email: String, avatar: String, description: String, sex: String, id: String) {
+        self.username = username
+        self.email = email
+        self.avatar = avatar
+        self.description = description
+        self.sex = sex
+        self.id = id
+    }
+    
+    init?(document: QueryDocumentSnapshot) {
+        let data = document.data()
+        guard let username = data["username"] as? String,
+        let email = data["email"] as? String,
+        let avatar = data["avatar"] as? String,
+        let description = data["description"] as? String,
+        let sex = data["sex"] as? String,
+        let id = data["id"] as? String else { return nil }
+        
+        self.username = username
+        self.email = email
+        self.avatar = avatar
+        self.description = description
+        self.sex = sex
+        self.id = id
+    }
+    
+    init?(document: DocumentSnapshot) {
+        guard let data = document.data() else { return nil}
+        guard let username = data["username"] as? String,
+        let email = data["email"] as? String,
+        let avatar = data["avatar"] as? String,
+        let description = data["description"] as? String,
+        let sex = data["sex"] as? String,
+        let id = data["id"] as? String else { return nil }
+        
+        self.username = username
+        self.email = email
+        self.avatar = avatar
+        self.description = description
+        self.sex = sex
+        self.id = id
     }
 }

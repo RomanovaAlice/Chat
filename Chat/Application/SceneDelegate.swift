@@ -5,7 +5,7 @@
 //  Created by Alice Romanova on 23.10.2022.
 //
 
-import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,6 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
+//        let service = AuthorizationService()
+//
+//        if let user = Auth.auth().currentUser {
+//            service.getUserData(user: user) { (result) in
+//                switch result {
+//
+//                case .success(let user):
+//                    let tabBar = TabBarController(currentUser: user)
+//                    tabBar.modalPresentationStyle = .fullScreen
+//                    self.window?.rootViewController = tabBar
+//
+//                case .failure(_):
+//                    self.window?.rootViewController = AuthorizationViewController()
+//                }
+//            }
+//        } else {
+//            window?.rootViewController = AuthorizationViewController()
+//        }
         window?.rootViewController = AuthorizationViewController()
         window?.makeKeyAndVisible()
     }

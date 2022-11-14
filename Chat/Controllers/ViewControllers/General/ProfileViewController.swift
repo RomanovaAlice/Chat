@@ -6,13 +6,22 @@
 //
 
 import SnapKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
+    
+    private var service = FetchImageService()
 
     //MARK: - Properties
     
+    private let userData: Human
+    
+    //flags
+    private var isEdit = false
+    private var counter = 1
+    
     //imageView
-    private let photoImageView = UIImageView()
+    private var photoImageView = UIImageView()
     
     //labels
     private let usernameLabel = UILabel(title: "Username", textAlignment: .left, textColor: .gray)
@@ -39,6 +48,18 @@ class ProfileViewController: UIViewController {
     
     private lazy var centerStackView = UIStackView(arrangedSubviews: [usernameStackView, emailStackView, genderStackView, aboutMeStackView, editButton], spacing: 30)
     
+    //MARK: - Init
+    
+    init(userData: Human) {
+        self.userData = userData
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,27 +68,58 @@ class ProfileViewController: UIViewController {
 
         setupPhotoImageView()
         setupAddNewPhotoButton()
-        
-        setupUsernameTextField()
-        setupEmailTextField()
-        setupGenderTextField()
-        setupAboutMeTextField()
-        setupExitButton()
+        setupTextFieldsDelegates()
+        setupTextFieldsText()
+        setupButtonTargets()
         
         setupConstraints()
     }
+    
+    //MARK: - setupNavigationBar
     
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
         view.backgroundColor = .white
     }
     
+    //MARK: - setupTextFieldsDelegates
+    
+    private func setupTextFieldsDelegates() {
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        genderTextField.delegate = self
+        aboutMeTextField.delegate = self
+    }
+    
+    //MARK: - setupTextFieldsText
+    
+    private func setupTextFieldsText() {
+        usernameTextField.text = userData.username
+        emailTextField.text = userData.email
+        genderTextField.text = userData.sex
+        aboutMeTextField.text = userData.description
+    }
+    
+    //MARK: - setupButtonTargets
+    
+    private func setupButtonTargets() {
+        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - setupPhotoImageView
+    
     private func setupPhotoImageView() {
-        photoImageView.image = UIImage(named: "userMessage")
+
+        service.fetchImage(URLString: userData.avatar, imageView: &photoImageView)
         photoImageView.layer.cornerRadius = 75
         photoImageView.layer.borderColor = UIColor(named: "purple")?.cgColor
         photoImageView.layer.borderWidth = 1
+        photoImageView.clipsToBounds = true
     }
+    
+    //MARK: - setupAddNewPhotoButton
     
     private func setupAddNewPhotoButton() {
         addNewPhotoButton.setImage(UIImage(named: "add"), for: .normal)
@@ -75,32 +127,44 @@ class ProfileViewController: UIViewController {
         addNewPhotoButton.isHidden = true
     }
     
-    private func setupUsernameTextField() {
-        usernameTextField.delegate = self
-        usernameTextField.text = "Alex Smith"
+    //MARK: - @objc editButtonTapped
+    
+    @objc private func editButtonTapped() {
+        
+        if counter % 2 == 0 {
+            isEdit = false
+            addNewPhotoButton.isHidden = true
+            editButton.setTitle("Edit", for: .normal)
+            
+            counter += 1
+            
+        } else {
+            isEdit = true
+            addNewPhotoButton.isHidden = false
+            editButton.setTitle("Done", for: .normal)
+            
+            counter += 1
+        }
     }
     
-    private func setupEmailTextField() {
-        emailTextField.delegate = self
-        emailTextField.text = "yourmail@mail.ru"
+    //MARK: - @objc addNewPhotoButtonTapped
+    
+    @objc private func addNewPhotoButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    private func setupGenderTextField() {
-        genderTextField.delegate = self
-        genderTextField.text = "Male"
-    }
-    
-    private func setupAboutMeTextField() {
-        aboutMeTextField.delegate = self
-        aboutMeTextField.text = "i can tell you a very funny joke"
-    }
-    
-    private func setupExitButton() {
-        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
-    }
+    //MARK: - @objc setupNavigationBar
     
     @objc private func exitButtonTapped() {
-        present(AuthorizationViewController(), animated: true)
+        do {
+            try Auth.auth().signOut()
+            UIApplication.shared.keyWindow?.rootViewController = AuthorizationViewController()
+        } catch {
+            print("Error signing out: \(error)")
+        }
     }
 }
 
@@ -150,6 +214,22 @@ extension ProfileViewController {
 extension ProfileViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return false
+        if isEdit {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        photoImageView.image = image
     }
 }

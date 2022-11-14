@@ -75,15 +75,21 @@ final class SetupProfileViewController: UIViewController {
         setuContsraints()
     }
     
+    //MARK: - setupAddingButton
+    
     private func setupAddingButton() {
         addingButton.setImage(UIImage(named: "add"), for: .normal)
         addingButton.clipsToBounds = true
         addingButton.addTarget(self, action: #selector(addingButtonTapped), for: .touchUpInside)
     }
     
+    //MARK: - setupSexSegmentedControl
+    
     private func setupSexSegmentedControl() {
         sexSegmentedControl.selectedSegmentIndex = 1
     }
+    
+    //MARK: - setupPhotoImageVeiw
 
     private func setupPhotoImageVeiw() {
         photoImageView.layer.cornerRadius = 65
@@ -93,9 +99,13 @@ final class SetupProfileViewController: UIViewController {
         photoImageView.clipsToBounds = true
     }
     
+    //MARK: - setupPhotoImageVeiw
+    
     private func setupGoToChatsButton() {
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
     }
+    
+    //MARK: - @objc goToChatsButtonTapped
     
     @objc private func goToChatsButtonTapped() {
         
@@ -106,19 +116,19 @@ final class SetupProfileViewController: UIViewController {
         
         if Validators.isAllFieldsFilled(username: username, description: description) {
             
-            let userData = Human(email: email,
-                                 username: username!,
+            let userData = Human(username: username!,
+                                 email: email,
+                                 avatar: "not exist",
                                  description: description!,
                                  sex: sex!,
-                                 avatar: "not exist",
                                  id: id)
             
             service.saveProfile(userData: userData, avatar: avatar!) { [weak self] result in
                 
                 switch result {
 
-                case .success(_):
-                    let tabBar = TabBarController()
+                case .success(let user):
+                    let tabBar = TabBarController(currentUser: user)
                     tabBar.modalPresentationStyle = .fullScreen
                     
                     self?.present(tabBar, animated: true)
@@ -129,6 +139,8 @@ final class SetupProfileViewController: UIViewController {
             }
         }
     }
+    
+    //MARK: - @objc addingButtonTapped
     
     @objc private func addingButtonTapped() {
         let imagePickerController = UIImagePickerController()

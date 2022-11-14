@@ -5,9 +5,14 @@
 //  Created by Алиса Романова on 29.10.2022.
 //
 
-import SnapKit
+import FirebaseAuth
+import FirebaseFirestore
+import SDWebImage
 
 final class UsersViewController: UIViewController {
+    
+    private let listenerService = ListenerService()
+    private let imageService = FetchImageService()
 
     private enum Section: Int, CaseIterable {
         case users
@@ -16,17 +21,35 @@ final class UsersViewController: UIViewController {
     //MARK: - Properties
     private var usersCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Human>?
-    private let chat = [Human(email: "", username: "", description: "", sex: "", avatar: "", id: "")]
+    private var users: [Human] = []
+    private var usersListener: ListenerRegistration?
      
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usersListener = listenerService.observeUsers(users: users, completion: { result in
+            switch result {
+                
+            case .success(let users):
+                self.users = users
+                
+                self.setupCollectionView()
+                self.setupDataSource()
+                self.setupSnapshot()
+
+            case .failure(let error):
+                print("listen error: ", error)
+            }
+        })
 
         view.backgroundColor = .white
-        
-        setupCollectionView()
-        setupDataSource()
-        setupSnapshot()
+    }
+    
+    //MARK: - Deinit
+    
+    deinit {
+        usersListener?.remove()
     }
 
     //MARK: - setupCollectionView
@@ -50,8 +73,7 @@ final class UsersViewController: UIViewController {
        var snapshot = NSDiffableDataSourceSnapshot<Section, Human>()
        
        snapshot.appendSections([.users])
-
-       snapshot.appendItems(chat, toSection: .users)
+       snapshot.appendItems(users, toSection: .users)
        
        dataSource?.apply(snapshot, animatingDifferences: true)
    }
@@ -59,10 +81,15 @@ final class UsersViewController: UIViewController {
    //MARK: - setupDataSource
    
    private func setupDataSource() {
-       dataSource = UICollectionViewDiffableDataSource<Section, Human>(collectionView: usersCollectionView, cellProvider: { collectionView, indexPath, _ in
+       dataSource = UICollectionViewDiffableDataSource<Section, Human>(collectionView: usersCollectionView, cellProvider: { [weak self] collectionView, indexPath, _ in
            
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UsersCell.identifier, for: indexPath)
-
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UsersCell.identifier, for: indexPath) as! UsersCell
+           
+           let url = self?.users[indexPath.row].avatar
+    
+           self?.imageService.fetchImage(URLString: url!, imageView: &cell.photoImageView)
+           cell.nameLabel.text = self?.users[indexPath.row].username
+           
            return cell
        })
        
@@ -71,7 +98,7 @@ final class UsersViewController: UIViewController {
            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
                fatalError("Can not create new section header") }
 
-           sectionHeader.configure(text: "\(self.chat.count) peeope nearly", font: .systemFont(ofSize: 45, weight: .light), textColor: .black)
+           sectionHeader.configure(text: "\(self.users.count) peeope nearly", font: .systemFont(ofSize: 45, weight: .light), textColor: .black)
            
            return sectionHeader
        }
@@ -94,7 +121,7 @@ final class UsersViewController: UIViewController {
        
        item.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 15, trailing: 15)
        
-       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .absolute(220))
+       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .absolute(250))
        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
        
        let section = NSCollectionLayoutSection(group: group)

@@ -7,14 +7,25 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
-
+final class TabBarController: UITabBarController {
+    
+    private let currentUser: Human
+    
+    init(currentUser: Human) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let chatViewController = ChatViewController()
         let usersViewController = UsersViewController()
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileViewController(userData: currentUser)
         
         tabBar.tintColor = UIColor(named: "purple")
 
@@ -31,9 +42,9 @@ class TabBarController: UITabBarController {
     
     private func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         
-        let navigationVC = UINavigationController(rootViewController: rootViewController)
-        navigationVC.tabBarItem.title = title
-        navigationVC.tabBarItem.image = image
-        return navigationVC
+        let navigationViewCcontroller = UINavigationController(rootViewController: rootViewController)
+        navigationViewCcontroller.tabBarItem.title = title
+        navigationViewCcontroller.tabBarItem.image = image
+        return navigationViewCcontroller
     }
 }

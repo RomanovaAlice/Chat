@@ -7,3 +7,4 @@ disabled_rules:
   - mark
   - line_length
   - empty_enum_arguments
+  - force_cast

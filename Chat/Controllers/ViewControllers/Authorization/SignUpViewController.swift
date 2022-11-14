@@ -51,9 +51,13 @@ final class SignUpViewController: UIViewController {
         setupConstraints()
     }
     
+    //MARK: - setupSignUpButton
+    
     private func setupSignUpButton() {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
+    
+    //MARK: - @objc method signUpButtonTapped
     
     @objc private func signUpButtonTapped() {
         
