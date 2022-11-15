@@ -145,3 +145,13 @@ final class UsersViewController: UIViewController {
         return sectionHeader
     }
 }
+
+//MARK: - UICollectionViewDelegate
+
+extension UsersViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.showAlertGoToChat { _ in
+            
+        }
+    }
+}

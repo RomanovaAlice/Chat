@@ -15,8 +15,6 @@ final class SectionHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        title.translatesAutoresizingMaskIntoConstraints = false
-        
         self.addSubview(title)
         
         title.snp.makeConstraints { make in

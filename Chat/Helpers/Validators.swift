@@ -9,7 +9,31 @@ import Foundation
 
 final class Validators {
     
-    static func isAllFieldsFilled(email: String?, password: String?, confirmPassword: String?) -> Bool {
+    static func isAvatarExist(avatar: AnyObject?) -> Bool {
+        if avatar != nil {
+            return true
+        } else {
+             return false
+        }
+    }
+    
+    static func isPasswordValid(password: String) -> Bool {
+        if password.count < 6 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    static func isEmailValid(email: String) -> Bool {
+        if isSimpleEmail(email: email) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    static func isAllFieldsFilled(email: String?, password: String?, confirmPassword: String? = nil) -> Bool {
         
         if confirmPassword != nil {
             
@@ -46,13 +70,13 @@ final class Validators {
         }
     }
     
-    static func isAllFieldsFilledAndPasswordsMatch(email: String?, password: String?, confirmPassword: String?) -> Bool {
-        
-        if (email?.count != 0 && password?.count != 0 && confirmPassword?.count != 0) && (password == confirmPassword) {
-            return true
-        } else {
-            return false
-        }
+    private static func isSimpleEmail(email: String) -> Bool {
+        let emailRegEx = "^.+@.+\\..{2,}$"
+        return !(check(text: email, regEx: emailRegEx))
     }
-
+    
+    private static func check(text: String, regEx: String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return predicate.evaluate(with: text)
+    }
 }

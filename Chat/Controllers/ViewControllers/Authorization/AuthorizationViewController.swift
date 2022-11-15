@@ -12,7 +12,7 @@ final class AuthorizationViewController: UIViewController {
     //MARK: - Properties
     
     private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50))
-    private let getStartedWithLabel = UILabel(title: "Get started with")
+    private let getStartedWithLabel = UILabel(title: "Register with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     
     private let emailButton = UIButton(title: "Email", color: UIColor(named: "purple")!, titleColor: .white)
@@ -34,21 +34,20 @@ final class AuthorizationViewController: UIViewController {
         setupConstraints()
     }
     
-    //MARK: - @objc method setupButtons
+    //MARK: - @objc setupButtons
     
     private func setupButtons() {
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
-    //MARK: - @objc method emailButtonTapped
+    //MARK: - @objc emailButtonTapped
     
     @objc private func emailButtonTapped() {
         present(SignUpViewController(), animated: true)
-        
     }
     
-    //MARK: - @objc method loginButtonTapped
+    //MARK: - @objc loginButtonTapped
     
     @objc private func loginButtonTapped() {
         present(LoginViewController(), animated: true)

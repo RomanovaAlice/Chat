@@ -25,9 +25,9 @@ final class SignUpViewController: UIViewController {
     private let confirmPasswordLabel = UILabel(title: "Confirm password")
     
     //TextFields
-    private let emailTextField = UITextField(placeholder: "yourmail@mail.ru", textColor: .gray)
-    private let passwordTestField = UITextField(placeholder: "1223445", textColor: .gray)
-    private let confirmPasswordTextField = UITextField(placeholder: "1223445", textColor: .gray)
+    private let emailTextField = UITextField(line: true)
+    private let passwordTestField = UITextField(line: true)
+    private let confirmPasswordTextField = UITextField(line: true)
 
     //Buttons
     private let signUpButton = UIButton(title: "Sign Up", color: UIColor(named: "purple")!, titleColor: .white)
@@ -45,10 +45,20 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        self.liftUpView(amount: 100)
         
         setupSignUpButton()
+        setupTestFieldsDelegates()
         
         setupConstraints()
+    }
+    
+    //MARK: - setupTestFieldsDelegates
+    
+    private func setupTestFieldsDelegates() {
+        emailTextField.delegate = self
+        passwordTestField.delegate = self
+        confirmPasswordTextField.delegate = self
     }
     
     //MARK: - setupSignUpButton
@@ -57,7 +67,7 @@ final class SignUpViewController: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
-    //MARK: - @objc method signUpButtonTapped
+    //MARK: - @objc signUpButtonTapped
     
     @objc private func signUpButtonTapped() {
         
@@ -65,24 +75,20 @@ final class SignUpViewController: UIViewController {
         let password = passwordTestField.text
         let confirmPassword = confirmPasswordTextField.text
         
-        if Validators.isAllFieldsFilled(email: email, password: password, confirmPassword: confirmPassword) == false {
-            self.showAlertFillAllTextFields()
+        service.registerUser(email: email!, password: password!, confirmPassword: confirmPassword!) {
+            [weak self] result in
             
-        } else if Validators.isPasswordsMatch(password: password, confirmPassword: confirmPassword) == false {
-            self.showAlertPasswordsDoNotMatch()
-            
-        } else {
-            service.registerUser(email: email!, password: password!) { [weak self] result in
-                switch result {
-                    
-                case .success(let user):
-                    let view = SetupProfileViewController(email: user.email!, id: user.uid)
-                    view.modalPresentationStyle = .fullScreen
-                    
-                    self?.present(view, animated: true)
-                case .failure(let error):
-                    print("Registration error", error)
-                }
+            switch result {
+                
+            case .success(let user):
+                let view = SetupProfileViewController(email: user.email!, id: user.uid)
+                view.modalPresentationStyle = .fullScreen
+                
+                self?.present(view, animated: true)
+                
+            case .failure(let error):
+                self?.showErrorAlert(message: error.localizedDescription)
+                
             }
         }
     }
@@ -118,5 +124,13 @@ extension SignUpViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(130)
          
         }
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

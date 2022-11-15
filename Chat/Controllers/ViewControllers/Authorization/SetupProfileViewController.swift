@@ -32,8 +32,8 @@ final class SetupProfileViewController: UIViewController {
     private let addingButton = UIButton()
     
     //testFields
-    private let fullNameTextField = UITextField(placeholder: "Bob Robinson", textColor: .gray)
-    private let aboutMeTextField = UITextField(placeholder: "i can tell you a very funny joke", textColor: .gray)
+    private let fullNameTextField = UITextField(line: true)
+    private let aboutMeTextField = UITextField(line: true)
     
     //imageView
     private let photoImageView = UIImageView()
@@ -46,7 +46,7 @@ final class SetupProfileViewController: UIViewController {
     private lazy var aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], spacing: 10)
     private lazy var sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl], spacing: 20)
     
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatsButton], spacing: 35)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatsButton], spacing: 50)
     
     //MARK: - Init
     
@@ -71,14 +71,24 @@ final class SetupProfileViewController: UIViewController {
         setupSexSegmentedControl()
         setupPhotoImageVeiw()
         setupGoToChatsButton()
+        setupTestFieldsDelegates()
+        self.liftUpView(amount: 50)
         
         setuContsraints()
+    }
+    
+    //MARK: - setupTestFieldsDelegates
+    
+    private func setupTestFieldsDelegates() {
+        fullNameTextField.delegate = self
+        aboutMeTextField.delegate = self
     }
     
     //MARK: - setupAddingButton
     
     private func setupAddingButton() {
-        addingButton.setImage(UIImage(named: "add"), for: .normal)
+        addingButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        addingButton.tintColor = .black
         addingButton.clipsToBounds = true
         addingButton.addTarget(self, action: #selector(addingButtonTapped), for: .touchUpInside)
     }
@@ -95,7 +105,7 @@ final class SetupProfileViewController: UIViewController {
         photoImageView.layer.cornerRadius = 65
         photoImageView.layer.borderWidth = 1
         photoImageView.layer.borderColor = UIColor(named: "purple")!.cgColor
-        photoImageView.image = UIImage(named: "userMessage")
+        photoImageView.backgroundColor = .gray
         photoImageView.clipsToBounds = true
     }
     
@@ -114,30 +124,26 @@ final class SetupProfileViewController: UIViewController {
         let sex = sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)
         let avatar = photoImageView.image
         
-        if Validators.isAllFieldsFilled(username: username, description: description) {
-            
-            let userData = Human(username: username!,
+        let userData = Human(username: username!,
                                  email: email,
                                  avatar: "not exist",
                                  description: description!,
                                  sex: sex!,
                                  id: id)
-            
-            service.saveProfile(userData: userData, avatar: avatar!) { [weak self] result in
-                
+
+            service.saveProfile(userData: userData, avatar: avatar) { [weak self] result in
                 switch result {
 
                 case .success(let user):
                     let tabBar = TabBarController(currentUser: user)
                     tabBar.modalPresentationStyle = .fullScreen
-                    
+
                     self?.present(tabBar, animated: true)
 
                 case .failure(let error):
-                    print("Failed to save profile", error)
+                    self?.showErrorAlert(message: error.localizedDescription)
                 }
             }
-        }
     }
     
     //MARK: - @objc addingButtonTapped
@@ -211,5 +217,13 @@ extension SetupProfileViewController: UIImagePickerControllerDelegate, UINavigat
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         photoImageView.image = image
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension SetupProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

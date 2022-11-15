@@ -8,3 +8,4 @@ disabled_rules:
   - line_length
   - empty_enum_arguments
   - force_cast
+  - closure_parameter_position

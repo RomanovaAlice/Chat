@@ -16,7 +16,6 @@ extension UILabel {
         self.init()
         
         self.text = title
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.textAlignment = textAlignment
         
         if font != nil {

@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 final class AuthorizationService {
     
+    //MARK: - Properties
+    
     private var usersReference: CollectionReference {
         return Firestore.firestore().collection("Users")
     }
@@ -23,47 +25,95 @@ final class AuthorizationService {
         return Auth.auth().currentUser!.uid
     }
     
+    //MARK: - loginUser
+    
     func loginUser(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
-
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        
+        guard Validators.isAllFieldsFilled(email: email, password: password) else {
+            completion(.failure(AuthorizationError.fieldsNotFilled))
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, _) in
             
             guard let result = result else {
-                completion(.failure(error!))
+                completion(.failure(AuthorizationError.userNotExist))
                 return
             }
             completion(.success(result.user))
         }
     }
     
-    func registerUser(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+    //MARK: - registerUser
+    
+    func registerUser(email: String, password: String, confirmPassword: String, completion: @escaping (Result<User, Error>) -> Void) {
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+        guard Validators.isAllFieldsFilled(email: email, password: password, confirmPassword: confirmPassword) else {
+            completion(.failure(AuthorizationError.fieldsNotFilled))
+            return
+        }
+        
+        guard Validators.isEmailValid(email: email) else {
+            completion(.failure(AuthorizationError.invalidEmail))
+            return
+        }
+        
+        guard Validators.isPasswordValid(password: password) else {
+            completion(.failure(AuthorizationError.invalidPassword))
+            return
+        }
+        
+        guard Validators.isPasswordsMatch(password: password, confirmPassword: confirmPassword) else {
+            completion(.failure(AuthorizationError.passwordsNotMatch))
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, _) in
             
             guard let result = result else {
-                completion(.failure(error!))
+                completion(.failure(AuthorizationError.serverError))
                 return
             }
             completion(.success(result.user))
         }
     }
+    
+    //MARK: - getUserData
     
     func getUserData(user: User, completion: @escaping (Result<Human, Error>) -> Void) {
-        
-        let docRef = usersReference.document(user.uid)
-        
-        docRef.getDocument { (document, error) in
+        usersReference.document(user.uid).getDocument { (document, _) in
             if let document = document, document.exists {
                 
-                let user = Human(document: document)
-                completion(.success(user!))
+                let userData = document.data() as! [String: String]
+                
+                let user = Human(username: userData["username"]!,
+                                 email: userData["email"]!,
+                                 avatar: userData["avatar"]!,
+                                 description: userData["description"]!,
+                                 sex: userData["sex"]!,
+                                 id: userData["id"]!)
+    
+                completion(.success(user))
 
             } else {
-                completion(.failure(error!))
+                completion(.failure(AuthorizationError.serverError))
             }
         }
     }
     
-    func saveProfile(userData: Human, avatar: UIImage, completion: @escaping (Result<Human, Error>) -> Void) {
+    //MARK: - saveProfile
+    
+    func saveProfile(userData: Human, avatar: UIImage?, completion: @escaping (Result<Human, Error>) -> Void) {
+        
+        guard Validators.isAllFieldsFilled(username: userData.username, description: userData.description) else {
+            completion(.failure(AuthorizationError.fieldsNotFilled))
+            return
+        }
+        
+        guard Validators.isAvatarExist(avatar: avatar) else {
+            completion(.failure(AuthorizationError.imageNotLoaded))
+            return
+        }
         
         var user = Human(username: userData.username,
                          email: userData.email,
@@ -72,7 +122,7 @@ final class AuthorizationService {
                          sex: userData.sex,
                          id: userData.id)
         
-        loadUserPhoto(photo: avatar) { result in
+        loadUserPhoto(photo: avatar!) { result in
             switch result {
                 
             case .success(let url):
@@ -91,9 +141,10 @@ final class AuthorizationService {
             }
         }
     }
+    
+    //MARK: - loadUserPhoto
 
     private func loadUserPhoto(photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
-        
         guard let imageData = photo.jpegData(compressionQuality: 0.4) else { return }
         
         let metadata = StorageMetadata()
