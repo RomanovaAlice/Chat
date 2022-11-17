@@ -8,8 +8,6 @@
 import SnapKit
 
 final class SetupProfileViewController: UIViewController {
-    
-    private let service = AuthorizationService()
  
     //MARK: - Properties
     
@@ -131,7 +129,7 @@ final class SetupProfileViewController: UIViewController {
                                  sex: sex!,
                                  id: id)
 
-            service.saveProfile(userData: userData, avatar: avatar) { [weak self] result in
+        FirestoreService.shared.saveProfile(userData: userData, avatar: avatar) { [weak self] result in
                 switch result {
 
                 case .success(let user):

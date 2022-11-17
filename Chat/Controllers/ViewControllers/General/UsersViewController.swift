@@ -7,7 +7,6 @@
 
 import FirebaseAuth
 import FirebaseFirestore
-import SDWebImage
 
 final class UsersViewController: UIViewController {
     
@@ -28,6 +27,8 @@ final class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
         usersListener = listenerService.observeUsers(users: users, completion: { result in
             switch result {
                 
@@ -42,8 +43,6 @@ final class UsersViewController: UIViewController {
                 print("listen error: ", error)
             }
         })
-
-        view.backgroundColor = .white
     }
     
     //MARK: - Deinit
@@ -51,13 +50,14 @@ final class UsersViewController: UIViewController {
     deinit {
         usersListener?.remove()
     }
-
+    
     //MARK: - setupCollectionView
    
    private func setupCollectionView() {
        usersCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
        usersCollectionView.backgroundColor = .white
        usersCollectionView.showsVerticalScrollIndicator = false
+       usersCollectionView.delegate = self
        
        usersCollectionView.register(UsersCell.self, forCellWithReuseIdentifier: UsersCell.identifier)
        usersCollectionView.register(SectionHeader.self,
@@ -152,6 +152,16 @@ extension UsersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.showAlertGoToChat { _ in
             
+            FirestoreService.shared.createChat(receiver: self.users[indexPath.row]) { result in
+                switch result {
+                    
+                case .success:
+                    self.navigationController?.pushViewController(MessageViewController(user: FirestoreService.shared.currentUser), animated: true)
+                
+                case .failure(let error):
+                    self.showErrorAlert(message: error.localizedDescription)
+                }
+            }
         }
     }
 }

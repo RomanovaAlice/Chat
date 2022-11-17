@@ -23,7 +23,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let chatViewController = ChatViewController()
+        let chatViewController = ChatViewController(currentUser: currentUser)
         let usersViewController = UsersViewController()
         let profileViewController = ProfileViewController(userData: currentUser)
         

@@ -10,7 +10,6 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let service = AuthorizationService()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         if let user = Auth.auth().currentUser {
-            service.getUserData(user: user) { (result) in
+            FirestoreService.shared.getUserData(user: user) { (result) in
                 switch result {
 
                 case .success(let user):
+                    FirestoreService.shared.currentUser = user
+                    
                     let tabBar = TabBarController(currentUser: user)
                     tabBar.modalPresentationStyle = .fullScreen
                     self.window?.rootViewController = tabBar

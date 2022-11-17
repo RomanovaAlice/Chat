@@ -9,7 +9,7 @@ import SnapKit
 
 final class LoginViewController: UIViewController {
     
-    private let service = AuthorizationService()
+    private let authorizationService = AuthorizationService()
     
     //MARK: - Properties
 
@@ -66,11 +66,11 @@ final class LoginViewController: UIViewController {
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        service.loginUser(email: email!, password: password!) { [weak self] result in
+        authorizationService.loginUser(email: email!, password: password!) { [weak self] result in
             switch result {
                 
             case .success(let user):
-                self?.service.getUserData(user: user) { result in
+                FirestoreService.shared.getUserData(user: user) { result in
                     switch result {
                         
                     case .success(let user):

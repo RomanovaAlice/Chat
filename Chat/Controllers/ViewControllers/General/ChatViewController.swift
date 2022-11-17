@@ -5,7 +5,7 @@
 //  Created by Алиса Романова on 29.10.2022.
 //
 
-import UIKit
+import FirebaseFirestore
 
 final class ChatViewController: UIViewController {
 
@@ -13,22 +13,53 @@ final class ChatViewController: UIViewController {
         case chats
     }
     
-    private let chatss = [Chat(username: "v", userImage: "", lastMessage: "d")]
+    private var chats: [Chat] = []
+    private let currentUser: Human
     
     //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
-
+    private let listenerService = ListenerService()
     private var chatCollectionView: UICollectionView!
+    private var listener: ListenerRegistration?
+    
+    //MARK: - Init
+    
+    init(currentUser: Human) {
+        self.currentUser = currentUser
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        setupCollectionView()
-        setupDataSource()
-        setupSnapshot()
+
+        listener = listenerService.observeChats(chats: chats, completion: { result in
+            switch result {
+                
+            case .success(let chats):
+                self.chats = chats
+                
+                self.setupCollectionView()
+                self.setupDataSource()
+                self.setupSnapshot()
+                
+            case .failure(let error):
+                self.showErrorAlert(message: error.localizedDescription)
+            }
+        })
+    }
+    
+    //MARK: - Deinit
+    
+    deinit {
+        listener?.remove()
     }
     
      //MARK: - setupCollectionView
@@ -37,6 +68,7 @@ final class ChatViewController: UIViewController {
         chatCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         chatCollectionView.backgroundColor = .white
         chatCollectionView.showsVerticalScrollIndicator = false
+        chatCollectionView.delegate = self
         
         chatCollectionView.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.identifier)
         chatCollectionView.register(SectionHeader.self,
@@ -52,7 +84,7 @@ final class ChatViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Chat>()
         
         snapshot.appendSections([.chats])
-        snapshot.appendItems(chatss, toSection: .chats)
+        snapshot.appendItems(chats, toSection: .chats)
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -116,5 +148,13 @@ final class ChatViewController: UIViewController {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         
         return sectionHeader
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+
+extension ChatViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(MessageViewController(user: currentUser), animated: true)
     }
 }

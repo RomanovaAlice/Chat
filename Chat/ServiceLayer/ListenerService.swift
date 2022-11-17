@@ -10,6 +10,8 @@ import FirebaseFirestore
 
 final class ListenerService {
     
+    //MARK: - Properties
+    
     private var usersReference: CollectionReference {
         return Firestore.firestore().collection("Users")
     }
@@ -17,6 +19,8 @@ final class ListenerService {
     private var currentUserId: String {
         return Auth.auth().currentUser!.uid
     }
+    
+    //MARK: - observeUsers
     
     func observeUsers(users: [Human], completion: @escaping (Result<[Human], Error>) -> Void) -> ListenerRegistration? {
         var users = users
@@ -49,5 +53,39 @@ final class ListenerService {
             completion(.success(users))
         }
         return usersListener
+    }
+    
+    //MARK: - observeChats
+    
+    func observeChats(chats: [Chat], completion: @escaping (Result<[Chat], Error>) -> Void) -> ListenerRegistration? {
+        var chats = chats
+        
+        let chatsReference = Firestore.firestore().collection(["Users", currentUserId, "Chats"].joined(separator: "/"))
+        
+        let chatsListener = chatsReference.addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                completion(.failure(error!))
+                return
+            }
+            
+            snapshot.documentChanges.forEach { (diff) in
+                guard let chat = Chat(document: diff.document) else { return }
+                
+                switch diff.type {
+                    
+                case .added:
+                    guard !chats.contains(chat) else { return }
+                    chats.append(chat)
+                case .modified:
+                    guard let index = chats.firstIndex(of: chat) else { return }
+                    chats[index] = chat
+                case .removed:
+                    guard let index = chats.firstIndex(of: chat) else { return }
+                    chats.remove(at: index)
+                }
+            }
+            completion(.success(chats))
+        }
+        return chatsListener
     }
 }
