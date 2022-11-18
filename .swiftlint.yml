@@ -9,3 +9,4 @@ disabled_rules:
   - empty_enum_arguments
   - force_cast
   - closure_parameter_position
+  - identifier_name

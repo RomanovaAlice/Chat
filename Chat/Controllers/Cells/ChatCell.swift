@@ -11,9 +11,9 @@ final class ChatCell: UICollectionViewCell {
     static let identifier = "ChatCell"
     
     //MARK: - Properties
-    private let avatarImageView = UIImageView()
-    private let userNameLabel = UILabel()
-    private let lastMessageLabel = UILabel()
+    var avatarImageView = UIImageView()
+    var userNameLabel = UILabel()
+    var lastMessageLabel = UILabel()
     
     //MARK: - Inits
     
@@ -48,6 +48,7 @@ final class ChatCell: UICollectionViewCell {
         avatarImageView.layer.borderColor = UIColor(named: "purple")?.cgColor
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.cornerRadius = 25
+        avatarImageView.clipsToBounds = true
     }
 
     private func setupUserNameLabel() {
@@ -56,7 +57,6 @@ final class ChatCell: UICollectionViewCell {
     }
     
     private func setupLastMessageLabel() {
-        lastMessageLabel.text = "How are you?"
         lastMessageLabel.alpha = 0.7
     }
 }

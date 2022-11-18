@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             window?.rootViewController = AuthorizationViewController()
         }
+
         
         window?.makeKeyAndVisible()
     }

@@ -44,14 +44,13 @@ struct Message: Hashable, MessageType {
     }
     
     var representation: [String: Any] {
-        
-        var dictionary: [String: Any] = [:]
-        dictionary["created"] = sentDate
-        dictionary["senderID"] = sender.senderId
-        dictionary["senderUserame"] = sender.displayName
-        dictionary["content"] = content
-        
-        return dictionary
+        let rep: [String: Any] = [
+            "created": sentDate,
+            "senderID": sender.senderId,
+            "senderName": sender.displayName,
+            "content": content
+        ]
+        return rep
     }
     
     func hash(into hasher: inout Hasher) {
@@ -60,5 +59,12 @@ struct Message: Hashable, MessageType {
     
     static func == (lhs: Message, rhs: Message) -> Bool {
         return lhs.messageId == rhs.messageId
+    }
+}
+
+
+extension Message: Comparable {
+    static func < (lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentDate < rhs.sentDate
     }
 }

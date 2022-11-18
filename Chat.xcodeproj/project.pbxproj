@@ -29,6 +29,8 @@
 		D27DDA7329212A0600226DA9 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7229212A0600226DA9 /* Human.swift */; };
 		D27DDA7A29212BE400226DA9 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7929212BE400226DA9 /* AuthorizationService.swift */; };
 		D28B17E12926B2C600CB5C0F /* AuthorizatonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */; };
+		D28B183B2927C8AC00CB5C0F /* ListenerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B183A2927C8AC00CB5C0F /* ListenerError.swift */; };
+		D28B183D29281D3E00CB5C0F /* UIScrollView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
 		D2B125302905DCE900D7CC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B1252F2905DCE900D7CC7F /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		D27DDA7229212A0600226DA9 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 		D27DDA7929212BE400226DA9 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizatonError.swift; sourceTree = "<group>"; };
+		D28B183A2927C8AC00CB5C0F /* ListenerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerError.swift; sourceTree = "<group>"; };
+		D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView + Extension.swift"; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B125282905DCE800D7CC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E10F0E2926B1A500F25088 /* UserError.swift */,
+				D28B183A2927C8AC00CB5C0F /* ListenerError.swift */,
 				D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */,
 				D2169FAA291CBF7E009F9442 /* Validators.swift */,
 			);
@@ -152,6 +157,7 @@
 				D225491C2909CBEF00E42BFD /* UIView + Extension .swift */,
 				D225491E290A474100E42BFD /* UIStackView + Extension.swift */,
 				D2254925290A59E100E42BFD /* UITextField + Extension .swift */,
+				D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */,
 				D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */,
 			);
 			path = UIKit;
@@ -430,6 +436,7 @@
 				D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */,
 				D2E10EFE2922451600F25088 /* FetchImageService .swift in Sources */,
 				D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */,
+				D28B183D29281D3E00CB5C0F /* UIScrollView + Extension.swift in Sources */,
 				D2E10F06292658B600F25088 /* StorageService .swift in Sources */,
 				D2169FAB291CBF7E009F9442 /* Validators.swift in Sources */,
 				D28B17E12926B2C600CB5C0F /* AuthorizatonError.swift in Sources */,
@@ -442,6 +449,7 @@
 				D2E10F0F2926B1A500F25088 /* UserError.swift in Sources */,
 				D2E10F0D29267DD500F25088 /* Message.swift in Sources */,
 				D21B2612291E12940035FBEA /* Chat.swift in Sources */,
+				D28B183B2927C8AC00CB5C0F /* ListenerError.swift in Sources */,
 				D2E10EFC29216F1A00F25088 /* ListenerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

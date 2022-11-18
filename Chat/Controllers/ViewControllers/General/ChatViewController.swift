@@ -8,19 +8,23 @@
 import FirebaseFirestore
 
 final class ChatViewController: UIViewController {
+    
+    private let currentUser: Human
 
     private enum Section: Int, CaseIterable {
         case chats
     }
     
-    private var chats: [Chat] = []
-    private let currentUser: Human
-    
     //MARK: - Properties
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
-    private let listenerService = ListenerService()
-    private var chatCollectionView: UICollectionView!
+    private let imageService = FetchImageService()
+    private let service = ListenerService()
     private var listener: ListenerRegistration?
+    
+    private var chats: [Chat] = []
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
+
+    private var chatCollectionView: UICollectionView!
     
     //MARK: - Init
     
@@ -39,17 +43,18 @@ final class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        self.setupCollectionView()
+        self.setupDataSource()
 
-        listener = listenerService.observeChats(chats: chats, completion: { result in
+        listener = service.observeChats(chats: chats, completion: { result in
             switch result {
-                
+
             case .success(let chats):
                 self.chats = chats
-                
-                self.setupCollectionView()
-                self.setupDataSource()
+
                 self.setupSnapshot()
-                
+
             case .failure(let error):
                 self.showErrorAlert(message: error.localizedDescription)
             }
@@ -94,7 +99,10 @@ final class ChatViewController: UIViewController {
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Chat>(collectionView: chatCollectionView, cellProvider: { collectionView, indexPath, _ in
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.identifier, for: indexPath) as! ChatCell
+            
+            cell.userNameLabel.text = self.chats[indexPath.row].username
+            self.imageService.fetchImage(URLString: self.chats[indexPath.row].userAvatar, imageView: &cell.avatarImageView)
    
             return cell
         })
@@ -155,6 +163,6 @@ final class ChatViewController: UIViewController {
 
 extension ChatViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(MessageViewController(user: currentUser), animated: true)
+        navigationController?.pushViewController(MessageViewController(user: currentUser, chat: chats[indexPath.row]), animated: true)
     }
 }

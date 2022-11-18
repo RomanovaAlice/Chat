@@ -9,25 +9,38 @@ import FirebaseAuth
 import FirebaseFirestore
 
 final class UsersViewController: UIViewController {
-    
-    private let listenerService = ListenerService()
-    private let imageService = FetchImageService()
 
     private enum Section: Int, CaseIterable {
         case users
+        
+        func description(usersCount: Int) -> String {
+            switch self {
+            case .users:
+                return "\(usersCount) people nearly"
+            }
+        }
     }
     
     //MARK: - Properties
-    private var usersCollectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Human>?
-    private var users: [Human] = []
+    private let listenerService = ListenerService()
+    private let imageService = FetchImageService()
+    
     private var usersListener: ListenerRegistration?
-     
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Human>!
+    
+    private var usersCollectionView: UICollectionView!
+
+    private var users: [Human] = []
+
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        self.setupCollectionView()
+        self.setupDataSource()
         
         usersListener = listenerService.observeUsers(users: users, completion: { result in
             switch result {
@@ -35,10 +48,8 @@ final class UsersViewController: UIViewController {
             case .success(let users):
                 self.users = users
                 
-                self.setupCollectionView()
-                self.setupDataSource()
                 self.setupSnapshot()
-
+    
             case .failure(let error):
                 print("listen error: ", error)
             }
@@ -93,12 +104,20 @@ final class UsersViewController: UIViewController {
            return cell
        })
        
-       dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+       dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
            
            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
                fatalError("Can not create new section header") }
+           
+           guard let section = Section(rawValue: indexPath.section) else {
+               fatalError("Unknown section kind")
+           }
+           
+           let items = self.dataSource.snapshot().itemIdentifiers(inSection: .users)
 
-           sectionHeader.configure(text: "\(self.users.count) peeope nearly", font: .systemFont(ofSize: 45, weight: .light), textColor: .black)
+           sectionHeader.configure(text: section.description(usersCount: items.count),
+                                   font: .systemFont(ofSize: 45, weight: .light),
+                                   textColor: .black)
            
            return sectionHeader
        }
@@ -149,17 +168,18 @@ final class UsersViewController: UIViewController {
 //MARK: - UICollectionViewDelegate
 
 extension UsersViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.showAlertGoToChat { _ in
-            
-            FirestoreService.shared.createChat(receiver: self.users[indexPath.row]) { result in
+
+            FirestoreService.shared.createChat(friend: self.users[indexPath.row]) { [weak self] result in
                 switch result {
                     
                 case .success:
-                    self.navigationController?.pushViewController(MessageViewController(user: FirestoreService.shared.currentUser), animated: true)
+                    self?.tabBarController?.selectedIndex = 1
                 
                 case .failure(let error):
-                    self.showErrorAlert(message: error.localizedDescription)
+                    self?.showErrorAlert(message: error.localizedDescription)
                 }
             }
         }

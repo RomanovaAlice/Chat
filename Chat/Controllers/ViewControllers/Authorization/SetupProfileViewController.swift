@@ -133,6 +133,8 @@ final class SetupProfileViewController: UIViewController {
                 switch result {
 
                 case .success(let user):
+                    FirestoreService.shared.currentUser = user
+                    
                     let tabBar = TabBarController(currentUser: user)
                     tabBar.modalPresentationStyle = .fullScreen
 

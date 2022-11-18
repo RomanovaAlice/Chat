@@ -9,16 +9,12 @@ import SnapKit
 import FirebaseAuth
 
 class ProfileViewController: UIViewController {
-    
-    private var service = FetchImageService()
 
     //MARK: - Properties
     
     private let userData: Human
     
-    //flags
-    private var isEdit = false
-    private var counter = 1
+    private var service = FetchImageService()
     
     //imageView
     private var photoImageView = UIImageView()
@@ -157,10 +153,6 @@ extension ProfileViewController {
 extension ProfileViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if isEdit {
-            return true
-        } else {
-            return false
-        }
+        return false
     }
 }
