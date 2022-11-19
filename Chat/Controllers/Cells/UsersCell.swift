@@ -11,8 +11,12 @@ final class UsersCell: UICollectionViewCell {
     static let identifier = "UsersCell"
     
     //MARK: - Properties
+    private let backView = UIView()
+    
     var photoImageView = UIImageView()
-    var nameLabel = UILabel()
+    var nameLabel = UILabel(title: "", font: .systemFont(ofSize: 18, weight: .semibold), textColor: .black)
+    var descriptionLabel = UILabel(title: "", textAlignment: .left, textColor: .gray)
+    var genderLabel = UILabel(title: "", textAlignment: .left, textColor: .systemGreen)
     
     //MARK: - Inits
     
@@ -21,8 +25,9 @@ final class UsersCell: UICollectionViewCell {
         
         setupSelfAppearance()
         
+        configureBackView()
         setupPhotoImageView()
-        setupNameLabel()
+        configureDescriptionLabel()
         
         setupConstraints()
     }
@@ -33,26 +38,23 @@ final class UsersCell: UICollectionViewCell {
     
     //MARK: - Setup cell elements
     
+    private func configureBackView() {
+        backView.backgroundColor = .systemGray6
+        backView.layer.cornerRadius = 15
+    }
+    
+    private func configureDescriptionLabel() {
+        descriptionLabel.numberOfLines = 4
+    }
+    
     private func setupSelfAppearance() {
-        self.clipsToBounds = true
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(named: "purple")?.cgColor
-        
-        self.layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.backgroundColor = .clear
     }
     
     private func setupPhotoImageView() {
-        photoImageView.image = UIImage(named: "userMessage")
-    }
-    
-    private func setupNameLabel() {
-        nameLabel.text = "Alex Smith"
-        nameLabel.font = .systemFont(ofSize: 19)
+        photoImageView.backgroundColor = .systemGray
+        photoImageView.layer.cornerRadius = 15
+        photoImageView.clipsToBounds = true
     }
 }
 
@@ -61,22 +63,51 @@ final class UsersCell: UICollectionViewCell {
 extension UsersCell {
     private func setupConstraints() {
         
+        //backView
+        
+        self.addSubview(backView)
+        
+        backView.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(10)
+            make.right.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(40)
+        }
+        
         //photoImageView
         
         self.addSubview(photoImageView)
         
         photoImageView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().inset(40)
+            make.left.top.bottom.equalToSuperview()
+            make.width.equalTo(150)
         }
         
         //nameLabel
         
-        self.addSubview(nameLabel)
+        backView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(7)
-            make.left.equalToSuperview().inset(8)
+            make.left.equalTo(photoImageView.snp.right).inset(-15)
+            make.top.equalToSuperview().offset(10)
+        }
+        
+        //genderLabel
+        
+        backView.addSubview(genderLabel)
+        
+        genderLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).inset(-5)
+            make.left.equalTo(nameLabel)
+        }
+        
+        //descriptionLabel
+        
+        backView.addSubview(descriptionLabel)
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(genderLabel.snp.bottom).inset(-5)
+            make.left.equalTo(nameLabel)
+            make.right.equalToSuperview().inset(10)
         }
     }
 }

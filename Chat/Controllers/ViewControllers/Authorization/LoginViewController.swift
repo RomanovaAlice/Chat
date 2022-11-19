@@ -14,7 +14,7 @@ final class LoginViewController: UIViewController {
     //MARK: - Properties
 
     //title
-    private let titleLabel = UILabel(title: "Welcome back!", font: .systemFont(ofSize: 30))
+    private let titleLabel = UILabel(title: "Welcome back!", font: .systemFont(ofSize: 30), textColor: .black)
     
     //labels
     private let emailLabel = UILabel(title: "Email", textAlignment: .left)

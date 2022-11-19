@@ -10,7 +10,7 @@ import FirebaseFirestore
 final class ChatViewController: UIViewController {
     
     private let currentUser: Human
-
+    
     private enum Section: Int, CaseIterable {
         case chats
     }
@@ -23,7 +23,7 @@ final class ChatViewController: UIViewController {
     private var chats: [Chat] = []
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
-
+    
     private var chatCollectionView: UICollectionView!
     
     //MARK: - Init
@@ -46,15 +46,15 @@ final class ChatViewController: UIViewController {
         
         self.setupCollectionView()
         self.setupDataSource()
-
+        
         listener = service.observeChats(chats: chats, completion: { result in
             switch result {
-
+                
             case .success(let chats):
                 self.chats = chats
-
+                
                 self.setupSnapshot()
-
+                
             case .failure(let error):
                 self.showErrorAlert(message: error.localizedDescription)
             }
@@ -67,7 +67,7 @@ final class ChatViewController: UIViewController {
         listener?.remove()
     }
     
-     //MARK: - setupCollectionView
+    //MARK: - setupCollectionView
     
     private func setupCollectionView() {
         chatCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
@@ -76,9 +76,6 @@ final class ChatViewController: UIViewController {
         chatCollectionView.delegate = self
         
         chatCollectionView.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.identifier)
-        chatCollectionView.register(SectionHeader.self,
-                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                    withReuseIdentifier: SectionHeader.identifier)
         
         view.addSubview(chatCollectionView)
     }
@@ -103,19 +100,9 @@ final class ChatViewController: UIViewController {
             
             cell.userNameLabel.text = self.chats[indexPath.row].username
             self.imageService.fetchImage(URLString: self.chats[indexPath.row].userAvatar, imageView: &cell.avatarImageView)
-   
+            
             return cell
         })
-        
-        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
-                fatalError("Can not create new section header") }
-            
-            sectionHeader.configure(text: "Chats", font: .systemFont(ofSize: 25), textColor: .black)
-            
-            return sectionHeader
-        }
     }
     
     //MARK: - createCompositionalLayout
@@ -127,35 +114,21 @@ final class ChatViewController: UIViewController {
     }
     
     //MARK: - createSection
-
+    
     private func createSection() -> NSCollectionLayoutSection {
-
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.interGroupSpacing = 10
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
-
-        let sectionHeader = createSectionHeader()
-        section.boundarySupplementaryItems = [sectionHeader]
-
+        //        section.interGroupSpacing = 10
+        //        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
         return section
-    }
-    
-    //MARK: - createSectionHeader
-    
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-        
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
-        return sectionHeader
     }
 }
 

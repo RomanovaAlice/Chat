@@ -9,6 +9,8 @@ import MessageKit
 import FirebaseFirestore
 import InputBarAccessoryView
 
+var lastMessageGlobal = ""
+
 class MessageViewController: MessagesViewController {
 
     //MARK: - Properties
@@ -20,6 +22,8 @@ class MessageViewController: MessagesViewController {
     
     private var messageListener: ListenerRegistration?
     private let listenerService = ListenerService()
+    
+    private let storageService = StorageService()
     
     //MARK: - Init
     
@@ -48,7 +52,6 @@ class MessageViewController: MessagesViewController {
             switch result {
                 
             case .success(let message):
-                print(message)
                 self.insertNewMessage(message: message)
                 
             case .failure(let error):
@@ -85,27 +88,26 @@ class MessageViewController: MessagesViewController {
     
     private func configureMessageInputBar() {
         messageInputBar.delegate = self
-        messageInputBar.isTranslucent = true
-        messageInputBar.separatorLine.isHidden = true
-        messageInputBar.backgroundView.backgroundColor = .gray
+        messageInputBar.backgroundView.backgroundColor = .systemGray5
         messageInputBar.inputTextView.backgroundColor = .white
-        messageInputBar.inputTextView.placeholderTextColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 14, left: 30, bottom: 14, right: 36)
-        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 14, left: 36, bottom: 14, right: 36)
-        messageInputBar.inputTextView.layer.borderColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 0.4033635232)
+        messageInputBar.inputTextView.placeholderTextColor = .gray
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 14, left: 15, bottom: 14, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 14, left: 21, bottom: 14, right: 36)
+        messageInputBar.inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         messageInputBar.inputTextView.layer.borderWidth = 0.2
-        messageInputBar.inputTextView.layer.cornerRadius = 18.0
+        messageInputBar.inputTextView.layer.cornerRadius = 18
         messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 14, left: 0, bottom: 14, right: 0)
         
-        messageInputBar.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        messageInputBar.layer.shadowColor = UIColor.black.cgColor
         messageInputBar.layer.shadowRadius = 5
         messageInputBar.layer.shadowOpacity = 0.3
         messageInputBar.layer.shadowOffset = CGSize(width: 0, height: 4)
         
         configureSendButton()
-        configureCameraIcon()
     }
+    
+    //MARK: - configureSendButton
     
     private func configureSendButton() {
         messageInputBar.sendButton.title = ""
@@ -115,22 +117,6 @@ class MessageViewController: MessagesViewController {
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 6, right: 30)
         messageInputBar.sendButton.setSize(CGSize(width: 48, height: 48), animated: false)
         messageInputBar.middleContentViewPadding.right = -38
-    }
-    
-    func configureCameraIcon() {
-        let cameraItem = InputBarButtonItem (type: .system)
-        cameraItem.tintColor = .gray
-        let cameraImage = UIImage(systemName: "camera")
-        cameraItem.image = cameraImage
-        
-        cameraItem.addTarget(self, action: #selector(camaraButtonPressed), for: .primaryActionTriggered)
-        
-        cameraItem.setSize(CGSize(width: 60, height: 30), animated: false)
-        
-        messageInputBar.leftStackView.alignment = .center
-        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
-        
-        messageInputBar.setStackViewItems([cameraItem], forStack: .left, animated: false)
     }
     
     //MARK: - insertNewMessage
@@ -147,13 +133,9 @@ class MessageViewController: MessagesViewController {
         
         if shouldScrollToBottom {
             DispatchQueue.main.async {
-                self.messagesCollectionView.scrollToBottom(animated: true)
+                self.messagesCollectionView.scrollToBottom()
             }
         }
-    }
-    
-    @objc private func camaraButtonPressed() {
-        
     }
 }
 
@@ -182,7 +164,7 @@ extension MessageViewController: MessagesDataSource {
 
 extension MessageViewController: MessagesLayoutDelegate {
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 0, height: 8)
+        return CGSize(width: 0, height: 10)
     }
 }
 
@@ -191,11 +173,11 @@ extension MessageViewController: MessagesLayoutDelegate {
 extension MessageViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .gray : .blue
+        return isFromCurrentSender(message: message) ? .systemGreen : .systemGray6
     }
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return .white
+        return isFromCurrentSender(message: message) ? .white : .black
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
@@ -216,7 +198,7 @@ extension MessageViewController: MessagesDisplayDelegate {
 extension MessageViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = Message(user: user, content: text)
-        
+        lastMessageGlobal = text
         FirestoreService.shared.sendMessage(chat: chat, message: message) { result in
             switch result {
                 
@@ -227,7 +209,6 @@ extension MessageViewController: InputBarAccessoryViewDelegate {
                 print(error)
             }
         }
-        
         inputBar.inputTextView.text = ""
     }
 }

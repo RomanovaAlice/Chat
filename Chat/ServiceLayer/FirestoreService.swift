@@ -16,7 +16,7 @@ final class FirestoreService {
     
     private let storageService = StorageService()
     
-    var currentUser: Human!
+    var currentUser: Human?
     
     private let db = Firestore.firestore()
     
@@ -71,8 +71,8 @@ final class FirestoreService {
                 user.avatar = url.absoluteString
 
                 self.db.collection("Users").document(user.id).setData(user.representation) { (error) in
-                    if let error = error {
-                        completion(.failure(error))
+                    if error != nil {
+                        completion(.failure(error!))
                     } else {
                         completion(.success(user))
                     }
@@ -87,6 +87,8 @@ final class FirestoreService {
     //MARK: - createChat
     
     func createChat(friend: Human, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        guard let currentUser = currentUser else { return }
         
         let friendReference = db.collection("Users").document(friend.id).collection("Chats").document(currentUser.id)
         let currentUserReferens = db.collection("Users").document(currentUser.id).collection("Chats").document(friend.id)
@@ -118,6 +120,8 @@ final class FirestoreService {
     //MARK: - sendMessage
     
     func sendMessage(chat: Chat, message: Message, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        guard let currentUser = currentUser else { return }
         
         let friendReference = db.collection("Users").document(chat.userID).collection("Chats").document(currentUser.id).collection("Messages")
         let currentUserReferens = db.collection("Users").document(currentUser.id).collection("Chats").document(chat.userID).collection("Messages")

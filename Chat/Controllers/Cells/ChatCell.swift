@@ -15,12 +15,14 @@ final class ChatCell: UICollectionViewCell {
     var userNameLabel = UILabel()
     var lastMessageLabel = UILabel()
     
+    private var bottomLine = UIView()
+    
     //MARK: - Inits
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupSelfAppearance()
+        setupBottomLine()
         
         setupAvatarImageView()
         setupUserNameLabel()
@@ -33,27 +35,19 @@ final class ChatCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup cell elements
-    
-    private func setupSelfAppearance() {
-        
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(named: "purple")?.cgColor
+    private func setupBottomLine() {
+        bottomLine.backgroundColor = .systemGray4
     }
     
     private func setupAvatarImageView() {
-        avatarImageView.image = UIImage(named: "userMessage")
-        avatarImageView.layer.borderColor = UIColor(named: "purple")?.cgColor
-        avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.cornerRadius = 25
+        avatarImageView.layer.cornerRadius = 30
         avatarImageView.clipsToBounds = true
     }
 
     private func setupUserNameLabel() {
         userNameLabel.text = "Alex Smith"
-        userNameLabel.font = .systemFont(ofSize: 17, weight: .medium)
+        userNameLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        userNameLabel.textColor = .black
     }
     
     private func setupLastMessageLabel() {
@@ -66,14 +60,24 @@ final class ChatCell: UICollectionViewCell {
 extension ChatCell {
     private func setupConstraints() {
         
+        //bottomLine
+        
+        self.addSubview(bottomLine)
+        
+        bottomLine.snp.makeConstraints { make in
+            make.right.bottom.equalToSuperview()
+            make.left.equalToSuperview().inset(100)
+            make.height.equalTo(1)
+        }
+        
         //avatarImageView
         
         self.addSubview(avatarImageView)
         
         avatarImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(15)
-            make.left.equalToSuperview().inset(10)
-            make.width.height.equalTo(50)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().inset(15)
+            make.width.height.equalTo(60)
         }
         
         //userNameLabel

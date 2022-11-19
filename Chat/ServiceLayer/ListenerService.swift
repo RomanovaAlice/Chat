@@ -26,31 +26,32 @@ final class ListenerService {
         var users = users
         
         let usersListener = usersReference.addSnapshotListener { (querySnapshot, error) in
-            guard let snapshot = querySnapshot else {
-                completion(.failure(error!))
-                return
-            }
             
-            snapshot.documentChanges.forEach { (diff) in
-                guard let user = Human(document: diff.document) else { return }
+            if error != nil {
+                completion(.failure(SystemError.failToAddUsersSnapshotListener))
                 
-                switch diff.type {
+            } else {
+                querySnapshot?.documentChanges.forEach { (diff) in
+                    guard let user = Human(document: diff.document) else { return }
                     
-                case .added:
-                    guard !users.contains(user) else { return }
-                    guard user.id != self.currentUserId else { return }
-                    users.append(user)
-                    
-                case .modified:
-                    guard let index = users.firstIndex(of: user) else { return }
-                    users[index] = user
-                    
-                case .removed:
-                    guard let index = users.firstIndex(of: user) else { return }
-                    users.remove(at: index)
+                    switch diff.type {
+                        
+                    case .added:
+                        guard !users.contains(user) else { return }
+                        guard user.id != self.currentUserId else { return }
+                        users.append(user)
+                        
+                    case .modified:
+                        guard let index = users.firstIndex(of: user) else { return }
+                        users[index] = user
+                        
+                    case .removed:
+                        guard let index = users.firstIndex(of: user) else { return }
+                        users.remove(at: index)
+                    }
                 }
+                completion(.success(users))
             }
-            completion(.success(users))
         }
         return usersListener
     }
@@ -62,29 +63,30 @@ final class ListenerService {
         
         let chatsReference = Firestore.firestore().collection(["Users", currentUserId, "Chats"].joined(separator: "/"))
         
-        let chatsListener = chatsReference.addSnapshotListener { querySnapshot, error in
-            guard let snapshot = querySnapshot else {
-                completion(.failure(error!))
-                return
-            }
+        let chatsListener = chatsReference.addSnapshotListener { (querySnapshot, error) in
             
-            snapshot.documentChanges.forEach { (diff) in
-                guard let chat = Chat(document: diff.document) else { return }
+            if error != nil {
+                completion(.failure(SystemError.failToAddChatsSnapshotListener))
                 
-                switch diff.type {
+            } else {
+                querySnapshot?.documentChanges.forEach { (diff) in
+                    guard let chat = Chat(document: diff.document) else { return }
                     
-                case .added:
-                    guard !chats.contains(chat) else { return }
-                    chats.append(chat)
-                case .modified:
-                    guard let index = chats.firstIndex(of: chat) else { return }
-                    chats[index] = chat
-                case .removed:
-                    guard let index = chats.firstIndex(of: chat) else { return }
-                    chats.remove(at: index)
+                    switch diff.type {
+                        
+                    case .added:
+                        guard !chats.contains(chat) else { return }
+                        chats.append(chat)
+                    case .modified:
+                        guard let index = chats.firstIndex(of: chat) else { return }
+                        chats[index] = chat
+                    case .removed:
+                        guard let index = chats.firstIndex(of: chat) else { return }
+                        chats.remove(at: index)
+                    }
                 }
+                completion(.success(chats))
             }
-            completion(.success(chats))
         }
         return chatsListener
     }
@@ -95,25 +97,27 @@ final class ListenerService {
         
         let messagesReference = usersReference.document(currentUserId).collection("Chats").document(chat.userID).collection("Messages")
         
-        let messagesListener = messagesReference.addSnapshotListener { querySnapshot, error in
-            guard let snapshot = querySnapshot else {
-                completion(.failure(error!))
-                return
-            }
+        let messagesListener = messagesReference.addSnapshotListener { (querySnapshot, error) in
             
-            snapshot.documentChanges.forEach { (diff) in
-                guard let message = Message(document: diff.document) else { return }
+            if error != nil {
+                completion(.failure(SystemError.failToAddMessagesSnapshotListener))
                 
-                switch diff.type {
+            } else {
+                querySnapshot?.documentChanges.forEach { (diff) in
+                    guard let message = Message(document: diff.document) else { return }
                     
-                case .added:
-                    completion(.success(message))
-                case .modified:
-                    break
-                case .removed:
-                    break
+                    switch diff.type {
+                        
+                    case .added:
+                        completion(.success(message))
+                    case .modified:
+                        break
+                    case .removed:
+                        break
+                    }
                 }
             }
+
         }
         return messagesListener
     }

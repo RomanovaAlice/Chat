@@ -16,6 +16,7 @@ enum AuthorizationError {
     case invalidEmail
     case invalidPassword
     case imageNotLoaded
+    case failToSaveProfile
 }
 
 extension AuthorizationError: LocalizedError {
@@ -36,6 +37,8 @@ extension AuthorizationError: LocalizedError {
             return NSLocalizedString("Your password is too simple", comment: "")
         case .imageNotLoaded:
             return NSLocalizedString("Upload profile photo", comment: "")
+        case .failToSaveProfile:
+            return NSLocalizedString("Fail to save profile", comment: "")
         }
     }
 }

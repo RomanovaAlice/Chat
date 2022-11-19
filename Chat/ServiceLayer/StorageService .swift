@@ -10,34 +10,31 @@ import FirebaseAuth
 
 final class StorageService {
     
-    private var avatarsReference: StorageReference {
-        return Storage.storage().reference().child("Avatars")
-    }
+    private var db = Storage.storage().reference()
     
-    private var currentUserId: String {
-        return Auth.auth().currentUser!.uid
-    }
+    private var currentUserId = Auth.auth().currentUser!.uid
     
     func loadUserPhoto(photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
+        let reference = db.child("Avatars")
+        
         guard let imageData = photo.jpegData(compressionQuality: 0.4) else { return }
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        avatarsReference.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
+        reference.child(currentUserId).putData(imageData, metadata: metadata) { (metadata, error) in
             
             if metadata == nil {
-                completion(.failure(error!))
+                completion(.failure(SystemError.metadataIsNil))
             }
             
-            self.avatarsReference.child(self.currentUserId).downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    completion(.failure(error!))
+            reference.child(self.currentUserId).downloadURL { (url, error) in
+                guard error != nil else {
+                    completion(.failure(SystemError.failToDownloadAvatarURL))
                     return
                 }
-                completion(.success(downloadURL))
+                completion(.success(url!))
             }
         }
     }
-
 }

@@ -18,7 +18,7 @@ final class SetupProfileViewController: UIViewController {
     private let items = ["Male", "Female"]
     
     //title
-    private let titleLabel = UILabel(title: "Set up profile", font: .systemFont(ofSize: 30))
+    private let titleLabel = UILabel(title: "Set up profile", font: .systemFont(ofSize: 30), textColor: .black)
     
     //labels
     private let fullNameLabel = UILabel(title: "Full name", textAlignment: .left)

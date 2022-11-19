@@ -1,5 +1,5 @@
 //
-//  FetchImageService .swift
+//  FetchImageService.swift
 //  Chat
 //
 //  Created by Алиса Романова on 14.11.2022.

@@ -11,7 +11,7 @@ final class AuthorizationViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50))
+    private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50), textColor: .black)
     private let getStartedWithLabel = UILabel(title: "Register with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     

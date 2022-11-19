@@ -17,7 +17,7 @@ final class SignUpViewController: UIViewController {
     private var isRegisterationSucssesful: Bool!
     
     //Title
-    private let titleLabel = UILabel(title: "Good to see you!", font: .systemFont(ofSize: 30))
+    private let titleLabel = UILabel(title: "Good to see you!", font: .systemFont(ofSize: 30), textColor: .black)
     
     //Labels
     private let emailLabel = UILabel(title: "Email")

@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+enum ListenerError {
+    
+    case failToAddSnapshotListener
+}
+
+extension ListenerError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+            
+        case .failToAddSnapshotListener:
+            return NSLocalizedString("Passwords do not match", comment: "")
+        }
+    }
+}

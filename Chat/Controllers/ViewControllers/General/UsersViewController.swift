@@ -12,13 +12,6 @@ final class UsersViewController: UIViewController {
 
     private enum Section: Int, CaseIterable {
         case users
-        
-        func description(usersCount: Int) -> String {
-            switch self {
-            case .users:
-                return "\(usersCount) people nearly"
-            }
-        }
     }
     
     //MARK: - Properties
@@ -71,9 +64,6 @@ final class UsersViewController: UIViewController {
        usersCollectionView.delegate = self
        
        usersCollectionView.register(UsersCell.self, forCellWithReuseIdentifier: UsersCell.identifier)
-       usersCollectionView.register(SectionHeader.self,
-                                   forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                   withReuseIdentifier: SectionHeader.identifier)
        
        view.addSubview(usersCollectionView)
    }
@@ -100,27 +90,11 @@ final class UsersViewController: UIViewController {
     
            self?.imageService.fetchImage(URLString: url!, imageView: &cell.photoImageView)
            cell.nameLabel.text = self?.users[indexPath.row].username
+           cell.descriptionLabel.text = self?.users[indexPath.row].description
+           cell.genderLabel.text = self?.users[indexPath.row].sex
            
            return cell
        })
-       
-       dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-           
-           guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
-               fatalError("Can not create new section header") }
-           
-           guard let section = Section(rawValue: indexPath.section) else {
-               fatalError("Unknown section kind")
-           }
-           
-           let items = self.dataSource.snapshot().itemIdentifiers(inSection: .users)
-
-           sectionHeader.configure(text: section.description(usersCount: items.count),
-                                   font: .systemFont(ofSize: 45, weight: .light),
-                                   textColor: .black)
-           
-           return sectionHeader
-       }
    }
    
    //MARK: - createCompositionalLayout
@@ -135,34 +109,22 @@ final class UsersViewController: UIViewController {
 
    private func createSection() -> NSCollectionLayoutSection {
 
-       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                             heightDimension: .fractionalHeight(1))
        let item = NSCollectionLayoutItem(layoutSize: itemSize)
        
-       item.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 15, trailing: 15)
+       item.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 20, trailing: 10)
        
-       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .absolute(250))
-       let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
+       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalWidth(0.65))
+       let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
        
        let section = NSCollectionLayoutSection(group: group)
 
-       section.contentInsets = NSDirectionalEdgeInsets.init(top: 15, leading: 15, bottom: 15, trailing: 0)
-
-       let sectionHeader = createSectionHeader()
-       section.boundarySupplementaryItems = [sectionHeader]
-
+       section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 15, bottom: 10, trailing: 15)
+       
        return section
    }
-    
-    //MARK: - createSectionHeader
-    
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-        
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
-        return sectionHeader
-    }
 }
 
 //MARK: - UICollectionViewDelegate

@@ -28,8 +28,7 @@
 		D22F8DA3290CF95100527B36 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22F8DA2290CF95100527B36 /* UsersCell.swift */; };
 		D27DDA7329212A0600226DA9 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7229212A0600226DA9 /* Human.swift */; };
 		D27DDA7A29212BE400226DA9 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DDA7929212BE400226DA9 /* AuthorizationService.swift */; };
-		D28B17E12926B2C600CB5C0F /* AuthorizatonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */; };
-		D28B183B2927C8AC00CB5C0F /* ListenerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B183A2927C8AC00CB5C0F /* ListenerError.swift */; };
+		D28B17E12926B2C600CB5C0F /* AuthorizatonErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B17E02926B2C600CB5C0F /* AuthorizatonErrors.swift */; };
 		D28B183D29281D3E00CB5C0F /* UIScrollView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */; };
 		D2B125272905DCE800D7CC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125262905DCE800D7CC7F /* AppDelegate.swift */; };
 		D2B125292905DCE800D7CC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B125282905DCE800D7CC7F /* SceneDelegate.swift */; };
@@ -42,7 +41,7 @@
 		D2E10F0829266D0C00F25088 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E10F0729266D0C00F25088 /* MessageViewController.swift */; };
 		D2E10F0B29267A5200F25088 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E10F0A29267A5200F25088 /* FirestoreService.swift */; };
 		D2E10F0D29267DD500F25088 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E10F0C29267DD500F25088 /* Message.swift */; };
-		D2E10F0F2926B1A500F25088 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E10F0E2926B1A500F25088 /* UserError.swift */; };
+		D2E10F0F2926B1A500F25088 /* SystemErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E10F0E2926B1A500F25088 /* SystemErrors.swift */; };
 		E4B6B275AE88C440AD972113 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560664B7DCDF88346071D9CA /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +70,7 @@
 		D22F8DA2290CF95100527B36 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		D27DDA7229212A0600226DA9 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 		D27DDA7929212BE400226DA9 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
-		D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizatonError.swift; sourceTree = "<group>"; };
-		D28B183A2927C8AC00CB5C0F /* ListenerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerError.swift; sourceTree = "<group>"; };
+		D28B17E02926B2C600CB5C0F /* AuthorizatonErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizatonErrors.swift; sourceTree = "<group>"; };
 		D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView + Extension.swift"; sourceTree = "<group>"; };
 		D2B125232905DCE800D7CC7F /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B125262905DCE800D7CC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +85,7 @@
 		D2E10F0729266D0C00F25088 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		D2E10F0A29267A5200F25088 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		D2E10F0C29267DD500F25088 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		D2E10F0E2926B1A500F25088 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		D2E10F0E2926B1A500F25088 /* SystemErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +120,8 @@
 		D205B9842912CB8900D62543 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D2E10F0E2926B1A500F25088 /* UserError.swift */,
-				D28B183A2927C8AC00CB5C0F /* ListenerError.swift */,
-				D28B17E02926B2C600CB5C0F /* AuthorizatonError.swift */,
 				D2169FAA291CBF7E009F9442 /* Validators.swift */,
+				D28B183E29283BF700CB5C0F /* ErrorProcessing */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -231,6 +227,15 @@
 				D205B9782911531000D62543 /* ProfileViewController.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		D28B183E29283BF700CB5C0F /* ErrorProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				D28B17E02926B2C600CB5C0F /* AuthorizatonErrors.swift */,
+				D2E10F0E2926B1A500F25088 /* SystemErrors.swift */,
+			);
+			path = ErrorProcessing;
 			sourceTree = "<group>";
 		};
 		D2B1251A2905DCE800D7CC7F = {
@@ -439,17 +444,16 @@
 				D28B183D29281D3E00CB5C0F /* UIScrollView + Extension.swift in Sources */,
 				D2E10F06292658B600F25088 /* StorageService .swift in Sources */,
 				D2169FAB291CBF7E009F9442 /* Validators.swift in Sources */,
-				D28B17E12926B2C600CB5C0F /* AuthorizatonError.swift in Sources */,
+				D28B17E12926B2C600CB5C0F /* AuthorizatonErrors.swift in Sources */,
 				D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */,
 				D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */,
 				D2E10F0829266D0C00F25088 /* MessageViewController.swift in Sources */,
 				D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */,
 				D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */,
 				D225492F290C9D1500E42BFD /* ChatViewController.swift in Sources */,
-				D2E10F0F2926B1A500F25088 /* UserError.swift in Sources */,
+				D2E10F0F2926B1A500F25088 /* SystemErrors.swift in Sources */,
 				D2E10F0D29267DD500F25088 /* Message.swift in Sources */,
 				D21B2612291E12940035FBEA /* Chat.swift in Sources */,
-				D28B183B2927C8AC00CB5C0F /* ListenerError.swift in Sources */,
 				D2E10EFC29216F1A00F25088 /* ListenerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,6 +594,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LHGRXAPD4;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chat/SupportingFiles/Info.plist;
@@ -618,6 +623,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LHGRXAPD4;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chat/SupportingFiles/Info.plist;
