@@ -12,19 +12,30 @@ extension UITextField {
     convenience init(line: Bool, textColor: UIColor = .gray) {
         self.init()
         
-        self.backgroundColor = .white
         self.textColor = textColor
-        self.font = .systemFont(ofSize: 20)
+        self.backgroundColor = .systemGray
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1
         
-        let lineView = UIView()
-        lineView.backgroundColor = .systemGray2
-        self.addSubview(lineView)
+    }
+    
+    convenience init(placeholder: String) {
+        self.init()
         
-        lineView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(0.17)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+        self.placeholder = placeholder
+        self.textColor = textColor
+        self.textColor = .gray
+        
+        self.layer.cornerRadius = 8
+        self.layer.borderColor = UIColor.systemGray5.cgColor
+        self.layer.borderWidth = 1
+        self.backgroundColor = UIColor(named: "gray")
+        
+        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+        self.leftViewMode = .always
+        
+        self.snp.makeConstraints { make in
+            make.height.equalTo(50)
         }
     }
 }

@@ -26,13 +26,13 @@ class ProfileViewController: UIViewController {
     private let aboutMeLabel = UILabel(title: "About me", textAlignment: .left, textColor: .gray)
     
     //textFields
-    private let usernameTextField = UITextField(line: true, textColor: .black)
-    private let emailTextField = UITextField(line: true, textColor: .black)
-    private let genderTextField = UITextField(line: true, textColor: .black)
-    private let aboutMeTextField = UITextField(line: true, textColor: .black)
+    private let usernameTextField = UITextField(placeholder: "")
+    private let emailTextField = UITextField(placeholder: "")
+    private let genderTextField = UITextField(placeholder: "")
+    private let aboutMeTextField = UITextField(placeholder: "")
     
     //button
-    private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: UIColor(named: "purple")!)
+    private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: .systemGreen)
     
     //stackViews
     private lazy var usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField], spacing: 5)
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
     private lazy var genderStackView = UIStackView(arrangedSubviews: [genderLabel, genderTextField], spacing: 5)
     private lazy var aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], spacing: 5)
     
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [usernameStackView, emailStackView, genderStackView, aboutMeStackView], spacing: 30)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [usernameStackView, emailStackView, genderStackView, aboutMeStackView], spacing: 15)
     
     //MARK: - Init
     
@@ -104,9 +104,7 @@ class ProfileViewController: UIViewController {
     
     private func setupPhotoImageView() {
         service.fetchImage(URLString: userData.avatar, imageView: &photoImageView)
-        photoImageView.layer.cornerRadius = 100
-        photoImageView.layer.borderColor = UIColor(named: "purple")?.cgColor
-        photoImageView.layer.borderWidth = 1
+        photoImageView.layer.cornerRadius = 10
         photoImageView.clipsToBounds = true
     }
     
@@ -132,9 +130,10 @@ extension ProfileViewController {
         view.addSubview(photoImageView)
         
         photoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(130)
+            make.top.equalToSuperview().inset(100)
             make.centerX.equalToSuperview()
-            make.height.width.equalTo(200)
+            make.height.equalTo(200)
+            make.width.equalTo(150)
         }
  
         //centerStackView
@@ -142,7 +141,7 @@ extension ProfileViewController {
         view.addSubview(centerStackView)
         
         centerStackView.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(70)
+            make.top.equalTo(photoImageView.snp.bottom).offset(35)
             make.left.right.equalToSuperview().inset(30)
         }
     }

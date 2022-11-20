@@ -17,40 +17,45 @@ final class SignUpViewController: UIViewController {
     private var isRegisterationSucssesful: Bool!
     
     //Title
-    private let titleLabel = UILabel(title: "Good to see you!", font: .systemFont(ofSize: 30), textColor: .black)
-    
-    //Labels
-    private let emailLabel = UILabel(title: "Email")
-    private let passwordLabel = UILabel(title: "Password")
-    private let confirmPasswordLabel = UILabel(title: "Confirm password")
+    private let titleLabel = UILabel(title: "Sign Up", font: .systemFont(ofSize: 40, weight: .bold), textColor: .black)
     
     //TextFields
-    private let emailTextField = UITextField(line: true)
-    private let passwordTestField = UITextField(line: true)
-    private let confirmPasswordTextField = UITextField(line: true)
+    private let emailTextField = UITextField(placeholder: "Email")
+    private let passwordTestField = UITextField(placeholder: "Password")
+    private let confirmPasswordTextField = UITextField(placeholder: "Comfirm password")
 
     //Buttons
-    private let signUpButton = UIButton(title: "Sign Up", color: UIColor(named: "purple")!, titleColor: .white)
-    
-    //Views
-    private lazy var emailView = UIView(label: emailLabel, textField: emailTextField)
-    private lazy var passwordView = UIView(label: passwordLabel, textField: passwordTestField)
-    private lazy var confirmPasswordView = UIView(label: confirmPasswordLabel, textField: confirmPasswordTextField)
+    private let signUpButton = UIButton(title: "Sign Up", color: .systemGreen, titleColor: .white)
     
     //StackViews
-    private lazy var stackView = UIStackView(arrangedSubviews: [emailView, passwordView, confirmPasswordView, signUpButton], spacing: 45)
+    private lazy var stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTestField, confirmPasswordTextField], spacing: 20)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        self.liftUpView(amount: 100)
         
         setupSignUpButton()
         setupTestFieldsDelegates()
+        createTapGesture()
+        setKeyboardType()
         
         setupConstraints()
+    }
+    
+    //MARK: - createTapGesture
+    
+    private func createTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    //MARK: - setKeyboardType
+    
+    private func setKeyboardType() {
+        emailTextField.keyboardType = .emailAddress
     }
     
     //MARK: - setupTestFieldsDelegates
@@ -65,6 +70,14 @@ final class SignUpViewController: UIViewController {
     
     private func setupSignUpButton() {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - @objc "hideKeyboard"
+    
+    @objc private func hideKeyboard() {
+        emailTextField.resignFirstResponder()
+        passwordTestField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
     
     //MARK: - @objc signUpButtonTapped
@@ -105,7 +118,7 @@ extension SignUpViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(40)
         }
         
         //signUpButton
@@ -120,9 +133,18 @@ extension SignUpViewController {
         
         stackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.left.right.equalToSuperview().inset(40)
-            make.top.equalTo(titleLabel.snp.bottom).offset(130)
+            make.left.right.equalToSuperview().inset(30)
+            make.top.equalTo(titleLabel.snp.bottom).offset(50)
          
+        }
+        
+        //signUpButton
+        
+        view.addSubview(signUpButton)
+        
+        signUpButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(40)
+            make.bottom.equalToSuperview().inset(70)
         }
     }
 }

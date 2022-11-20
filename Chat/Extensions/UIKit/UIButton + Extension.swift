@@ -12,7 +12,7 @@ extension UIButton {
     convenience init(title: String,
                      color: UIColor? = .clear,
                      isShadow: Bool = false,
-                     cornerRadius: CGFloat = 5,
+                     cornerRadius: CGFloat = 30,
                      titleColor: UIColor) {
         
         self.init(type: .system)

@@ -15,8 +15,8 @@ final class AuthorizationViewController: UIViewController {
     private let getStartedWithLabel = UILabel(title: "Register with")
     private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
     
-    private let emailButton = UIButton(title: "Email", color: UIColor(named: "purple")!, titleColor: .white)
-    private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: UIColor(named: "purple")!)
+    private let emailButton = UIButton(title: "Email", color: .systemGreen, titleColor: .white)
+    private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: .systemGreen)
 
     private lazy var emailView = UIView(label: getStartedWithLabel, button: emailButton)
     private lazy var loginView = UIView(label: aleradyOnboardLabel, button: loginButton)

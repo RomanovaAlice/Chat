@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
                 case .success(let user):
                     FirestoreService.shared.currentUser = user
-                    
+
                     let tabBar = TabBarController(currentUser: user)
                     tabBar.modalPresentationStyle = .fullScreen
                     self.window?.rootViewController = tabBar
@@ -35,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             window?.rootViewController = AuthorizationViewController()
         }
+
         window?.makeKeyAndVisible()
     }
 }

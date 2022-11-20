@@ -35,18 +35,20 @@ final class ChatCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Methods
+    
     private func setupBottomLine() {
-        bottomLine.backgroundColor = .systemGray4
+        bottomLine.backgroundColor = .systemGray5
     }
     
     private func setupAvatarImageView() {
-        avatarImageView.layer.cornerRadius = 30
+        avatarImageView.layer.cornerRadius = 10
         avatarImageView.clipsToBounds = true
     }
 
     private func setupUserNameLabel() {
         userNameLabel.text = "Alex Smith"
-        userNameLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        userNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         userNameLabel.textColor = .black
     }
     
@@ -66,7 +68,7 @@ extension ChatCell {
         
         bottomLine.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview()
-            make.left.equalToSuperview().inset(100)
+            make.left.equalToSuperview().inset(85)
             make.height.equalTo(1)
         }
         
@@ -76,8 +78,9 @@ extension ChatCell {
         
         avatarImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().inset(15)
-            make.width.height.equalTo(60)
+            make.width.equalTo(60)
+            make.height.equalTo(80)
+            make.left.equalToSuperview().inset(10)
         }
         
         //userNameLabel
@@ -85,7 +88,7 @@ extension ChatCell {
         self.addSubview(userNameLabel)
         
         userNameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(15)
+            make.top.equalTo(avatarImageView)
             make.left.equalTo(avatarImageView.snp.right).offset(20)
         }
         
@@ -94,7 +97,7 @@ extension ChatCell {
         self.addSubview(lastMessageLabel)
         
         lastMessageLabel.snp.makeConstraints { make in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(5)
+            make.top.equalTo(userNameLabel.snp.bottom).offset(10)
             make.left.equalTo(userNameLabel)
         }
     }

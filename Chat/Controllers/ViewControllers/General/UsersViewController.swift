@@ -64,6 +64,9 @@ final class UsersViewController: UIViewController {
        usersCollectionView.delegate = self
        
        usersCollectionView.register(UsersCell.self, forCellWithReuseIdentifier: UsersCell.identifier)
+       usersCollectionView.register(SectionHeader.self,
+                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                    withReuseIdentifier: SectionHeader.identifier)
        
        view.addSubview(usersCollectionView)
    }
@@ -95,6 +98,16 @@ final class UsersViewController: UIViewController {
            
            return cell
        })
+       
+       dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+
+             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
+                 fatalError("Can not create new section header") }
+
+           sectionHeader.configure(text: "People nearly you", font: .systemFont(ofSize: 35), textColor: .black)
+
+             return sectionHeader
+         }
    }
    
    //MARK: - createCompositionalLayout
@@ -120,11 +133,24 @@ final class UsersViewController: UIViewController {
        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
        
        let section = NSCollectionLayoutSection(group: group)
-
        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 15, bottom: 10, trailing: 15)
+       
+       let sectionHeader = createSectionHeader()
+         section.boundarySupplementaryItems = [sectionHeader]
        
        return section
    }
+    
+    //MARK: - createSectionHeader
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        return sectionHeader
+    }
 }
 
 //MARK: - UICollectionViewDelegate

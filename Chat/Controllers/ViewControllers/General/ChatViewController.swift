@@ -76,6 +76,9 @@ final class ChatViewController: UIViewController {
         chatCollectionView.delegate = self
         
         chatCollectionView.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.identifier)
+        chatCollectionView.register(SectionHeader.self,
+                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                     withReuseIdentifier: SectionHeader.identifier)
         
         view.addSubview(chatCollectionView)
     }
@@ -99,10 +102,21 @@ final class ChatViewController: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.identifier, for: indexPath) as! ChatCell
             
             cell.userNameLabel.text = self.chats[indexPath.row].username
+            cell.lastMessageLabel.text = "How are you?"
             self.imageService.fetchImage(URLString: self.chats[indexPath.row].userAvatar, imageView: &cell.avatarImageView)
             
             return cell
         })
+        
+        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+
+              guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
+                  fatalError("Can not create new section header") }
+
+              sectionHeader.configure(text: "  Messages", font: .systemFont(ofSize: 25), textColor: .black)
+
+              return sectionHeader
+          }
     }
     
     //MARK: - createCompositionalLayout
@@ -120,15 +134,26 @@ final class ChatViewController: UIViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         
-        //        section.interGroupSpacing = 10
-        //        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
-        
+        let sectionHeader = createSectionHeader()
+          section.boundarySupplementaryItems = [sectionHeader]
+  
         return section
+    }
+    
+    //MARK: - createSectionHeader
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        return sectionHeader
     }
 }
 

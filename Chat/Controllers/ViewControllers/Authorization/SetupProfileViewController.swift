@@ -15,23 +15,18 @@ final class SetupProfileViewController: UIViewController {
     let id: String
     
     //items
-    private let items = ["Male", "Female"]
-    
-    //title
-    private let titleLabel = UILabel(title: "Set up profile", font: .systemFont(ofSize: 30), textColor: .black)
-    
-    //labels
-    private let fullNameLabel = UILabel(title: "Full name", textAlignment: .left)
-    private let aboutMeLabel = UILabel(title: "About me", textAlignment: .left)
-    private let sexLabel = UILabel(title: "Sex", textAlignment: .left)
+    private let items = ["Male", "Female", "None"]
     
     //buttons
-    private let goToChatsButton = UIButton(title: "Go to chats!", color: UIColor(named: "purple")!, titleColor: .white)
+    private let goToChatsButton = UIButton(title: "Go to chats!", color: .systemGreen, titleColor: .white)
     private let addingButton = UIButton()
     
+    //label
+    private let genderLabel = UILabel(title: "Your gender: ", textAlignment: .left)
+    
     //testFields
-    private let fullNameTextField = UITextField(line: true)
-    private let aboutMeTextField = UITextField(line: true)
+    private let fullNameTextField = UITextField(placeholder: "Full name")
+    private let aboutMeTextField = UITextField(placeholder: "About me")
     
     //imageView
     private let photoImageView = UIImageView()
@@ -39,12 +34,8 @@ final class SetupProfileViewController: UIViewController {
     //segmentedControl
     private lazy var sexSegmentedControl = UISegmentedControl(items: items)
     
-    //stackViews
-    private lazy var fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField], spacing: 10)
-    private lazy var aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], spacing: 10)
-    private lazy var sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl], spacing: 20)
-    
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutMeStackView, sexStackView, goToChatsButton], spacing: 50)
+    private lazy var genderStackView = UIStackView(arrangedSubviews: [genderLabel, sexSegmentedControl], spacing: 20)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [fullNameTextField, aboutMeTextField], spacing: 20)
     
     //MARK: - Init
     
@@ -70,9 +61,17 @@ final class SetupProfileViewController: UIViewController {
         setupPhotoImageVeiw()
         setupGoToChatsButton()
         setupTestFieldsDelegates()
-        self.liftUpView(amount: 50)
+        createTapGesture()
         
         setuContsraints()
+    }
+    
+    //MARK: - createTapGesture
+    
+    private func createTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: - setupTestFieldsDelegates
@@ -85,8 +84,8 @@ final class SetupProfileViewController: UIViewController {
     //MARK: - setupAddingButton
     
     private func setupAddingButton() {
-        addingButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        addingButton.tintColor = .black
+        addingButton.setImage(UIImage(systemName: "plus.app.fill"), for: .normal)
+        addingButton.tintColor = .systemGreen
         addingButton.clipsToBounds = true
         addingButton.addTarget(self, action: #selector(addingButtonTapped), for: .touchUpInside)
     }
@@ -94,16 +93,14 @@ final class SetupProfileViewController: UIViewController {
     //MARK: - setupSexSegmentedControl
     
     private func setupSexSegmentedControl() {
-        sexSegmentedControl.selectedSegmentIndex = 1
+        sexSegmentedControl.selectedSegmentIndex = 2
     }
     
     //MARK: - setupPhotoImageVeiw
 
     private func setupPhotoImageVeiw() {
-        photoImageView.layer.cornerRadius = 65
-        photoImageView.layer.borderWidth = 1
-        photoImageView.layer.borderColor = UIColor(named: "purple")!.cgColor
-        photoImageView.backgroundColor = .gray
+        photoImageView.layer.cornerRadius = 10
+        photoImageView.backgroundColor = .systemGray5
         photoImageView.clipsToBounds = true
     }
     
@@ -111,6 +108,13 @@ final class SetupProfileViewController: UIViewController {
     
     private func setupGoToChatsButton() {
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - @objc "hideKeyboard"
+    
+    @objc private func hideKeyboard() {
+        aboutMeTextField.resignFirstResponder()
+        fullNameTextField.resignFirstResponder()
     }
     
     //MARK: - @objc goToChatsButtonTapped
@@ -160,24 +164,16 @@ final class SetupProfileViewController: UIViewController {
 
 extension SetupProfileViewController {
     private func setuContsraints() {
-        
-        //titleLabel
-        
-        view.addSubview(titleLabel)
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(100)
-            make.centerX.equalToSuperview()
-        }
-        
+
         //photoImageView
         
         view.addSubview(photoImageView)
         
         photoImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(120)
-            make.top.equalTo(titleLabel.snp.bottom).offset(50)
-            make.height.width.equalTo(130)
+            make.top.equalToSuperview().inset(100)
+            make.height.equalTo(200)
+            make.width.equalTo(150)
         }
         
         //addingButton
@@ -185,9 +181,8 @@ extension SetupProfileViewController {
         view.addSubview(addingButton)
         
         addingButton.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView).inset(100)
-            make.left.equalTo(photoImageView.snp.right).offset(-10)
-            make.height.width.equalTo(30)
+            make.centerY.equalTo(photoImageView)
+            make.left.equalTo(photoImageView.snp.right).offset(10)
         }
         
         //goToChatsButton
@@ -202,8 +197,26 @@ extension SetupProfileViewController {
         
         centerStackView.snp.makeConstraints { make in
             make.top.equalTo(photoImageView.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().inset(40)
+            make.left.right.equalToSuperview().inset(30)
             make.centerX.equalToSuperview()
+        }
+        
+        //genderStackView
+        
+        view.addSubview(genderStackView)
+        
+        genderStackView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(30)
+            make.top.equalTo(centerStackView.snp.bottom).offset(50)
+        }
+        
+        //goToChatsButton
+        
+        view.addSubview(goToChatsButton)
+        
+        goToChatsButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(40)
+            make.bottom.equalToSuperview().inset(70)
         }
     }
 }

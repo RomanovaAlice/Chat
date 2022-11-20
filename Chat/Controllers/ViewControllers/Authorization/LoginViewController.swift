@@ -14,24 +14,16 @@ final class LoginViewController: UIViewController {
     //MARK: - Properties
 
     //title
-    private let titleLabel = UILabel(title: "Welcome back!", font: .systemFont(ofSize: 30), textColor: .black)
-    
-    //labels
-    private let emailLabel = UILabel(title: "Email", textAlignment: .left)
-    private let paddwordLabel = UILabel(title: "Password", textAlignment: .left)
+    private let titleLabel = UILabel(title: "Log In", font: .systemFont(ofSize: 40, weight: .bold), textColor: .black)
     
     //button
-    private let loginButton = UIButton(title: "Login", color: UIColor(named: "purple")!, titleColor: .white)
+    private let loginButton = UIButton(title: "Login", color: .systemGreen, titleColor: .white)
     
     //textFields
-    private let emailTextField = UITextField(line: true)
-    private let passwordTextField = UITextField(line: true)
+    private let emailTextField = UITextField(placeholder: "Email")
+    private let passwordTextField = UITextField(placeholder: "Password")
     
-    //stackViews
-    private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], spacing: 20)
-    private lazy var passwordStackView = UIStackView(arrangedSubviews: [paddwordLabel, passwordTextField], spacing: 20)
-    
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, loginButton], spacing: 70)
+    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField], spacing: 20)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -39,11 +31,26 @@ final class LoginViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        self.liftUpView(amount: 60)
         setupButtonsTargets()
         setupTextFieldsDelegates()
+        createTapGesture()
+        setKeyboardType()
         
         setupConstraints()
+    }
+    
+    //MARK: - setKeyboardType
+    
+    private func setKeyboardType() {
+        emailTextField.keyboardType = .emailAddress
+    }
+    
+    //MARK: - createTapGesture
+    
+    private func createTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: - setupTestFieldsDelegates
@@ -57,6 +64,13 @@ final class LoginViewController: UIViewController {
     
     private func setupButtonsTargets() {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - @objc "hideKeyboard"
+    
+    @objc private func hideKeyboard() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     //MARK: - @objc "loginButtonTapped"
@@ -101,13 +115,7 @@ extension LoginViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(160)
-        }
-        
-        //loginButton
-        
-        loginButton.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.top.equalToSuperview().inset(40)
         }
         
         //centerStackVeiw
@@ -115,9 +123,19 @@ extension LoginViewController {
         view.addSubview(centerStackView)
         
         centerStackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(100)
-            make.left.right.equalToSuperview().inset(40)
+            make.top.equalTo(titleLabel.snp.bottom).offset(50)
+            make.left.right.equalToSuperview().inset(30)
             make.centerX.equalToSuperview()
+        }
+        
+        //loginButton
+        
+        view.addSubview(loginButton)
+        
+        loginButton.snp.makeConstraints { make in
+            make.height.equalTo(60)
+            make.bottom.equalToSuperview().inset(70)
+            make.left.right.equalToSuperview().inset(40)
         }
     }
 }

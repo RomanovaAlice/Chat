@@ -68,9 +68,10 @@ extension UsersCell {
         self.addSubview(backView)
         
         backView.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(10)
-            make.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(40)
+            make.left.equalToSuperview().inset(17)
+            make.right.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(20)
+            
         }
         
         //photoImageView
