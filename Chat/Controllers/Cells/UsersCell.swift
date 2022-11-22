@@ -14,7 +14,7 @@ final class UsersCell: UICollectionViewCell {
     private let backView = UIView()
     
     var photoImageView = UIImageView()
-    var nameLabel = UILabel(title: "", font: .systemFont(ofSize: 18, weight: .semibold), textColor: .black)
+    var nameLabel = UILabel(title: "", font: .systemFont(ofSize: 18, weight: .semibold), textAlignment: .left, textColor: .black)
     var descriptionLabel = UILabel(title: "", textAlignment: .left, textColor: .gray)
     var genderLabel = UILabel(title: "", textAlignment: .left, textColor: .systemGreen)
     
@@ -26,6 +26,7 @@ final class UsersCell: UICollectionViewCell {
         setupSelfAppearance()
         
         configureBackView()
+        configureNameLabel()
         setupPhotoImageView()
         configureDescriptionLabel()
         
@@ -45,6 +46,10 @@ final class UsersCell: UICollectionViewCell {
     
     private func configureDescriptionLabel() {
         descriptionLabel.numberOfLines = 4
+    }
+    
+    private func configureNameLabel() {
+        nameLabel.numberOfLines = 1
     }
     
     private func setupSelfAppearance() {
@@ -88,7 +93,8 @@ extension UsersCell {
         backView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.left.equalTo(photoImageView.snp.right).inset(-15)
+            make.left.equalTo(photoImageView.snp.right).inset(-10)
+            make.right.equalToSuperview().inset(2)
             make.top.equalToSuperview().offset(10)
         }
         

@@ -9,8 +9,6 @@ import MessageKit
 import FirebaseFirestore
 import InputBarAccessoryView
 
-var lastMessageGlobal = ""
-
 class MessageViewController: MessagesViewController {
 
     //MARK: - Properties
@@ -198,7 +196,7 @@ extension MessageViewController: MessagesDisplayDelegate {
 extension MessageViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = Message(user: user, content: text)
-        lastMessageGlobal = text
+        
         FirestoreService.shared.sendMessage(chat: chat, message: message) { result in
             switch result {
                 

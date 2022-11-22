@@ -13,7 +13,10 @@ final class TabBarController: UITabBarController {
     
     init(currentUser: Human) {
         self.currentUser = currentUser
+
         super.init(nibName: nil, bundle: nil)
+        
+        tabBar.tintColor = .systemGreen
     }
     
     required init?(coder: NSCoder) {

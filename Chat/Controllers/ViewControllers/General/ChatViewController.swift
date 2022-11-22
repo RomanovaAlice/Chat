@@ -113,7 +113,7 @@ final class ChatViewController: UIViewController {
               guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
                   fatalError("Can not create new section header") }
 
-              sectionHeader.configure(text: "  Messages", font: .systemFont(ofSize: 25), textColor: .black)
+              sectionHeader.configure(text: "Messages", font: .systemFont(ofSize: 35), textColor: .black)
 
               return sectionHeader
           }
@@ -138,6 +138,7 @@ final class ChatViewController: UIViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 15, bottom: 0, trailing: 0)
         
         let sectionHeader = createSectionHeader()
           section.boundarySupplementaryItems = [sectionHeader]

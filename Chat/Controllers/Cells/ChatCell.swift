@@ -77,10 +77,9 @@ extension ChatCell {
         self.addSubview(avatarImageView)
         
         avatarImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.centerY.left.equalToSuperview()
             make.width.equalTo(60)
             make.height.equalTo(80)
-            make.left.equalToSuperview().inset(10)
         }
         
         //userNameLabel
@@ -88,7 +87,7 @@ extension ChatCell {
         self.addSubview(userNameLabel)
         
         userNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(avatarImageView)
+            make.top.equalTo(avatarImageView).inset(10)
             make.left.equalTo(avatarImageView.snp.right).offset(20)
         }
         
