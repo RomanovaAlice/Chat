@@ -11,6 +11,7 @@
 		D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */; };
 		D2169FAB291CBF7E009F9442 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2169FAA291CBF7E009F9442 /* Validators.swift */; };
 		D21B2612291E12940035FBEA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21B2611291E12940035FBEA /* Chat.swift */; };
+		D21E899A293928DE006304E9 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E8999293928DE006304E9 /* UIImageView + Extension.swift */; };
 		D225491D2909CBEF00E42BFD /* UIView + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491C2909CBEF00E42BFD /* UIView + Extension .swift */; };
 		D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D225491E290A474100E42BFD /* UIStackView + Extension.swift */; };
 		D2254922290A55CF00E42BFD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2254921290A55CF00E42BFD /* SignUpViewController.swift */; };
@@ -53,6 +54,7 @@
 		D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		D2169FAA291CBF7E009F9442 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		D21B2611291E12940035FBEA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		D21E8999293928DE006304E9 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		D225491C2909CBEF00E42BFD /* UIView + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension .swift"; sourceTree = "<group>"; };
 		D225491E290A474100E42BFD /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		D2254921290A55CF00E42BFD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				D225491C2909CBEF00E42BFD /* UIView + Extension .swift */,
 				D225491E290A474100E42BFD /* UIStackView + Extension.swift */,
 				D2254925290A59E100E42BFD /* UITextField + Extension .swift */,
+				D21E8999293928DE006304E9 /* UIImageView + Extension.swift */,
 				D28B183C29281D3E00CB5C0F /* UIScrollView + Extension.swift */,
 				D2169FA6291B1AC4009F9442 /* UIViewController + Extension.swift */,
 			);
@@ -447,6 +450,7 @@
 				D28B17E12926B2C600CB5C0F /* AuthorizatonErrors.swift in Sources */,
 				D2254929290B1DB400E42BFD /* LoginViewController.swift in Sources */,
 				D225491F290A474100E42BFD /* UIStackView + Extension.swift in Sources */,
+				D21E899A293928DE006304E9 /* UIImageView + Extension.swift in Sources */,
 				D2E10F0829266D0C00F25088 /* MessageViewController.swift in Sources */,
 				D22F8D9E290CF4EA00527B36 /* TabBarController.swift in Sources */,
 				D2169FA7291B1AC4009F9442 /* UIViewController + Extension.swift in Sources */,

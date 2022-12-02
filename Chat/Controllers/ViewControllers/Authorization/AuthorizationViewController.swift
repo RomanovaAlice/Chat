@@ -11,33 +11,31 @@ final class AuthorizationViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let titleLabel = UILabel(title: "Chat", font: .systemFont(ofSize: 50), textColor: .black)
-    private let getStartedWithLabel = UILabel(title: "Register with")
-    private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?")
+    //labels
+    private let titleLabel = UILabel(title: "Let's Get Strated", font: .systemFont(ofSize: 43), textColor: .white, numberOfLines: 0)
+    private let aleradyOnboardLabel = UILabel(title: "Alerady onboard?", textAlignment: .left)
     
-    private let emailButton = UIButton(title: "Email", color: .systemGreen, titleColor: .white)
-    private let loginButton = UIButton(title: "Login", color: .white, isShadow: true, titleColor: .systemGreen)
-
-    private lazy var emailView = UIView(label: getStartedWithLabel, button: emailButton)
+    //buttons
+    private let signUpButton = UIButton(title: "Sign up", color: UIColor(named: "purple"), titleColor: .white)
+    private let loginButton = UIButton(title: "Login", titleColor: UIColor(named: "purple")!)
+    
+    //other
+    private let picture = UIImageView(image: UIImage(named: "6"))
     private lazy var loginView = UIView(label: aleradyOnboardLabel, button: loginButton)
-    
-    private lazy var stackView = UIStackView(arrangedSubviews: [emailView, loginView], spacing: 60)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-
+        view.backgroundColor = UIColor(named: "beige")
         setupButtons()
-
         setupConstraints()
     }
     
     //MARK: - @objc setupButtons
     
     private func setupButtons() {
-        emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
@@ -64,20 +62,36 @@ extension AuthorizationViewController {
         view.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(160)
+            make.top.equalToSuperview().inset(80)
             make.centerX.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(158)
         }
         
-        //stackView
+        //picture
         
-        view.addSubview(stackView)
-
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).inset(200)
-            make.centerX.equalToSuperview()
+        view.addSubview(picture)
+        
+        picture.snp.makeConstraints { make in
+            make.height.width.equalTo(400)
+            make.top.equalTo(titleLabel.snp.bottom).offset(60)
+        }
+        
+        //signUpButton
+        
+        view.addSubview(signUpButton)
+        
+        signUpButton.snp.makeConstraints { make in
+            make.height.equalTo(60)
             make.left.right.equalToSuperview().inset(40)
+            make.top.equalTo(picture.snp.bottom).offset(80)
+        }
+        
+        //loginView
+        
+        view.addSubview(loginView)
+        
+        loginView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(45)
+            make.top.equalTo(signUpButton.snp.bottom).offset(10)
         }
     }
 }

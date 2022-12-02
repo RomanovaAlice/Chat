@@ -43,3 +43,12 @@ extension UIViewController {
          }
     }
 }
+
+extension UIViewController {
+    func setTapGesture(action: Selector?) {
+        
+        let tap = UITapGestureRecognizer(target: self, action: action)
+        
+        self.view.addGestureRecognizer(tap)
+    }
+}

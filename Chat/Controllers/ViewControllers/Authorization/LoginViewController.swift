@@ -14,43 +14,41 @@ final class LoginViewController: UIViewController {
     //MARK: - Properties
 
     //title
-    private let titleLabel = UILabel(title: "Log In", font: .systemFont(ofSize: 40, weight: .bold), textColor: .black)
+    private let titleLabel = UILabel(title: "Log In", font: .systemFont(ofSize: 40, weight: .semibold), textColor: .white)
     
     //button
-    private let loginButton = UIButton(title: "Login", color: .systemGreen, titleColor: .white)
+    private let loginButton = UIButton(title: "Login", color: UIColor(named: "blue"), titleColor: .white)
     
     //textFields
-    private let emailTextField = UITextField(placeholder: "Email")
+    private let emailTextField = UITextField(placeholder: "Email", keyboardType: .emailAddress)
     private let passwordTextField = UITextField(placeholder: "Password")
     
-    private lazy var centerStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField], spacing: 20)
+    //other
+    private let backgroundView = UIView()
+    private let picture = UIImageView(image: UIImage(named: "5"))
+    
+    //stackView
+    private lazy var loginStackView = UIStackView(arrangedSubviews: [titleLabel, emailTextField, passwordTextField, loginButton], spacing: 25)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
         
+        self.setTapGesture(action: #selector(hideKeyboard))
+        
+        setupViewsBackgroundColor()
         setupButtonsTargets()
         setupTextFieldsDelegates()
-        createTapGesture()
-        setKeyboardType()
         
         setupConstraints()
     }
     
-    //MARK: - setKeyboardType
+    //MARK: - setupViewsBackgroundColor
     
-    private func setKeyboardType() {
-        emailTextField.keyboardType = .emailAddress
-    }
-    
-    //MARK: - createTapGesture
-    
-    private func createTapGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        
-        view.addGestureRecognizer(tap)
+    private func setupViewsBackgroundColor() {
+        view.backgroundColor = UIColor(named: "pink")
+        backgroundView.backgroundColor = UIColor(named: "dark-pink")
+        backgroundView.layer.cornerRadius = 10
     }
     
     //MARK: - setupTestFieldsDelegates
@@ -109,34 +107,41 @@ final class LoginViewController: UIViewController {
 extension LoginViewController {
     private func setupConstraints() {
         
-        //titleLabel
+        //backgroundView
         
-        view.addSubview(titleLabel)
+        view.addSubview(backgroundView)
         
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+        backgroundView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(40)
             make.top.equalToSuperview().inset(40)
         }
         
-        //centerStackVeiw
+        //loginStackView
         
-        view.addSubview(centerStackView)
+        backgroundView.addSubview(loginStackView)
         
-        centerStackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().inset(30)
-            make.centerX.equalToSuperview()
+        loginStackView.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(25)
         }
         
         //loginButton
         
-        view.addSubview(loginButton)
-        
         loginButton.snp.makeConstraints { make in
             make.height.equalTo(60)
-            make.bottom.equalToSuperview().inset(70)
-            make.left.right.equalToSuperview().inset(40)
         }
+        
+        //picture
+        
+        view.addSubview(picture)
+        
+        picture.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(10)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview().offset(15)
+            make.width.height.equalTo(400)
+        }
+        
     }
 }
 

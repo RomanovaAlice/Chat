@@ -12,11 +12,13 @@ extension UILabel {
     convenience init(title: String,
                      font: UIFont? = nil,
                      textAlignment: NSTextAlignment = .center,
-                     textColor: UIColor? = nil) {
+                     textColor: UIColor? = nil,
+                     numberOfLines: Int = 0) {
         self.init()
         
         self.text = title
         self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
         
         if font != nil {
             self.font = font

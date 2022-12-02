@@ -5,7 +5,7 @@
 //  Created by Алиса Романова on 27.10.2022.
 //
 
-import UIKit
+import SnapKit
 
 final class SignUpViewController: UIViewController {
     
@@ -13,49 +13,43 @@ final class SignUpViewController: UIViewController {
     
     //MARK: - Properties
     
-    //flags
-    private var isRegisterationSucssesful: Bool!
+    //label
+    private let titleLabel = UILabel(title: "Sign Up", font: .systemFont(ofSize: 40, weight: .bold), textColor: .white)
     
-    //Title
-    private let titleLabel = UILabel(title: "Sign Up", font: .systemFont(ofSize: 40, weight: .bold), textColor: .black)
-    
-    //TextFields
-    private let emailTextField = UITextField(placeholder: "Email")
+    //textFields
+    private let emailTextField = UITextField(placeholder: "Email", keyboardType: .emailAddress)
     private let passwordTestField = UITextField(placeholder: "Password")
     private let confirmPasswordTextField = UITextField(placeholder: "Comfirm password")
 
-    //Buttons
-    private let signUpButton = UIButton(title: "Sign Up", color: .systemGreen, titleColor: .white)
+    //buttons
+    private let signUpButton = UIButton(title: "Sign Up", color: UIColor(named: "green"), titleColor: .white)
     
-    //StackViews
-    private lazy var stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTestField, confirmPasswordTextField], spacing: 20)
+    //other
+    private let backgroundView = UIView()
+    private let picture = UIImageView(image: UIImage(named: "3"))
+    
+    //stackViews
+    private lazy var signUpStackView = UIStackView(arrangedSubviews: [titleLabel, emailTextField, passwordTestField, confirmPasswordTextField, signUpButton], spacing: 20)
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        self.setTapGesture(action: #selector(hideKeyboard))
         
+        setupViewsBackgroundColor()
         setupSignUpButton()
         setupTestFieldsDelegates()
-        createTapGesture()
-        setKeyboardType()
         
         setupConstraints()
     }
     
-    //MARK: - createTapGesture
+    //MARK: - setupViewsBackgroundColor
     
-    private func createTapGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        
-        view.addGestureRecognizer(tap)
-    }
-    
-    //MARK: - setKeyboardType
-    
-    private func setKeyboardType() {
-        emailTextField.keyboardType = .emailAddress
+    private func setupViewsBackgroundColor() {
+        view.backgroundColor = UIColor(named: "pink")
+        backgroundView.backgroundColor = UIColor(named: "dark-pink")
+        backgroundView.layer.cornerRadius = 10
     }
     
     //MARK: - setupTestFieldsDelegates
@@ -112,40 +106,40 @@ final class SignUpViewController: UIViewController {
 extension SignUpViewController {
     private func setupConstraints() {
         
-        //titleLabel
+        //backgroundView
         
-        view.addSubview(titleLabel)
+        view.addSubview(backgroundView)
         
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(40)
+        backgroundView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(40)
+            make.center.equalToSuperview()
         }
         
-        //signUpButton
+        //loginStackView
+        
+        backgroundView.addSubview(signUpStackView)
+        
+        signUpStackView.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(25)
+        }
+        
+        //loginButton
         
         signUpButton.snp.makeConstraints { make in
             make.height.equalTo(60)
         }
         
-        //stackView
+        //picture
         
-        view.addSubview(stackView)
+        view.addSubview(picture)
         
-        stackView.snp.makeConstraints { make in
+        picture.snp.makeConstraints { make in
+            make.bottom.equalTo(backgroundView.snp.top).offset(60)
             make.centerX.equalToSuperview()
-            make.left.right.equalToSuperview().inset(30)
-            make.top.equalTo(titleLabel.snp.bottom).offset(50)
-         
+            make.width.height.equalTo(220)
         }
-        
-        //signUpButton
-        
-        view.addSubview(signUpButton)
-        
-        signUpButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(40)
-            make.bottom.equalToSuperview().inset(70)
-        }
+
     }
 }
 

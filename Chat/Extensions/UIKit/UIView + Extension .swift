@@ -15,20 +15,16 @@ extension UIView {
         self.addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview()
         }
         
         self.addSubview(button)
         
         button.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(20)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(60)
-        }
-        
-        self.snp.makeConstraints { make in
-            make.bottom.equalTo(button)
+            make.top.bottom.equalToSuperview()
+            make.left.equalTo(label.snp.right).offset(10)
+            
         }
     }
     
