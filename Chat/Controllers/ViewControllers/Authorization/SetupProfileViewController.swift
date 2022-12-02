@@ -33,8 +33,8 @@ final class SetupProfileViewController: UIViewController {
     private lazy var sexSegmentedControl = UISegmentedControl(items: items)
     
     //views
-    private let topBackgroundView = UIView(backgroundColor: UIColor(named: "dark-green")!)
-    private let bottomBackgroundView = UIView(backgroundColor: UIColor(named: "dark-green")!, radius: 10)
+    private let topBackgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!)
+    private let bottomBackgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!, radius: 10)
     
     //stackView
     private lazy var genderStackView = UIStackView(arrangedSubviews: [genderLabel, sexSegmentedControl], spacing: 20)
@@ -62,7 +62,7 @@ final class SetupProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "light-green")
+        view.backgroundColor = UIColor(named: "pink")
         self.setTapGesture(action: #selector(hideKeyboard))
 
         setupSexSegmentedControl()
@@ -84,7 +84,7 @@ final class SetupProfileViewController: UIViewController {
     
     private func setupSexSegmentedControl() {
         sexSegmentedControl.selectedSegmentIndex = 2
-        sexSegmentedControl.backgroundColor = UIColor(named: "dark-dark-green")
+        sexSegmentedControl.backgroundColor = UIColor(named: "purple")
     }
     
     //MARK: - setupPhotoImageVeiw
