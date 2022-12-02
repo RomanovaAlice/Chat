@@ -43,7 +43,7 @@ final class SetupProfileViewController: UIViewController {
     private lazy var genderStackView = UIStackView(arrangedSubviews: [genderLabel, sexSegmentedControl], spacing: 20)
     private lazy var textFieldStackView = UIStackView(arrangedSubviews: [fullNameTextField, aboutMeTextField], spacing: 20)
     
-    private lazy var generalStackView = UIStackView(arrangedSubviews: [textFieldStackView, genderStackView, goToChatsButton], spacing: 60)
+    private lazy var generalStackView = UIStackView(arrangedSubviews: [textFieldStackView, genderStackView, goToChatsButton], spacing: 50)
     
     //MARK: - Init
     

@@ -16,7 +16,7 @@ final class TabBarController: UITabBarController {
 
         super.init(nibName: nil, bundle: nil)
         
-        tabBar.tintColor = .systemGreen
+        tabBar.tintColor = UIColor(named: "bright-pink")
     }
     
     required init?(coder: NSCoder) {

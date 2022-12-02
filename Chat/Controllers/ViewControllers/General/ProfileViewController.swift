@@ -9,21 +9,20 @@ import SnapKit
 import FirebaseAuth
 
 class ProfileViewController: UIViewController {
+    
+    private var service = FetchImageService()
 
     //MARK: - Properties
     
-    private let userData: Human
-    
-    private var service = FetchImageService()
-    
     //imageView
     private var photoImageView = UIImageView()
+    private let picture = UIImageView(image: UIImage(named: "4"))
     
     //labels
-    private let usernameLabel = UILabel(title: "Username", textAlignment: .left, textColor: .gray)
-    private let emailLabel = UILabel(title: "Email", textAlignment: .left, textColor: .gray)
-    private let genderLabel = UILabel(title: "Gender", textAlignment: .left, textColor: .gray)
-    private let aboutMeLabel = UILabel(title: "About me", textAlignment: .left, textColor: .gray)
+    private let usernameLabel = UILabel(title: "Username", textAlignment: .left, textColor: .white)
+    private let emailLabel = UILabel(title: "Email", textAlignment: .left, textColor: .white)
+    private let genderLabel = UILabel(title: "Gender", textAlignment: .left, textColor: .white)
+    private let aboutMeLabel = UILabel(title: "About me", textAlignment: .left, textColor: .white)
     
     //textFields
     private let usernameTextField = UITextField(placeholder: "")
@@ -32,7 +31,11 @@ class ProfileViewController: UIViewController {
     private let aboutMeTextField = UITextField(placeholder: "")
     
     //button
-    private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: .systemGreen)
+    private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: .white)
+    
+    //views
+    private let topBackgroundView = UIView()
+    private let bottomBackgroundView = UIView()
     
     //stackViews
     private lazy var usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField], spacing: 5)
@@ -43,6 +46,8 @@ class ProfileViewController: UIViewController {
     private lazy var centerStackView = UIStackView(arrangedSubviews: [usernameStackView, emailStackView, genderStackView, aboutMeStackView], spacing: 15)
     
     //MARK: - Init
+    
+    private let userData: Human
     
     init(userData: Human) {
         self.userData = userData
@@ -59,8 +64,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
-        self.liftUpView(amount: 130)
-
+        setupViewsBackgroundColor()
         setupPhotoImageView()
         setupTextFieldsDelegates()
         setupTextFieldsText()
@@ -68,12 +72,20 @@ class ProfileViewController: UIViewController {
         
         setupConstraints()
     }
+    
+    //MARK: - setupViewsBackgroundColor
+    
+    private func setupViewsBackgroundColor() {
+        view.backgroundColor = UIColor(named: "pink")
+        topBackgroundView.backgroundColor = UIColor(named: "dark-pink")
+        bottomBackgroundView.backgroundColor = UIColor(named: "dark-pink")
+        bottomBackgroundView.layer.cornerRadius = 10
+    }
 
     //MARK: - setupNavigationBar
     
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
-        view.backgroundColor = .white
     }
     
     //MARK: - setupTextFieldsDelegates
@@ -125,24 +137,53 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController {
     private func setupConstraints() {
         
+        //topBackgroundView
+        
+        view.addSubview(topBackgroundView)
+        
+        topBackgroundView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview().inset(100)
+            make.height.equalTo(170)
+        }
+        
         //photoImageView
         
         view.addSubview(photoImageView)
         
         photoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(100)
             make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(110)
             make.height.equalTo(200)
             make.width.equalTo(150)
         }
- 
+        
+        //bottomBackgroundView
+        
+        view.addSubview(bottomBackgroundView)
+        
+        bottomBackgroundView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(photoImageView.snp.bottom).offset(30)
+        }
+        
+        //picture
+        
+        view.addSubview(picture)
+        
+        picture.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+            make.bottom.equalTo(photoImageView.snp.top).inset(25)
+            make.centerX.equalToSuperview()
+        }
+    
         //centerStackView
         
-        view.addSubview(centerStackView)
+        bottomBackgroundView.addSubview(centerStackView)
         
         centerStackView.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(35)
-            make.left.right.equalToSuperview().inset(30)
+            make.left.right.top.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(30)
         }
     }
 }

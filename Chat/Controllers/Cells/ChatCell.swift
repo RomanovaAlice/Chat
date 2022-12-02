@@ -38,7 +38,7 @@ final class ChatCell: UICollectionViewCell {
     //MARK: - Methods
     
     private func setupBottomLine() {
-        bottomLine.backgroundColor = .systemGray5
+        bottomLine.backgroundColor = UIColor(named: "dark-pink")
     }
     
     private func setupAvatarImageView() {
@@ -47,12 +47,12 @@ final class ChatCell: UICollectionViewCell {
     }
 
     private func setupUserNameLabel() {
-        userNameLabel.text = "Alex Smith"
         userNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        userNameLabel.textColor = .black
+        userNameLabel.textColor = .white
     }
     
     private func setupLastMessageLabel() {
+        lastMessageLabel.textColor = .systemGray6
         lastMessageLabel.alpha = 0.7
     }
 }

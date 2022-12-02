@@ -14,9 +14,9 @@ final class UsersCell: UICollectionViewCell {
     private let backView = UIView()
     
     var photoImageView = UIImageView()
-    var nameLabel = UILabel(title: "", font: .systemFont(ofSize: 18, weight: .semibold), textAlignment: .left, textColor: .black)
-    var descriptionLabel = UILabel(title: "", textAlignment: .left, textColor: .gray)
-    var genderLabel = UILabel(title: "", textAlignment: .left, textColor: .systemGreen)
+    var nameLabel = UILabel(font: .systemFont(ofSize: 18, weight: .semibold), textAlignment: .left, textColor: .white, numberOfLines: 1)
+    var descriptionLabel = UILabel(textAlignment: .left, textColor: .systemGray6, numberOfLines: 4)
+    var genderLabel = UILabel(textAlignment: .left, textColor: UIColor(named: "bright-pink"))
     
     //MARK: - Inits
     
@@ -24,11 +24,8 @@ final class UsersCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setupSelfAppearance()
-        
         configureBackView()
-        configureNameLabel()
         setupPhotoImageView()
-        configureDescriptionLabel()
         
         setupConstraints()
     }
@@ -40,16 +37,8 @@ final class UsersCell: UICollectionViewCell {
     //MARK: - Setup cell elements
     
     private func configureBackView() {
-        backView.backgroundColor = .systemGray6
+        backView.backgroundColor = UIColor(named: "dark-pink")
         backView.layer.cornerRadius = 15
-    }
-    
-    private func configureDescriptionLabel() {
-        descriptionLabel.numberOfLines = 4
-    }
-    
-    private func configureNameLabel() {
-        nameLabel.numberOfLines = 1
     }
     
     private func setupSelfAppearance() {

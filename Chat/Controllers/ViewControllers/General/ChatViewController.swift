@@ -42,7 +42,7 @@ final class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "pink")
         
         self.setupCollectionView()
         self.setupDataSource()
@@ -71,7 +71,7 @@ final class ChatViewController: UIViewController {
     
     private func setupCollectionView() {
         chatCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
-        chatCollectionView.backgroundColor = .white
+        chatCollectionView.backgroundColor = view.backgroundColor
         chatCollectionView.showsVerticalScrollIndicator = false
         chatCollectionView.delegate = self
         
@@ -113,7 +113,7 @@ final class ChatViewController: UIViewController {
               guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
                   fatalError("Can not create new section header") }
 
-              sectionHeader.configure(text: "Messages", font: .systemFont(ofSize: 35), textColor: .black)
+              sectionHeader.configure(text: "Messages", font: .systemFont(ofSize: 35), textColor: .white)
 
               return sectionHeader
           }

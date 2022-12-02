@@ -30,7 +30,7 @@ final class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "pink")
         
         self.setupCollectionView()
         self.setupDataSource()
@@ -59,7 +59,7 @@ final class UsersViewController: UIViewController {
    
    private func setupCollectionView() {
        usersCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
-       usersCollectionView.backgroundColor = .white
+       usersCollectionView.backgroundColor = view.backgroundColor
        usersCollectionView.showsVerticalScrollIndicator = false
        usersCollectionView.delegate = self
        
@@ -104,7 +104,7 @@ final class UsersViewController: UIViewController {
              guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as? SectionHeader else {
                  fatalError("Can not create new section header") }
 
-           sectionHeader.configure(text: "People nearly you", font: .systemFont(ofSize: 35), textColor: .black)
+           sectionHeader.configure(text: "People nearly you", font: .systemFont(ofSize: 35), textColor: .white)
 
              return sectionHeader
          }
