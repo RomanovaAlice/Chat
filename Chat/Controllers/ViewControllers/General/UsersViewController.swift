@@ -32,9 +32,21 @@ final class UsersViewController: UIViewController {
         
         view.backgroundColor = UIColor(named: "pink")
         
-        self.setupCollectionView()
-        self.setupDataSource()
+        setupCollectionView()
+        setupDataSource()
         
+        configureListener()
+    }
+    
+    //MARK: - Deinit
+    
+    deinit {
+        usersListener?.remove()
+    }
+    
+    //MARK: - configureListener
+    
+    private func configureListener() {
         usersListener = listenerService.observeUsers(users: users, completion: { result in
             switch result {
                 
@@ -47,12 +59,6 @@ final class UsersViewController: UIViewController {
                 print("listen error: ", error)
             }
         })
-    }
-    
-    //MARK: - Deinit
-    
-    deinit {
-        usersListener?.remove()
     }
     
     //MARK: - setupCollectionView

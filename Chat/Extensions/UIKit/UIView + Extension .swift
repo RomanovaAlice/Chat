@@ -50,4 +50,11 @@ extension UIView {
             make.bottom.equalTo(textField)
         }
     }
+    
+    convenience init(backgroundColor: UIColor, radius: CGFloat = 0) {
+        self.init()
+        
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = radius
+    }
 }

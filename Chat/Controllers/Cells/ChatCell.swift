@@ -12,21 +12,17 @@ final class ChatCell: UICollectionViewCell {
     
     //MARK: - Properties
     var avatarImageView = UIImageView()
-    var userNameLabel = UILabel()
-    var lastMessageLabel = UILabel()
+    var userNameLabel = UILabel(font: .systemFont(ofSize: 17, weight: .semibold), textColor: .white)
+    var lastMessageLabel = UILabel(textColor: .systemGray6, alpha: 0.7)
     
-    private var bottomLine = UIView()
+    private var bottomLine = UIView(backgroundColor: UIColor(named: "dark-pink")!)
     
     //MARK: - Inits
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupBottomLine()
-        
         setupAvatarImageView()
-        setupUserNameLabel()
-        setupLastMessageLabel()
         
         setupConstraints()
     }
@@ -35,25 +31,11 @@ final class ChatCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Methods
-    
-    private func setupBottomLine() {
-        bottomLine.backgroundColor = UIColor(named: "dark-pink")
-    }
+    //MARK: - setupAvatarImageView
     
     private func setupAvatarImageView() {
         avatarImageView.layer.cornerRadius = 10
         avatarImageView.clipsToBounds = true
-    }
-
-    private func setupUserNameLabel() {
-        userNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        userNameLabel.textColor = .white
-    }
-    
-    private func setupLastMessageLabel() {
-        lastMessageLabel.textColor = .systemGray6
-        lastMessageLabel.alpha = 0.7
     }
 }
 

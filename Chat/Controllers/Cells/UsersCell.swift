@@ -11,7 +11,7 @@ final class UsersCell: UICollectionViewCell {
     static let identifier = "UsersCell"
     
     //MARK: - Properties
-    private let backView = UIView()
+    private let backView = UIView(backgroundColor: UIColor(named: "dark-pink")!, radius: 15)
     
     var photoImageView = UIImageView()
     var nameLabel = UILabel(font: .systemFont(ofSize: 18, weight: .semibold), textAlignment: .left, textColor: .white, numberOfLines: 1)
@@ -23,8 +23,8 @@ final class UsersCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupSelfAppearance()
-        configureBackView()
+        self.backgroundColor = .clear
+        
         setupPhotoImageView()
         
         setupConstraints()
@@ -35,15 +35,6 @@ final class UsersCell: UICollectionViewCell {
     }
     
     //MARK: - Setup cell elements
-    
-    private func configureBackView() {
-        backView.backgroundColor = UIColor(named: "dark-pink")
-        backView.layer.cornerRadius = 15
-    }
-    
-    private func setupSelfAppearance() {
-        self.backgroundColor = .clear
-    }
     
     private func setupPhotoImageView() {
         photoImageView.backgroundColor = .systemGray

@@ -25,17 +25,17 @@ class ProfileViewController: UIViewController {
     private let aboutMeLabel = UILabel(title: "About me", textAlignment: .left, textColor: .white)
     
     //textFields
-    private let usernameTextField = UITextField(placeholder: "")
-    private let emailTextField = UITextField(placeholder: "")
-    private let genderTextField = UITextField(placeholder: "")
-    private let aboutMeTextField = UITextField(placeholder: "")
+    private let usernameTextField = UITextField(custom: true)
+    private let emailTextField = UITextField(custom: true)
+    private let genderTextField = UITextField(custom: true)
+    private let aboutMeTextField = UITextField(custom: true)
     
     //button
     private let exitButton = UIButton(title: "Exit", cornerRadius: 25, titleColor: .white)
     
     //views
-    private let topBackgroundView = UIView()
-    private let bottomBackgroundView = UIView()
+    private let topBackgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!)
+    private let bottomBackgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!, radius: 10)
     
     //stackViews
     private lazy var usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField], spacing: 5)
@@ -63,23 +63,15 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(named: "pink")
+        
         setupNavigationBar()
-        setupViewsBackgroundColor()
         setupPhotoImageView()
         setupTextFieldsDelegates()
         setupTextFieldsText()
         setupButtonTargets()
         
         setupConstraints()
-    }
-    
-    //MARK: - setupViewsBackgroundColor
-    
-    private func setupViewsBackgroundColor() {
-        view.backgroundColor = UIColor(named: "pink")
-        topBackgroundView.backgroundColor = UIColor(named: "dark-pink")
-        bottomBackgroundView.backgroundColor = UIColor(named: "dark-pink")
-        bottomBackgroundView.layer.cornerRadius = 10
     }
 
     //MARK: - setupNavigationBar

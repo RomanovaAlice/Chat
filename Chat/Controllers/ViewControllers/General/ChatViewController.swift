@@ -9,8 +9,6 @@ import FirebaseFirestore
 
 final class ChatViewController: UIViewController {
     
-    private let currentUser: Human
-    
     private enum Section: Int, CaseIterable {
         case chats
     }
@@ -27,6 +25,8 @@ final class ChatViewController: UIViewController {
     private var chatCollectionView: UICollectionView!
     
     //MARK: - Init
+    
+    private let currentUser: Human
     
     init(currentUser: Human) {
         self.currentUser = currentUser
@@ -47,6 +47,18 @@ final class ChatViewController: UIViewController {
         self.setupCollectionView()
         self.setupDataSource()
         
+        configureListener()
+    }
+    
+    //MARK: - Deinit
+    
+    deinit {
+        listener?.remove()
+    }
+    
+    //MARK: - configureListener
+    
+    private func configureListener() {
         listener = service.observeChats(chats: chats, completion: { result in
             switch result {
                 
@@ -59,12 +71,6 @@ final class ChatViewController: UIViewController {
                 self.showErrorAlert(message: error.localizedDescription)
             }
         })
-    }
-    
-    //MARK: - Deinit
-    
-    deinit {
-        listener?.remove()
     }
     
     //MARK: - setupCollectionView

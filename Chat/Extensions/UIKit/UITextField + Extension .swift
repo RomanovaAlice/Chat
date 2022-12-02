@@ -19,9 +19,9 @@ extension UITextField {
         
     }
     
-    convenience init(placeholder: String, keyboardType: UIKeyboardType? = nil) {
+    convenience init(custom: Bool = true, placeholder: String = "", keyboardType: UIKeyboardType? = nil) {
         self.init()
-        
+
         if keyboardType != nil {
             self.keyboardType = keyboardType!
         }

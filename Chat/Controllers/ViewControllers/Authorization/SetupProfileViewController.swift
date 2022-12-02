@@ -11,9 +11,6 @@ final class SetupProfileViewController: UIViewController {
  
     //MARK: - Properties
     
-    let email: String
-    let id: String
-    
     //items
     private let items = ["Male", "Female", "None"]
     
@@ -29,15 +26,15 @@ final class SetupProfileViewController: UIViewController {
     private let aboutMeTextField = UITextField(placeholder: "About me")
     
     //imageView
+    private let picture = UIImageView(image: UIImage(named: "1"))
     private let photoImageView = UIImageView()
     
     //segmentedControl
     private lazy var sexSegmentedControl = UISegmentedControl(items: items)
     
-    //other
-    private let topBackgroundView = UIView()
-    private let bottomBackgroundView = UIView()
-    private let picture = UIImageView(image: UIImage(named: "1"))
+    //views
+    private let topBackgroundView = UIView(backgroundColor: UIColor(named: "dark-green")!)
+    private let bottomBackgroundView = UIView(backgroundColor: UIColor(named: "dark-green")!, radius: 10)
     
     //stackView
     private lazy var genderStackView = UIStackView(arrangedSubviews: [genderLabel, sexSegmentedControl], spacing: 20)
@@ -46,6 +43,9 @@ final class SetupProfileViewController: UIViewController {
     private lazy var generalStackView = UIStackView(arrangedSubviews: [textFieldStackView, genderStackView, goToChatsButton], spacing: 50)
     
     //MARK: - Init
+    
+    let email: String
+    let id: String
     
     init(email: String, id: String) {
         self.email = email
@@ -61,25 +61,16 @@ final class SetupProfileViewController: UIViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.backgroundColor = UIColor(named: "light-green")
         self.setTapGesture(action: #selector(hideKeyboard))
 
-        setupViewsBackgroundColor()
         setupSexSegmentedControl()
         setupPhotoImageVeiw()
         addTargetsToButtons()
         setupTestFieldsDelegates()
         
         setuContsraints()
-    }
-    
-    //MARK: - setupViewsBackgroundColor
-    
-    private func setupViewsBackgroundColor() {
-        view.backgroundColor = UIColor(named: "light-green")
-        topBackgroundView.backgroundColor = UIColor(named: "dark-green")
-        bottomBackgroundView.backgroundColor = UIColor(named: "dark-green")
-        bottomBackgroundView.layer.cornerRadius = 10
     }
 
     //MARK: - setupTestFieldsDelegates

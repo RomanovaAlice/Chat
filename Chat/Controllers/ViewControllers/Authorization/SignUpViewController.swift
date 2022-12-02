@@ -25,7 +25,7 @@ final class SignUpViewController: UIViewController {
     private let signUpButton = UIButton(title: "Sign Up", color: UIColor(named: "green"), titleColor: .white)
     
     //other
-    private let backgroundView = UIView()
+    private let backgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!, radius: 10)
     private let picture = UIImageView(image: UIImage(named: "3"))
     
     //stackViews
@@ -35,21 +35,13 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor(named: "pink")
         self.setTapGesture(action: #selector(hideKeyboard))
         
-        setupViewsBackgroundColor()
         setupSignUpButton()
         setupTestFieldsDelegates()
         
         setupConstraints()
-    }
-    
-    //MARK: - setupViewsBackgroundColor
-    
-    private func setupViewsBackgroundColor() {
-        view.backgroundColor = UIColor(named: "pink")
-        backgroundView.backgroundColor = UIColor(named: "dark-pink")
-        backgroundView.layer.cornerRadius = 10
     }
     
     //MARK: - setupTestFieldsDelegates

@@ -13,9 +13,6 @@ class MessageViewController: MessagesViewController {
 
     //MARK: - Properties
     
-    private let user: Human
-    private let chat: Chat
-    
     private var messages: [Message] = []
     
     private var messageListener: ListenerRegistration?
@@ -24,6 +21,9 @@ class MessageViewController: MessagesViewController {
     private let storageService = StorageService()
     
     //MARK: - Init
+    
+    private let user: Human
+    private let chat: Chat
     
     init(user: Human, chat: Chat) {
         self.user = user
@@ -42,10 +42,24 @@ class MessageViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messagesCollectionView.backgroundColor = UIColor(named: "gray")
+        
         configureMessageInputBar()
         configureCollectionView()
         hideAvatar()
         
+        configureListener()
+    }
+    
+    //MARK: - Deinit
+    
+    deinit {
+        messageListener?.remove()
+    }
+    
+    //MARK: - configureListener
+    
+    private func configureListener() {
         messageListener = listenerService.observeMessages(chat: chat, completion: { (result) in
             switch result {
                 
@@ -56,12 +70,6 @@ class MessageViewController: MessagesViewController {
                 print(error)
             }
         })
-    }
-    
-    //MARK: - Deinit
-    
-    deinit {
-        messageListener?.remove()
     }
     
     //MARK: - hideAvatar
@@ -86,8 +94,8 @@ class MessageViewController: MessagesViewController {
     
     private func configureMessageInputBar() {
         messageInputBar.delegate = self
-        messageInputBar.backgroundView.backgroundColor = .systemGray5
-        messageInputBar.inputTextView.backgroundColor = .white
+        messageInputBar.backgroundView.backgroundColor = UIColor(named: "dark-pink")
+        messageInputBar.inputTextView.backgroundColor = UIColor(named: "gray")
         messageInputBar.inputTextView.placeholderTextColor = .gray
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 14, left: 15, bottom: 14, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 14, left: 21, bottom: 14, right: 36)
@@ -171,7 +179,7 @@ extension MessageViewController: MessagesLayoutDelegate {
 extension MessageViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .systemGreen : .systemGray6
+        return isFromCurrentSender(message: message) ? UIColor(named: "purple")! : UIColor(named: "pink")!
     }
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {

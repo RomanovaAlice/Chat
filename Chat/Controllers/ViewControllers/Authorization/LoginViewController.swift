@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController {
     private let passwordTextField = UITextField(placeholder: "Password")
     
     //other
-    private let backgroundView = UIView()
+    private let backgroundView = UIView(backgroundColor: UIColor(named: "dark-pink")!, radius: 10)
     private let picture = UIImageView(image: UIImage(named: "5"))
     
     //stackView
@@ -34,21 +34,13 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(named: "pink")
         self.setTapGesture(action: #selector(hideKeyboard))
         
-        setupViewsBackgroundColor()
         setupButtonsTargets()
         setupTextFieldsDelegates()
         
         setupConstraints()
-    }
-    
-    //MARK: - setupViewsBackgroundColor
-    
-    private func setupViewsBackgroundColor() {
-        view.backgroundColor = UIColor(named: "pink")
-        backgroundView.backgroundColor = UIColor(named: "dark-pink")
-        backgroundView.layer.cornerRadius = 10
     }
     
     //MARK: - setupTestFieldsDelegates

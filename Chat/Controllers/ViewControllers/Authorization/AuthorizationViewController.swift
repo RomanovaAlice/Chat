@@ -28,6 +28,7 @@ final class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: "beige")
+        
         setupButtons()
         setupConstraints()
     }
